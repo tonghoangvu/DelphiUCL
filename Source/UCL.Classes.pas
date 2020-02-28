@@ -9,6 +9,7 @@ type
   TUTheme = (utLight, utDark);
   TUOrientation = (oHorizontal, oVertical);
   TUDirection = (dLeft, dTop, dRight, dBottom);
+  TUControlState = (csNone, csHover, csPress);
 
   TUImageKind = (ikFontIcon, ikImage);
 
