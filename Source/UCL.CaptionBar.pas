@@ -99,7 +99,7 @@ begin
   //  Default props
   Align := alTop;
   Alignment := taLeftJustify;
-  Caption := '   ' + Caption;
+  Caption := '   Caption bar';
   BevelOuter := bvNone;
   Height := 32;
 end;

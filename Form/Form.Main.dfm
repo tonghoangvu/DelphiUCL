@@ -16,7 +16,7 @@ object Form85: TForm85
   TextHeight = 13
   object UPanel1: TUPanel
     Left = 30
-    Top = 80
+    Top = 110
     Width = 250
     Height = 100
     Hint = 'This is a hint'
@@ -31,7 +31,7 @@ object Form85: TForm85
   end
   object ComboBox1: TComboBox
     Left = 30
-    Top = 20
+    Top = 50
     Width = 121
     Height = 21
     Style = csDropDownList
@@ -46,11 +46,25 @@ object Form85: TForm85
   end
   object Button1: TButton
     Left = 160
-    Top = 20
+    Top = 50
     Width = 121
     Height = 41
     Caption = 'Reload'
     TabOrder = 2
     OnClick = Button1Click
+  end
+  object UCaptionBar1: TUCaptionBar
+    Left = 0
+    Top = 0
+    Width = 700
+    Caption = '   Caption bar'
+    TabOrder = 3
+    CustomBackColor.Enabled = False
+    CustomBackColor.Color = clBlack
+    CustomBackColor.LightColor = 15921906
+    CustomBackColor.DarkColor = 2829099
+    ExplicitLeft = 230
+    ExplicitTop = 320
+    ExplicitWidth = 185
   end
 end
