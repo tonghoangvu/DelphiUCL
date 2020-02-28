@@ -33,7 +33,6 @@ implementation
 procedure TForm85.Button1Click(Sender: TObject);
 begin
   ThemeManager.UpdateTheme;
-  UCaptionBar1.UpdateTheme();
 end;
 
 procedure TForm85.ComboBox1Select(Sender: TObject);
