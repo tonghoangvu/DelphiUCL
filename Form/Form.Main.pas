@@ -13,10 +13,9 @@ type
     panelTest: TUPanel;
     comboChooseTheme: TComboBox;
     buttonReload: TButton;
-    UCaptionBar1: TUCaptionBar;
+    captionbarMain: TUCaptionBar;
     buttonRandomProgress: TButton;
     progressHorz: TUProgressBar;
-    UProgressBar1: TUProgressBar;
     procedure FormCreate(Sender: TObject);
     procedure comboChooseThemeSelect(Sender: TObject);
     procedure buttonReloadClick(Sender: TObject);
