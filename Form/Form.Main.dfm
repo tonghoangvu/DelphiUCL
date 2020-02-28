@@ -63,8 +63,5 @@ object Form85: TForm85
     CustomBackColor.Color = clBlack
     CustomBackColor.LightColor = 15921906
     CustomBackColor.DarkColor = 2829099
-    ExplicitLeft = 230
-    ExplicitTop = 320
-    ExplicitWidth = 185
   end
 end
