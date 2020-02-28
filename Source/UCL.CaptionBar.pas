@@ -42,6 +42,7 @@ type
       property Alignment default taLeftJustify;
       property BevelOuter default bvNone;
       property Height default 32;
+      property ParentBackground default false;
   end;
 
 implementation
@@ -102,6 +103,7 @@ begin
   Caption := '   Caption bar';
   BevelOuter := bvNone;
   Height := 32;
+  ParentBackground := false;
 end;
 
 destructor TUCaptionBar.Destroy;
