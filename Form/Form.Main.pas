@@ -16,6 +16,7 @@ type
     UCaptionBar1: TUCaptionBar;
     buttonRandomProgress: TButton;
     progressHorz: TUProgressBar;
+    UProgressBar1: TUProgressBar;
     procedure FormCreate(Sender: TObject);
     procedure comboChooseThemeSelect(Sender: TObject);
     procedure buttonReloadClick(Sender: TObject);

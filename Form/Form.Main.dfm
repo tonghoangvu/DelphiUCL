@@ -88,4 +88,19 @@ object formDemo: TformDemo
     CustomBackColor.LightColor = 13421772
     CustomBackColor.DarkColor = 3355443
   end
+  object UProgressBar1: TUProgressBar
+    Left = 350
+    Top = 190
+    Caption = 'UProgressBar1'
+    AniSet.AniKind = akOut
+    AniSet.AniFunctionKind = afkQuartic
+    AniSet.DelayStartTime = 0
+    AniSet.Duration = 250
+    AniSet.Step = 25
+    CustomBackColor.Enabled = False
+    CustomBackColor.Color = 15132390
+    CustomBackColor.LightColor = 13421772
+    CustomBackColor.DarkColor = 3355443
+    Value = 45
+  end
 end

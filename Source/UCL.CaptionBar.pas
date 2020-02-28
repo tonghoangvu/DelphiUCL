@@ -58,23 +58,16 @@ end;
 
 procedure TUCaptionBar.UpdateTheme(const UpdateChildren: Boolean);
 var
-  ParentForm: TCustomForm;
   TM: TUThemeManager;
   _BackColor: TUThemeColorSet;
 begin
-  //  Select style
-  ParentForm := GetParentForm(Self, true);
-  if ParentForm is TUForm then
-    TM := (ParentForm as TUForm).ThemeManager
-  else
-    TM := nil;
+  TM := SelectThemeManager(Self);
 
-  if (TM = nil) or (CustomBackColor.Enabled) then
-    _BackColor := CustomBackColor
-  else
-    _BackColor := CAPTIONBAR_BACK;
-
+  //  Update back color
+  _BackColor := SelectColorSet(TM, CustomBackColor, CAPTIONBAR_BACK);
   Color := _BackColor.GetColor(TM);
+
+  //  Update text color (depends on back color)
   Font.Color := GetTextColorFromBackground(Color);
 end;
 

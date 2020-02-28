@@ -87,12 +87,7 @@ var
   TM: TUThemeManager;
   _BackColor: TUThemeColorSet;
 begin
-  //  Select style
-  ParentForm := GetParentForm(Self, true);
-  if ParentForm is TUForm then
-    TM := (ParentForm as TUForm).ThemeManager
-  else
-    TM := nil;
+  TM := SelectThemeManager(Self);
 
   //  Update fill color
   if TM = nil then
@@ -101,10 +96,7 @@ begin
     FillColor := TM.AccentColor;
 
   //  Update back color
-  if (TM = nil) or (CustomBackColor.Enabled) then
-    _BackColor := CustomBackColor
-  else
-    _BackColor := PROGRESSBAR_BACK;
+  _BackColor := SelectColorSet(TM, CustomBackColor, PROGRESSBAR_BACK);
   BackColor := _BackColor.GetColor(TM);
 end;
 
