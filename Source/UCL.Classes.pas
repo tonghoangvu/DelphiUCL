@@ -9,11 +9,9 @@ type
   TUTheme = (utLight, utDark);
   TUOrientation = (oHorizontal, oVertical);
   TUDirection = (dLeft, dTop, dRight, dBottom);
-  TUControlState = (csNone, csHover, csPress, csDisabled, csFocused);
+  TUControlState = (csNone, csHover, csPress);
 
   TUImageKind = (ikFontIcon, ikImage);
-
-  TDefColor = array [TUTheme, TUControlState] of TColor;
 
   AccentPolicy = packed record
     AccentState: Integer;
@@ -44,7 +42,7 @@ type
       property AutoSize;
       property BiDiMode;
       property Caption;
-      property Color;
+//      property Color;
       property Constraints;
       property DragCursor;
       property DragKind;
