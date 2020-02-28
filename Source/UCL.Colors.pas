@@ -94,6 +94,7 @@ type
   end;
 
 var
+  //  Tooltip
   TOOLTIP_SHADOW: Boolean;
   TOOLTIP_BORDER_THICKNESS: Byte;
   TOOLTIP_FONT_NAME: string;
@@ -101,19 +102,29 @@ var
   TOOLTIP_BACK: TUThemeColorSet;
   TOOLTIP_BORDER: TUThemeColorSet;
 
+  //  Form
   FORM_FONT_NAME: string;
   FORM_FONT_SIZE: Byte;
   FORM_BACK: TUThemeColorSet;
 
+  //  Progress bar
   PROGRESSBAR_BACK: TUThemeColorSet;
 
+  //  Panel
   PANEL_BACK: TUThemeColorSet;
 
+  //  Caption bar
   CAPTIONBAR_BACK: TUThemeColorSet;
+
+  //  Button
+  BUTTON_BACK: TUStateColorSet;
+  BUTTON_BORDER: TUStateColorSet;
 
 function SelectThemeManager(Control: TControl): TUThemeManager;
 function SelectColorSet(const TM: TUThemeManager;
-  CustomColorset, DefaultColorset: TUThemeColorSet): TUThemeColorSet;
+  CustomColorset, DefaultColorset: TUThemeColorSet): TUThemeColorSet; overload;
+function SelectColorSet(const TM: TUThemeManager;
+  CustomColorset, DefaultColorset: TUStateColorSet): TUStateColorSet; overload;
 
 implementation
 
@@ -136,6 +147,17 @@ end;
 
 function SelectColorSet(const TM: TUThemeManager;
   CustomColorset, DefaultColorset: TUThemeColorSet): TUThemeColorSet;
+begin
+  if CustomColorset = nil then exit(nil);
+
+  if (TM = nil) or (CustomColorset.Enabled) then
+    Result := CustomColorset
+  else
+    Result := DefaultColorset;
+end;
+
+function SelectColorSet(const TM: TUThemeManager;
+  CustomColorset, DefaultColorset: TUStateColorSet): TUStateColorSet;
 begin
   if CustomColorset = nil then exit(nil);
 
@@ -419,6 +441,7 @@ begin
 end;
 
 initialization
+  //  Tooltip
   TOOLTIP_SHADOW := false;
   TOOLTIP_BORDER_THICKNESS := 1;
   TOOLTIP_FONT_NAME := 'Segoe UI';
@@ -426,15 +449,27 @@ initialization
   TOOLTIP_BACK := TUThemeColorSet.Create(0, $F2F2F2, $2B2B2B);
   TOOLTIP_BORDER := TUThemeColorSet.Create(0, $CCCCCC, $767676);
 
+  //  Form
   FORM_FONT_NAME := 'Segoe UI';
   FORM_FONT_SIZE := 10;
   FORM_BACK := TUThemeColorSet.Create(0, $FFFFFF, $000000);
 
+  //  Progress bar
   PROGRESSBAR_BACK := TUThemeColorSet.Create($E6E6E6, $CCCCCC, $333333);
 
+  //  Panel
   PANEL_BACK := TUThemeColorSet.Create(0, $E6E6E6, $1F1F1F);
 
+  //  Caption bar
   CAPTIONBAR_BACK := TUThemeColorSet.Create(0, $F2F2F2, $2B2B2B);
+
+  //  Button
+  BUTTON_BACK := TUStateColorSet.Create;
+  BUTTON_BACK.SetLightColor($CCCCCC, $CCCCCC, $999999, $CCCCCC, $CCCCCC, $999999);
+  BUTTON_BACK.SetDarkColor($333333, $333333, $666666, $333333, $333333, $666666);
+  BUTTON_BORDER := TUStateColorSet.Create;
+  BUTTON_BORDER.SetLightColor($CCCCCC, $7A7A7A, $999999, $7A7A7A, $7A7A7A, $999999);
+  BUTTON_BORDER.SetDarkColor($333333, $858585, $666666, $858585, $858585, $666666);
 
 finalization
   TOOLTIP_BACK.Free;
@@ -448,5 +483,7 @@ finalization
 
   CAPTIONBAR_BACK.Free;
 
+  BUTTON_BACK.Free;
+  BUTTON_BORDER.Free;
 
 end.

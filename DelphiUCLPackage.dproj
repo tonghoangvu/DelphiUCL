@@ -167,6 +167,8 @@
         <DCCReference Include="Source\UCL.Tooltip.pas"/>
         <DCCReference Include="Source\UCL.CaptionBar.pas"/>
         <DCCReference Include="Source\UCL.ProgressBar.pas"/>
+        <DCCReference Include="Source\UCL.Button.pas"/>
+        <None Include="DelphiUCLPackage.todo"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>

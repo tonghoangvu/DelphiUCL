@@ -14,6 +14,7 @@ uses
   , UCL.Panel
   , UCL.CaptionBar
   , UCL.ProgressBar
+  , UCL.Button
   ;
 
 procedure Register;
@@ -21,7 +22,8 @@ begin
   RegisterComponents('Delphi UCL', [
     TUPanel,
     TUCaptionBar,
-    TUProgressBar
+    TUProgressBar,
+    TUButton
   ]);
 end;
 

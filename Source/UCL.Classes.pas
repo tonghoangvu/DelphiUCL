@@ -42,7 +42,7 @@ type
       property AutoSize;
       property BiDiMode;
       property Caption;
-      property Color;
+//      property Color;
       property Constraints;
       property DragCursor;
       property DragKind;

@@ -6,7 +6,7 @@ uses
   UCL.Form, UCL.Classes, UCL.ThemeManager,
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, UCL.Panel, UCL.Utils,
-  UCL.Graphics, UCL.CaptionBar, UCL.ProgressBar;
+  UCL.Graphics, UCL.CaptionBar, UCL.ProgressBar, UCL.Button;
 
 type
   TformDemo = class(TUForm)
@@ -16,6 +16,11 @@ type
     captionbarMain: TUCaptionBar;
     buttonRandomProgress: TButton;
     progressHorz: TUProgressBar;
+    UButton1: TUButton;
+    UButton2: TUButton;
+    UButton3: TUButton;
+    UButton4: TUButton;
+    UButton5: TUButton;
     procedure FormCreate(Sender: TObject);
     procedure comboChooseThemeSelect(Sender: TObject);
     procedure buttonReloadClick(Sender: TObject);
