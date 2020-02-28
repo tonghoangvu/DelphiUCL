@@ -1,0 +1,11 @@
+Resource/
+Win32/
+Win64/
+__recovery/
+*.local
+*.tvsconfig
+*.identcache
+*.stat
+*.mes
+*.dsk
+*.todo

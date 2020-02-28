@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{FE22C560-1A97-4B15-B764-2F37C6B38B19}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="DelphiUCLPackage.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="DemoUCL.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="DelphiUCLPackage">
+        <MSBuild Projects="DelphiUCLPackage.dproj"/>
+    </Target>
+    <Target Name="DelphiUCLPackage:Clean">
+        <MSBuild Projects="DelphiUCLPackage.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DelphiUCLPackage:Make">
+        <MSBuild Projects="DelphiUCLPackage.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="DemoUCL">
+        <MSBuild Projects="DemoUCL.dproj"/>
+    </Target>
+    <Target Name="DemoUCL:Clean">
+        <MSBuild Projects="DemoUCL.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="DemoUCL:Make">
+        <MSBuild Projects="DemoUCL.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="DelphiUCLPackage;DemoUCL"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="DelphiUCLPackage:Clean;DemoUCL:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="DelphiUCLPackage:Make;DemoUCL:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
