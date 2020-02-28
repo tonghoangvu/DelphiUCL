@@ -9,17 +9,17 @@ uses
   UCL.Graphics, UCL.CaptionBar, UCL.ProgressBar;
 
 type
-  TForm85 = class(TUForm)
-    UPanel1: TUPanel;
-    ComboBox1: TComboBox;
-    Button1: TButton;
+  TformDemo = class(TUForm)
+    panelTest: TUPanel;
+    comboChooseTheme: TComboBox;
+    buttonReload: TButton;
     UCaptionBar1: TUCaptionBar;
-    Button2: TButton;
-    UProgressBar1: TUProgressBar;
+    buttonRandomProgress: TButton;
+    progressHorz: TUProgressBar;
     procedure FormCreate(Sender: TObject);
-    procedure ComboBox1Select(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
+    procedure comboChooseThemeSelect(Sender: TObject);
+    procedure buttonReloadClick(Sender: TObject);
+    procedure buttonRandomProgressClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -27,31 +27,31 @@ type
   end;
 
 var
-  Form85: TForm85;
+  formDemo: TformDemo;
 
 implementation
 
 {$R *.dfm}
 
-procedure TForm85.Button1Click(Sender: TObject);
+procedure TformDemo.buttonReloadClick(Sender: TObject);
 begin
   ThemeManager.UpdateTheme;
 end;
 
-procedure TForm85.Button2Click(Sender: TObject);
+procedure TformDemo.buttonRandomProgressClick(Sender: TObject);
 begin
   Randomize;
-  UProgressBar1.GoToValue(Random(100));
+  progressHorz.GoToValue(Random(100));
 end;
 
-procedure TForm85.ComboBox1Select(Sender: TObject);
+procedure TformDemo.comboChooseThemeSelect(Sender: TObject);
 begin
-  ThemeManager.ThemeType := TUThemeType(ComboBox1.ItemIndex);
+  ThemeManager.ThemeType := TUThemeType(comboChooseTheme.ItemIndex);
 end;
 
-procedure TForm85.FormCreate(Sender: TObject);
+procedure TformDemo.FormCreate(Sender: TObject);
 begin
-  UPanel1.Hint :=
+  panelTest.Hint :=
     'This is line 1' + sLineBreak +
     'This is line 2' + sLineBreak +
     'This is a multi-line tooltip';

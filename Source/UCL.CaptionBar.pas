@@ -29,7 +29,7 @@ type
 
       //  Interface
       function IsContainer: Boolean;
-      procedure UpdateTheme(const UpdateChildren: Boolean = true);
+      procedure UpdateTheme(const UpdateChildren: Boolean);
 
     published
       property CustomBackColor: TUThemeColorSet read FCustomBackColor write FCustomBackColor;

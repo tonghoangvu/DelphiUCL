@@ -1,4 +1,4 @@
-object Form85: TForm85
+object formDemo: TformDemo
   Left = 0
   Top = 0
   Caption = 'Demo UCL'
@@ -14,7 +14,7 @@ object Form85: TForm85
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object UPanel1: TUPanel
+  object panelTest: TUPanel
     Left = 30
     Top = 110
     Width = 250
@@ -29,7 +29,7 @@ object Form85: TForm85
     CustomBackColor.LightColor = 15132390
     CustomBackColor.DarkColor = 2039583
   end
-  object ComboBox1: TComboBox
+  object comboChooseTheme: TComboBox
     Left = 30
     Top = 50
     Width = 121
@@ -38,20 +38,20 @@ object Form85: TForm85
     ItemIndex = 0
     TabOrder = 1
     Text = 'System theme'
-    OnSelect = ComboBox1Select
+    OnSelect = comboChooseThemeSelect
     Items.Strings = (
       'System theme'
       'Light theme'
       'Dark theme')
   end
-  object Button1: TButton
+  object buttonReload: TButton
     Left = 160
     Top = 50
     Width = 121
     Height = 41
     Caption = 'Reload'
     TabOrder = 2
-    OnClick = Button1Click
+    OnClick = buttonReloadClick
   end
   object UCaptionBar1: TUCaptionBar
     Left = 0
@@ -64,20 +64,20 @@ object Form85: TForm85
     CustomBackColor.LightColor = 15921906
     CustomBackColor.DarkColor = 2829099
   end
-  object Button2: TButton
+  object buttonRandomProgress: TButton
     Left = 320
     Top = 70
     Width = 201
     Height = 41
     Caption = 'Random progress bar'
     TabOrder = 4
-    OnClick = Button2Click
+    OnClick = buttonRandomProgressClick
   end
-  object UProgressBar1: TUProgressBar
+  object progressHorz: TUProgressBar
     Left = 320
     Top = 50
     Width = 200
-    Caption = 'UProgressBar1'
+    Caption = 'progressHorz'
     AniSet.AniKind = akOut
     AniSet.AniFunctionKind = afkQuartic
     AniSet.DelayStartTime = 0

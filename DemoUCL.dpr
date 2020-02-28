@@ -2,13 +2,14 @@ program DemoUCL;
 
 uses
   Vcl.Forms,
-  Form.Main in 'Form\Form.Main.pas' {Form85};
+  Form.Main in 'Form\Form.Main.pas' {formDemo};
 
 {$R *.res}
 
 begin
+  ReportMemoryLeaksOnShutdown := true;
   Application.Initialize;
   Application.MainFormOnTaskbar := True;
-  Application.CreateForm(TForm85, Form85);
+  Application.CreateForm(TformDemo, formDemo);
   Application.Run;
 end.

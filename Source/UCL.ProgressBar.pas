@@ -42,7 +42,7 @@ type
 
       //  Interface
       function IsContainer: Boolean;
-      procedure UpdateTheme(const UpdateChildren: Boolean = true);
+      procedure UpdateTheme(const UpdateChildren: Boolean);
 
       procedure GoToValue(Value: Integer);
 
@@ -70,7 +70,7 @@ begin
   Result := false;
 end;
 
-procedure TUProgressBar.UpdateTheme(const UpdateChildren: Boolean = true);
+procedure TUProgressBar.UpdateTheme(const UpdateChildren: Boolean);
 begin
   UpdateColors;
   UpdateRects;

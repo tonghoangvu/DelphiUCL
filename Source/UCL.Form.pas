@@ -64,7 +64,7 @@ type
 
       //  Interface
       function IsContainer: Boolean;
-      procedure UpdateTheme(const UpdateChildren: Boolean = true);
+      procedure UpdateTheme(const UpdateChildren: Boolean);
 
     published
       property ThemeManager: TUThemeManager read FThemeManager write FThemeManager;
