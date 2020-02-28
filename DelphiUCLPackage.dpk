@@ -47,6 +47,7 @@ contains
   UCL.IntAnimation.Collection in 'Source\UCL.IntAnimation.Collection.pas',
   UCL.IntAnimation in 'Source\UCL.IntAnimation.pas',
   UCL.Tooltip in 'Source\UCL.Tooltip.pas',
-  UCL.CaptionBar in 'Source\UCL.CaptionBar.pas';
+  UCL.CaptionBar in 'Source\UCL.CaptionBar.pas',
+  UCL.ProgressBar in 'Source\UCL.ProgressBar.pas';
 
 end.

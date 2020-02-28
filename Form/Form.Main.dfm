@@ -64,4 +64,28 @@ object Form85: TForm85
     CustomBackColor.LightColor = 15921906
     CustomBackColor.DarkColor = 2829099
   end
+  object Button2: TButton
+    Left = 320
+    Top = 70
+    Width = 201
+    Height = 41
+    Caption = 'Random progress bar'
+    TabOrder = 4
+    OnClick = Button2Click
+  end
+  object UProgressBar1: TUProgressBar
+    Left = 320
+    Top = 50
+    Width = 200
+    Caption = 'UProgressBar1'
+    AniSet.AniKind = akOut
+    AniSet.AniFunctionKind = afkQuartic
+    AniSet.DelayStartTime = 0
+    AniSet.Duration = 250
+    AniSet.Step = 25
+    CustomBackColor.Enabled = False
+    CustomBackColor.Color = 15132390
+    CustomBackColor.LightColor = 13421772
+    CustomBackColor.DarkColor = 3355443
+  end
 end

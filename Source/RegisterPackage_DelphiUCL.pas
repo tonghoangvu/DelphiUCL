@@ -13,13 +13,15 @@ uses
   UCL.Form
   , UCL.Panel
   , UCL.CaptionBar
+  , UCL.ProgressBar
   ;
 
 procedure Register;
 begin
   RegisterComponents('Delphi UCL', [
     TUPanel,
-    TUCaptionBar
+    TUCaptionBar,
+    TUProgressBar
   ]);
 end;
 
