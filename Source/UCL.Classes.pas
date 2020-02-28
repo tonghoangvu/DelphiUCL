@@ -9,11 +9,8 @@ type
   TUTheme = (utLight, utDark);
   TUOrientation = (oHorizontal, oVertical);
   TUDirection = (dLeft, dTop, dRight, dBottom);
-  TUControlState = (csNone, csHover, csPress, csDisabled, csFocused);
 
   TUImageKind = (ikFontIcon, ikImage);
-
-  TDefColor = array [TUTheme, TUControlState] of TColor;
 
   AccentPolicy = packed record
     AccentState: Integer;
