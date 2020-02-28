@@ -43,14 +43,17 @@ var
   TOOLTIP_BORDER_THICKNESS: Byte;
   TOOLTIP_FONT_NAME: string;
   TOOLTIP_FONT_SIZE: Byte;
+  TOOLTIP_BACK: TUThemeColorSet;
+  TOOLTIP_BORDER: TUThemeColorSet;
 
   FORM_FONT_NAME: string;
   FORM_FONT_SIZE: Byte;
-
-  TOOLTIP_BACK: TUThemeColorSet;
-  TOOLTIP_BORDER: TUThemeColorSet;
   FORM_BACK: TUThemeColorSet;
+
+  PROGRESSBAR_BACK: TUThemeColorSet;
+
   PANEL_BACK: TUThemeColorSet;
+
   CAPTIONBAR_BACK: TUThemeColorSet;
 
 implementation
@@ -155,20 +158,24 @@ initialization
   TOOLTIP_BORDER_THICKNESS := 1;
   TOOLTIP_FONT_NAME := 'Segoe UI';
   TOOLTIP_FONT_SIZE := 8;
+  TOOLTIP_BACK := TUThemeColorSet.Create(0, $F2F2F2, $2B2B2B);
+  TOOLTIP_BORDER := TUThemeColorSet.Create(0, $CCCCCC, $767676);
 
   FORM_FONT_NAME := 'Segoe UI';
   FORM_FONT_SIZE := 10;
-
-  TOOLTIP_BACK := TUThemeColorSet.Create(0, $F2F2F2, $2B2B2B);
-  TOOLTIP_BORDER := TUThemeColorSet.Create(0, $CCCCCC, $767676);
   FORM_BACK := TUThemeColorSet.Create(0, $FFFFFF, $000000);
+
+  PROGRESSBAR_BACK := TUThemeColorSet.Create($E6E6E6, $CCCCCC, $333333);
+
   PANEL_BACK := TUThemeColorSet.Create(0, $E6E6E6, $1F1F1F);
+
   CAPTIONBAR_BACK := TUThemeColorSet.Create(0, $F2F2F2, $2B2B2B);
 
 finalization
   TOOLTIP_BACK.Free;
   TOOLTIP_BORDER.Free;
   FORM_BACK.Free;
+  PROGRESSBAR_BACK.Free;
   PANEL_BACK.Free;
   CAPTIONBAR_BACK.Free;
 
