@@ -2,7 +2,8 @@ unit UCL.Types;
 
 interface
 
-{$REGION 'Older Delphi version'}
+{$REGION 'Compatible code'}
+
 {$IF CompilerVersion <= 30}
 
 uses
@@ -51,12 +52,14 @@ type
     function IsZero : Boolean;
   end;
 
-{$IFEND}
+{$ENDIF}
+
 {$ENDREGION}
 
 implementation
 
-{$REGION 'Older Delphi version'}
+{$REGION 'Compatible code'}
+
 {$IF CompilerVersion <= 30}
 
 { TRectHelper }
@@ -123,10 +126,11 @@ end;
 
 function TRectHelper.IntersectsWith(const R: TRect): Boolean;
 begin
-  Result := (Self.Left < R.Right)
-        and (Self.Right > R.Left)
-        and (Self.Top < R.Bottom)
-        and (Self.Bottom > R.Top);
+  Result :=
+    (Self.Left < R.Right) and
+    (Self.Right > R.Left) and
+    (Self.Top < R.Bottom) and
+    (Self.Bottom > R.Top);
 end;
 
 class function TRectHelper.Intersect(const R1: TRect; const R2: TRect): TRect;
@@ -224,7 +228,8 @@ begin
   Result := (X = 0) and (Y = 0);
 end;
 
-{$IFEND}
+{$ENDIF}
+
 {$ENDREGION}
 
 end.

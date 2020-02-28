@@ -1,5 +1,3 @@
-{$LEGACYIFEND ON}
-
 unit UCL.Graphics;
 
 interface
@@ -7,7 +5,8 @@ interface
 uses
   Classes, Types, Windows, Graphics, Themes;
 
-{$REGION 'Older Delphi version'}
+{$REGION 'Compatible code'}
+
 {$IF CompilerVersion <= 30}
 
 type
@@ -24,7 +23,8 @@ const
   // MASK for tfComposited
   MASK_TF_COMPOSITED      = $00800000;
 
-{$IFEND}
+{$ENDIF}
+
 {$ENDREGION}
 
 function PointInRect(const X, Y: Integer; const Rect: TRect): Boolean; overload;
@@ -39,7 +39,8 @@ var
 
 implementation
 
-{$REGION 'Older Delphi version'}
+{$REGION 'Compatible code'}
+
 {$IF CompilerVersion <= 30}
 
 uses
@@ -67,7 +68,8 @@ type
 const
   COptions: Array[TStyleTextFlag] of Cardinal = (DTT_TEXTCOLOR, DTT_BORDERCOLOR, DTT_BORDERSIZE, DTT_SHADOWCOLOR, DTT_SHADOWOFFSET, DTT_GLOWSIZE);
 
-{$IFEND}
+{$ENDIF}
+
 {$ENDREGION}
 
 const
@@ -76,7 +78,7 @@ const
 
   {$IF CompilerVersion > 29}
     CStates: Array[Boolean] of TThemedTextLabel = (ttlTextLabelDisabled, ttlTextLabelNormal);
-  {$IFEND}
+  {$ENDIF}
 
 function PointInRect(const X, Y: Integer; const Rect: TRect): Boolean;
 begin
@@ -102,7 +104,9 @@ begin
 end;
 
 {$REGION 'Compatible code'}
+
 {$IF CompilerVersion <= 30}
+
 function TextFlagsToTextFormat(Value: Cardinal): TTextFormat;
 begin
   Result := [];
@@ -209,7 +213,9 @@ begin
     Format := Format or cTextFormats[F];
   DrawGlassText(Canvas, GlowSize, Rect, Text, Format, Options);
 end;
-{$IFEND}
+
+{$ENDIF}
+
 {$ENDREGION}
 
 procedure DrawTextRect(const Canvas: TCanvas; HAlign: TAlignment; VAlign: TVerticalAlignment; Rect: TRect; Text: string; TextOnGlass: Boolean);
@@ -224,23 +230,23 @@ begin
     DrawText(Canvas.Handle, Text, Length(Text), Rect, Flags)
   else
     begin
-    {$IF CompilerVersion <= 30}
-      LFormat := TextFlagsToTextFormat(Flags);
-    {$ELSE}
-      LFormat := TTextFormatFlags(Flags);
-    {$IFEND}
+      {$IF CompilerVersion <= 30}
+        LFormat := TextFlagsToTextFormat(Flags);
+      {$ELSE}
+        LFormat := TTextFormatFlags(Flags);
+      {$ENDIF}
 
       LOptions.Flags := [stfTextColor, stfGlowSize];
       LOptions.TextColor := Canvas.Font.Color;
       LOptions.GlowSize := DEFAULT_GLASSTEXT_GLOWSIZE;
 
-    {$IF CompilerVersion <= 30}
-      //GetThemeInt() // TMT_TEXTGLOWSIZE
-      DrawGlassText(Canvas, DEFAULT_GLASSTEXT_GLOWSIZE, Rect, Text, LFormat, LOptions);
-    {$ELSE}
-      Include(LFormat, tfComposited);
-      StyleServices.DrawText(Canvas.Handle, StyleServices.GetElementDetails(ttlTextLabelNormal), Text, Rect, LFormat, LOptions);
-    {$IFEND}
+      {$IF CompilerVersion <= 30}
+        //GetThemeInt() // TMT_TEXTGLOWSIZE
+        DrawGlassText(Canvas, DEFAULT_GLASSTEXT_GLOWSIZE, Rect, Text, LFormat, LOptions);
+      {$ELSE}
+        Include(LFormat, tfComposited);
+        StyleServices.DrawText(Canvas.Handle, StyleServices.GetElementDetails(ttlTextLabelNormal), Text, Rect, LFormat, LOptions);
+      {$ENDIF}
     end;
 end;
 

@@ -5,11 +5,12 @@ interface
 {$IF CompilerVersion <= 30}
 function IsDpiAware: Boolean;
 function SetHighDpiAware: Boolean;
-{$IFEND}
+{$ENDIF}
 
 implementation
 
 {$IF CompilerVersion <= 30}
+
 uses
   SysUtils,
   Windows,
@@ -32,15 +33,16 @@ begin
     Result:=(LLevel = TProcessDpiAwareness.PROCESS_PER_MONITOR_DPI_AWARE);
   end
   else
-{$WARN SYMBOL_DEPRECATED OFF}
-    Result := IsProcessDPIAware;
-{$WARN SYMBOL_DEPRECATED DEFAULT}
+  {$WARN SYMBOL_DEPRECATED OFF}
+      Result := IsProcessDPIAware;
+  {$WARN SYMBOL_DEPRECATED DEFAULT}
 end;
 
 {$IFDEF MSWINDOWS}
 initialization
   SetHighDpiAware;
 {$ENDIF}
-{$IFEND}
+
+{$ENDIF}
 
 end.

@@ -377,19 +377,6 @@ begin
     CaptionBarHeight := GetSystemMetrics(SM_CYCAPTION);
   if WindowState = wsNormal then
     inc(CaptionBarHeight, GetBorderSpace);
-//
-//
-//    begin
-//      CaptionBarHeight := 0;
-//      if WindowState = wsNormal then
-//        inc(CaptionBarHeight, GetBorderSpace);
-//    end
-//  else
-//    begin
-//      CaptionBarHeight := GetSystemMetrics(SM_CYCAPTION);
-//      if WindowState = wsNormal then
-//        inc(CaptionBarHeight, GetBorderSpace);
-//    end;
 
   dec(Msg.CalcSize_Params.rgrc[0].Top, CaptionBarHeight);
 end;
