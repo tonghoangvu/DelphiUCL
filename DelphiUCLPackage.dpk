@@ -46,6 +46,7 @@ contains
   UCL.HighDpiApp in 'Source\UCL.HighDpiApp.pas',
   UCL.IntAnimation.Collection in 'Source\UCL.IntAnimation.Collection.pas',
   UCL.IntAnimation in 'Source\UCL.IntAnimation.pas',
-  UCL.Tooltip in 'Source\UCL.Tooltip.pas';
+  UCL.Tooltip in 'Source\UCL.Tooltip.pas',
+  UCL.CaptionBar in 'Source\UCL.CaptionBar.pas';
 
 end.

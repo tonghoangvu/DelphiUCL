@@ -12,12 +12,14 @@ implementation
 uses
   UCL.Form
   , UCL.Panel
+  , UCL.CaptionBar
   ;
 
 procedure Register;
 begin
   RegisterComponents('Delphi UCL', [
-    TUPanel
+    TUPanel,
+    TUCaptionBar
   ]);
 end;
 

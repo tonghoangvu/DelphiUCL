@@ -51,6 +51,7 @@ var
   TOOLTIP_BORDER: TUThemeColorSet;
   FORM_BACK: TUThemeColorSet;
   PANEL_BACK: TUThemeColorSet;
+  CAPTIONBAR_BACK: TUThemeColorSet;
 
 implementation
 
@@ -162,12 +163,14 @@ initialization
   TOOLTIP_BORDER := TUThemeColorSet.Create(0, $CCCCCC, $767676);
   FORM_BACK := TUThemeColorSet.Create(0, $FFFFFF, $000000);
   PANEL_BACK := TUThemeColorSet.Create(0, $E6E6E6, $1F1F1F);
+  CAPTIONBAR_BACK := TUThemeColorSet.Create(0, $F2F2F2, $2B2B2B);
 
 finalization
   TOOLTIP_BACK.Free;
   TOOLTIP_BORDER.Free;
   FORM_BACK.Free;
   PANEL_BACK.Free;
+  CAPTIONBAR_BACK.Free;
 
 
 end.

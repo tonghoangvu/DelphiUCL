@@ -6,13 +6,14 @@ uses
   UCL.Form, UCL.Classes, UCL.ThemeManager,
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, UCL.Panel, UCL.Utils,
-  UCL.Graphics;
+  UCL.Graphics, UCL.CaptionBar;
 
 type
   TForm85 = class(TUForm)
     UPanel1: TUPanel;
     ComboBox1: TComboBox;
     Button1: TButton;
+    UCaptionBar1: TUCaptionBar;
     procedure FormCreate(Sender: TObject);
     procedure ComboBox1Select(Sender: TObject);
     procedure Button1Click(Sender: TObject);
