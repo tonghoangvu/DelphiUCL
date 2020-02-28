@@ -206,9 +206,13 @@ initialization
 finalization
   TOOLTIP_BACK.Free;
   TOOLTIP_BORDER.Free;
+
   FORM_BACK.Free;
+
   PROGRESSBAR_BACK.Free;
+
   PANEL_BACK.Free;
+
   CAPTIONBAR_BACK.Free;
 
 

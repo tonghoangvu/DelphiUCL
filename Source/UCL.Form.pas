@@ -285,6 +285,7 @@ end;
 destructor TUForm.Destroy;
 begin
   FThemeManager.Free;
+  FCustomBackColor.Free;
   inherited;
 end;
 
