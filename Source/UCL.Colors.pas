@@ -3,7 +3,7 @@ unit UCL.Colors;
 interface
 
 uses
-  Classes, Graphics,
+  Classes, Graphics, Controls,
   UCL.Classes, UCL.ThemeManager;
 
 type
@@ -56,7 +56,39 @@ var
 
   CAPTIONBAR_BACK: TUThemeColorSet;
 
+function SelectThemeManager(Control: TControl): TUThemeManager;
+function SelectColorSet(const TM: TUThemeManager;
+  CustomColorset, DefaultColorset: TUThemeColorSet): TUThemeColorSet;
+
 implementation
+
+uses
+  Forms,
+  UCL.Form;
+
+{ Utils }
+
+function SelectThemeManager(Control: TControl): TUThemeManager;
+var
+  ParentForm: TCustomForm;
+begin
+  ParentForm := GetParentForm(Control, true);
+  if (ParentForm <> nil) and (ParentForm is TUForm) then
+    Result := (ParentForm as TUForm).ThemeManager
+  else
+    Result := nil;
+end;
+
+function SelectColorSet(const TM: TUThemeManager;
+  CustomColorset, DefaultColorset: TUThemeColorSet): TUThemeColorSet;
+begin
+  if CustomColorset = nil then exit;
+
+  if (TM = nil) or (CustomColorset.Enabled) then
+    Result := CustomColorset
+  else
+    Result := DefaultColorset;
+end;
 
 { TUThemeColorSet }
 

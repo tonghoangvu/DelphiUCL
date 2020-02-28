@@ -46,25 +46,17 @@ end;
 
 procedure TUPanel.UpdateTheme(const UpdateChildren: Boolean);
 var
-  i: Integer;
-
-  ParentForm: TCustomForm;
   TM: TUThemeManager;
   _BackColor: TUThemeColorSet;
+  i: Integer;
 begin
-  //  Select style
-  ParentForm := GetParentForm(Self, true);
-  if ParentForm is TUForm then
-    TM := (ParentForm as TUForm).ThemeManager
-  else
-    TM := nil;
-  if (TM = nil) or (CustomBackColor.Enabled) then
-    _BackColor := CustomBackColor
-  else
-    _BackColor := PANEL_BACK;
+  TM := SelectThemeManager(Self);
 
-  //  Get values from style
+  //  Update back color
+  _BackColor := SelectColorSet(TM, CustomBackColor, PANEL_BACK);
   Color := _BackColor.GetColor(TM);
+
+  //  Update text color (depends on BackColor)
   Font.Color := GetTextColorFromBackground(Color);
 
   //  Update children

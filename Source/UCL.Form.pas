@@ -98,14 +98,10 @@ var
   TM: TUThemeManager;
   _BackColor: TUThemeColorSet;
 begin
-  //  Select style
   TM := ThemeManager;
-  if (TM = nil) or (CustomBackColor.Enabled) then
-    _BackColor := CustomBackColor
-  else
-    _BackColor := FORM_BACK;
 
-  //  Get values from style
+  //  Update back color
+  _BackColor := SelectColorSet(TM, CustomBackColor, FORM_BACK);
   Color := _BackColor.GetColor(TM);
 
   //  Update tooltip style
