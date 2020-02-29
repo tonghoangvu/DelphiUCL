@@ -50,6 +50,7 @@ contains
   UCL.CaptionBar in 'Source\UCL.CaptionBar.pas',
   UCL.ProgressBar in 'Source\UCL.ProgressBar.pas',
   UCL.Button in 'Source\UCL.Button.pas',
-  UCL.Slider in 'Source\UCL.Slider.pas';
+  UCL.Slider in 'Source\UCL.Slider.pas',
+  UCL.Text in 'Source\UCL.Text.pas';
 
 end.

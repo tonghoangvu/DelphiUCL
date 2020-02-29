@@ -16,6 +16,7 @@ uses
   , UCL.ProgressBar
   , UCL.Button
   , UCL.Slider
+  , UCL.Text
   ;
 
 procedure Register;
@@ -25,7 +26,8 @@ begin
     TUCaptionBar,
     TUProgressBar,
     TUButton,
-    TUSlider
+    TUSlider,
+    TUText
   ]);
 end;
 

@@ -6,7 +6,8 @@ uses
   UCL.Form, UCL.Classes, UCL.ThemeManager,
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, UCL.Panel, UCL.Utils,
-  UCL.Graphics, UCL.CaptionBar, UCL.ProgressBar, UCL.Button, UCL.Slider;
+  UCL.Graphics, UCL.CaptionBar, UCL.ProgressBar, UCL.Button, UCL.Slider,
+  UCL.Text;
 
 type
   TformDemo = class(TUForm)
@@ -23,6 +24,13 @@ type
     UButton5: TUButton;
     UButton6: TUButton;
     USlider1: TUSlider;
+    UText1: TUText;
+    UText2: TUText;
+    UText3: TUText;
+    UText4: TUText;
+    UText5: TUText;
+    UText6: TUText;
+    UText7: TUText;
     procedure FormCreate(Sender: TObject);
     procedure comboChooseThemeSelect(Sender: TObject);
     procedure buttonReloadClick(Sender: TObject);

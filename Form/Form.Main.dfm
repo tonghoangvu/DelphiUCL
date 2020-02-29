@@ -2,7 +2,7 @@ object formDemo: TformDemo
   Left = 0
   Top = 0
   Caption = 'Demo UCL'
-  ClientHeight = 500
+  ClientHeight = 510
   ClientWidth = 700
   Color = clWhite
   DoubleBuffered = True
@@ -44,6 +44,99 @@ object formDemo: TformDemo
     CustomCursorColor.DarkSelectedNone = 14120960
     CustomCursorColor.DarkSelectedHover = 15921906
     CustomCursorColor.DarkSelectedPress = 7763574
+  end
+  object UText1: TUText
+    Left = 30
+    Top = 470
+    Width = 59
+    Height = 13
+    Caption = 'Custom text'
+  end
+  object UText2: TUText
+    Left = 30
+    Top = 310
+    Width = 74
+    Height = 28
+    Caption = 'Heading'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -20
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    TextKind = tkHeading
+  end
+  object UText3: TUText
+    Left = 30
+    Top = 270
+    Width = 53
+    Height = 38
+    Caption = 'Title'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 14120960
+    Font.Height = -28
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    TextKind = tkTitle
+    UseAccentColor = True
+  end
+  object UText4: TUText
+    Left = 30
+    Top = 350
+    Width = 33
+    Height = 17
+    Caption = 'Entry'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Segoe UI Semibold'
+    Font.Style = []
+    ParentFont = False
+    TextKind = tkEntry
+  end
+  object UText5: TUText
+    Left = 30
+    Top = 380
+    Width = 39
+    Height = 17
+    Caption = 'UText1'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clBlack
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    TextKind = tkNormal
+  end
+  object UText6: TUText
+    Left = 30
+    Top = 410
+    Width = 60
+    Height = 15
+    Caption = 'Description'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 6710886
+    Font.Height = -12
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    TextKind = tkDescription
+  end
+  object UText7: TUText
+    Left = 30
+    Top = 440
+    Width = 51
+    Height = 17
+    Caption = 'Disabled'
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 6710886
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    TextKind = tkNormal
   end
   object panelTest: TUPanel
     Left = 30
