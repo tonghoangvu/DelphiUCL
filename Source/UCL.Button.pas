@@ -142,7 +142,7 @@ begin
       else
         BackColor := $CCCCCC;
       BorderColor := BackColor;
-      TextColor := GetTextColorFromBackground(BackColor);
+      TextColor := $666666;
     end
 
   //  Others

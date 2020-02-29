@@ -21,6 +21,7 @@ type
     UButton3: TUButton;
     UButton4: TUButton;
     UButton5: TUButton;
+    UButton6: TUButton;
     procedure FormCreate(Sender: TObject);
     procedure comboChooseThemeSelect(Sender: TObject);
     procedure buttonReloadClick(Sender: TObject);
