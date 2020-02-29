@@ -140,7 +140,8 @@ end;
 
 procedure TUProgressBar.CustomBackColor_OnChange(Sender: TObject);
 begin
-  UpdateTheme(true);
+  UpdateColors;
+  Repaint;
 end;
 
 //  MAIN CLASS
@@ -163,7 +164,8 @@ begin
   Width := 100;
   Height := 5;
 
-  UpdateTheme(true);
+  UpdateColors;
+  UpdateRects;
 end;
 
 destructor TUProgressBar.Destroy;
