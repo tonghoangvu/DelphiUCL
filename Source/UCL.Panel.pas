@@ -28,6 +28,8 @@ type
       //  Modify props
       property BevelOuter default bvNone;
       property ParentBackground default false;
+
+      property Color stored false;
   end;
 
 implementation
