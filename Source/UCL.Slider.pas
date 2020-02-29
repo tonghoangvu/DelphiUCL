@@ -384,7 +384,9 @@ begin
       FValue := TempValue;
       UpdateRects;
       Repaint;
-    end;
+    end
+  else
+    Repaint;
 
   inherited;
 end;
