@@ -43,6 +43,8 @@ type
       property BevelOuter default bvNone;
       property Height default 32;
       property ParentBackground default false;
+
+      property Color stored false;
   end;
 
 implementation

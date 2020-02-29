@@ -21,9 +21,8 @@ object formDemo: TformDemo
     Height = 100
     Hint = 'This is a hint'
     Caption = 'Demo panel'
-    Color = 15921906
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
+    Font.Color = clBlack
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
@@ -32,7 +31,7 @@ object formDemo: TformDemo
     ShowHint = True
     TabOrder = 0
     CustomBackColor.Enabled = False
-    CustomBackColor.Color = clBlack
+    CustomBackColor.Color = 15132390
     CustomBackColor.LightColor = 15132390
     CustomBackColor.DarkColor = 2039583
   end
@@ -65,16 +64,15 @@ object formDemo: TformDemo
     Top = 0
     Width = 700
     Caption = '   Caption bar'
-    Color = 15921906
     Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
+    Font.Color = clBlack
     Font.Height = -11
     Font.Name = 'Tahoma'
     Font.Style = []
     ParentFont = False
     TabOrder = 3
     CustomBackColor.Enabled = False
-    CustomBackColor.Color = clBlack
+    CustomBackColor.Color = 15132390
     CustomBackColor.LightColor = 15921906
     CustomBackColor.DarkColor = 2829099
   end
@@ -103,8 +101,8 @@ object formDemo: TformDemo
     CustomBackColor.DarkColor = 3355443
   end
   object UButton1: TUButton
-    Left = 330
-    Top = 240
+    Left = 320
+    Top = 150
     Caption = 'Focus button'
     CustomBackColor.Enabled = False
     CustomBackColor.LightNone = 13421772
@@ -134,8 +132,8 @@ object formDemo: TformDemo
     CustomBorderColor.DarkSelectedPress = 6710886
   end
   object UButton2: TUButton
-    Left = 330
-    Top = 280
+    Left = 320
+    Top = 190
     Caption = 'Toggle button'
     CustomBackColor.Enabled = False
     CustomBackColor.LightNone = 13421772
@@ -166,8 +164,8 @@ object formDemo: TformDemo
     IsToggleButton = True
   end
   object UButton3: TUButton
-    Left = 480
-    Top = 240
+    Left = 470
+    Top = 150
     Caption = 'No focus button'
     CustomBackColor.Enabled = False
     CustomBackColor.LightNone = 13421772
@@ -198,8 +196,8 @@ object formDemo: TformDemo
     AllowFocus = False
   end
   object UButton4: TUButton
-    Left = 480
-    Top = 280
+    Left = 470
+    Top = 190
     Caption = 'Transparent button'
     CustomBackColor.Enabled = False
     CustomBackColor.LightNone = 13421772
@@ -230,8 +228,8 @@ object formDemo: TformDemo
     Transparent = True
   end
   object UButton5: TUButton
-    Left = 480
-    Top = 320
+    Left = 470
+    Top = 230
     Caption = 'Highlight button'
     CustomBackColor.Enabled = False
     CustomBackColor.LightNone = 13421772

@@ -458,10 +458,10 @@ initialization
   PROGRESSBAR_BACK := TUThemeColorSet.Create($E6E6E6, $CCCCCC, $333333);
 
   //  Panel
-  PANEL_BACK := TUThemeColorSet.Create(0, $E6E6E6, $1F1F1F);
+  PANEL_BACK := TUThemeColorSet.Create($E6E6E6, $E6E6E6, $1F1F1F);
 
   //  Caption bar
-  CAPTIONBAR_BACK := TUThemeColorSet.Create(0, $F2F2F2, $2B2B2B);
+  CAPTIONBAR_BACK := TUThemeColorSet.Create($F2F2F2, $F2F2F2, $2B2B2B);
 
   //  Button
   BUTTON_BACK := TUStateColorSet.Create;
