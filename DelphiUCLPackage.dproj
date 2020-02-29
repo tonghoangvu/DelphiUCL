@@ -168,6 +168,7 @@
         <DCCReference Include="Source\UCL.CaptionBar.pas"/>
         <DCCReference Include="Source\UCL.ProgressBar.pas"/>
         <DCCReference Include="Source\UCL.Button.pas"/>
+        <DCCReference Include="Source\UCL.Slider.pas"/>
         <None Include="DelphiUCLPackage.todo"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>

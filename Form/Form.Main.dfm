@@ -281,4 +281,35 @@ object formDemo: TformDemo
     CustomBorderColor.DarkSelectedHover = 8750469
     CustomBorderColor.DarkSelectedPress = 6710886
   end
+  object USlider1: TUSlider
+    Left = 30
+    Top = 230
+    Caption = 'USlider1'
+    CustomBackColor.Enabled = False
+    CustomBackColor.LightNone = 10066329
+    CustomBackColor.LightHover = 6710886
+    CustomBackColor.LightPress = 10066329
+    CustomBackColor.LightSelectedNone = 10066329
+    CustomBackColor.LightSelectedHover = 6710886
+    CustomBackColor.LightSelectedPress = 10066329
+    CustomBackColor.DarkNone = 6710886
+    CustomBackColor.DarkHover = 10066329
+    CustomBackColor.DarkPress = 6710886
+    CustomBackColor.DarkSelectedNone = 6710886
+    CustomBackColor.DarkSelectedHover = 10066329
+    CustomBackColor.DarkSelectedPress = 6710886
+    CustomCursorColor.Enabled = False
+    CustomCursorColor.LightNone = 14120960
+    CustomCursorColor.LightHover = 1513239
+    CustomCursorColor.LightPress = 13421772
+    CustomCursorColor.LightSelectedNone = 14120960
+    CustomCursorColor.LightSelectedHover = 1513239
+    CustomCursorColor.LightSelectedPress = 13421772
+    CustomCursorColor.DarkNone = 14120960
+    CustomCursorColor.DarkHover = 15921906
+    CustomCursorColor.DarkPress = 7763574
+    CustomCursorColor.DarkSelectedNone = 14120960
+    CustomCursorColor.DarkSelectedHover = 15921906
+    CustomCursorColor.DarkSelectedPress = 7763574
+  end
 end

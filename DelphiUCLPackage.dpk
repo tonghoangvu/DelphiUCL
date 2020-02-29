@@ -49,6 +49,7 @@ contains
   UCL.Tooltip in 'Source\UCL.Tooltip.pas',
   UCL.CaptionBar in 'Source\UCL.CaptionBar.pas',
   UCL.ProgressBar in 'Source\UCL.ProgressBar.pas',
-  UCL.Button in 'Source\UCL.Button.pas';
+  UCL.Button in 'Source\UCL.Button.pas',
+  UCL.Slider in 'Source\UCL.Slider.pas';
 
 end.

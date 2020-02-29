@@ -120,6 +120,10 @@ var
   BUTTON_BACK: TUStateColorSet;
   BUTTON_BORDER: TUStateColorSet;
 
+  //  Slider
+  SLIDER_BACK: TUStateColorSet;
+  SLIDER_CURSOR: TUStateColorSet;
+
 function SelectThemeManager(Control: TControl): TUThemeManager;
 function SelectColorSet(const TM: TUThemeManager;
   CustomColorset, DefaultColorset: TUThemeColorSet): TUThemeColorSet; overload;
@@ -471,6 +475,14 @@ initialization
   BUTTON_BORDER.SetLightColor($CCCCCC, $7A7A7A, $999999, $7A7A7A, $7A7A7A, $999999);
   BUTTON_BORDER.SetDarkColor($333333, $858585, $666666, $858585, $858585, $666666);
 
+  //  Slider
+  SLIDER_BACK := TUStateColorSet.Create;
+  SLIDER_BACK.SetLightColor($999999, $666666, $999999, $999999, $666666, $999999);
+  SLIDER_BACK.SetDarkColor($666666, $999999, $666666, $666666, $999999, $666666);
+  SLIDER_CURSOR := TUStateColorSet.Create;
+  SLIDER_CURSOR.SetLightColor($D77800, $171717, $CCCCCC, $D77800, $171717, $CCCCCC);
+  SLIDER_CURSOR.SetDarkColor($D77800, $F2F2F2, $767676, $D77800, $F2F2F2, $767676);
+
 finalization
   TOOLTIP_BACK.Free;
   TOOLTIP_BORDER.Free;
@@ -485,5 +497,8 @@ finalization
 
   BUTTON_BACK.Free;
   BUTTON_BORDER.Free;
+
+  SLIDER_BACK.Free;
+  SLIDER_CURSOR.Free;
 
 end.
