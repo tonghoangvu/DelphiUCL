@@ -83,7 +83,6 @@ end;
 
 procedure TUProgressBar.UpdateColors;
 var
-  ParentForm: TCustomForm;
   TM: TUThemeManager;
   _BackColor: TUThemeColorSet;
 begin

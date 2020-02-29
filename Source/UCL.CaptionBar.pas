@@ -3,7 +3,7 @@ unit UCL.CaptionBar;
 interface
 
 uses
-  Classes, Windows, Messages, Controls, ExtCtrls, Forms, Graphics, SysUtils,
+  Classes, Windows, Messages, Controls, ExtCtrls, Forms, Graphics, SysUtils, Types,
   UCL.Classes, UCL.ThemeManager, UCL.Utils, UCL.Colors, UCL.Form;
 
 type
