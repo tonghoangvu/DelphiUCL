@@ -72,7 +72,7 @@ type
 
       property IsActive: Boolean read FIsActive default true;
       property PPI: Integer read FPPI write FPPI default 96;
-      property FitDesktop: Boolean read FFitDesktop write FFitDesktop default false;
+      property FitDesktop: Boolean read FFitDesktop write FFitDesktop default true;
 
       property Padding stored false;
   end;
