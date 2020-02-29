@@ -142,7 +142,7 @@ begin
       else
         BackColor := $CCCCCC;
       BorderColor := BackColor;
-      TextColor := GetTextColorFromBackground(BackColor);
+      TextColor := $666666;
     end
 
   //  Others
@@ -155,7 +155,10 @@ begin
       then
         begin
           BackColor := AccentColor;
-          BorderColor := MulColor(BackColor, 0.6);
+          if AllowFocus and Focused then
+            BorderColor := MulColor(BackColor, 0.6)
+          else
+            BorderColor := BackColor;
         end
 
       //  Transparent

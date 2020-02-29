@@ -249,4 +249,36 @@ object formDemo: TformDemo
     CustomBorderColor.DarkSelectedPress = 6710886
     Highlight = True
   end
+  object UButton6: TUButton
+    Left = 320
+    Top = 230
+    Caption = 'Disabled button'
+    Enabled = False
+    CustomBackColor.Enabled = False
+    CustomBackColor.LightNone = 13421772
+    CustomBackColor.LightHover = 13421772
+    CustomBackColor.LightPress = 10066329
+    CustomBackColor.LightSelectedNone = 13421772
+    CustomBackColor.LightSelectedHover = 13421772
+    CustomBackColor.LightSelectedPress = 10066329
+    CustomBackColor.DarkNone = 3355443
+    CustomBackColor.DarkHover = 3355443
+    CustomBackColor.DarkPress = 6710886
+    CustomBackColor.DarkSelectedNone = 3355443
+    CustomBackColor.DarkSelectedHover = 3355443
+    CustomBackColor.DarkSelectedPress = 6710886
+    CustomBorderColor.Enabled = False
+    CustomBorderColor.LightNone = 13421772
+    CustomBorderColor.LightHover = 8026746
+    CustomBorderColor.LightPress = 10066329
+    CustomBorderColor.LightSelectedNone = 8026746
+    CustomBorderColor.LightSelectedHover = 8026746
+    CustomBorderColor.LightSelectedPress = 10066329
+    CustomBorderColor.DarkNone = 3355443
+    CustomBorderColor.DarkHover = 8750469
+    CustomBorderColor.DarkPress = 6710886
+    CustomBorderColor.DarkSelectedNone = 8750469
+    CustomBorderColor.DarkSelectedHover = 8750469
+    CustomBorderColor.DarkSelectedPress = 6710886
+  end
 end
