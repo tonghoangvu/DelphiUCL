@@ -21,12 +21,7 @@ object formDemo: TformDemo
     Height = 100
     Hint = 'This is a hint'
     Caption = 'Demo panel'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clBlack
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
+    Color = 15132390
     ParentShowHint = False
     ShowHint = True
     TabOrder = 0
@@ -64,12 +59,7 @@ object formDemo: TformDemo
     Top = 0
     Width = 700
     Caption = '   Caption bar'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clBlack
-    Font.Height = -11
-    Font.Name = 'Tahoma'
-    Font.Style = []
-    ParentFont = False
+    Color = 15921906
     TabOrder = 3
     CustomBackColor.Enabled = False
     CustomBackColor.Color = 15132390

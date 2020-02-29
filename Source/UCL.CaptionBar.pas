@@ -3,16 +3,21 @@ unit UCL.CaptionBar;
 interface
 
 uses
-  Classes, Windows, Messages, Controls, ExtCtrls, Forms, Graphics,
+  Classes, Windows, Messages, Controls, ExtCtrls, Forms, Graphics, SysUtils,
   UCL.Classes, UCL.ThemeManager, UCL.Utils, UCL.Colors, UCL.Form;
 
 type
   TUCaptionBar = class(TPanel, IUControl)
     private
+      var BackColor, TextColor: TColor;
+
       FCustomBackColor: TUThemeColorSet;
 
       FDragToMove: Boolean;
       FSystemMenuEnabled: Boolean;
+
+      //  Internal
+      procedure UpdateColors;
 
       //  Child events
       procedure CustomBackColor_OnChange(Sender: TObject);
@@ -22,6 +27,9 @@ type
       procedure WM_LButtonDown(var Msg: TWMLButtonDown); message WM_LBUTTONDOWN;
       procedure WM_RButtonUp(var Msg: TMessage); message WM_RBUTTONUP;
       procedure WM_NCHitTest(var Msg: TWMNCHitTest); message WM_NCHITTEST;
+
+    protected
+      procedure Paint; override;
 
     public
       constructor Create(aOwner: TComponent); override;
@@ -43,11 +51,12 @@ type
       property BevelOuter default bvNone;
       property Height default 32;
       property ParentBackground default false;
-
-      property Color stored false;
   end;
 
 implementation
+
+uses
+  UCL.Graphics;
 
 { TUCaptionBar }
 
@@ -60,6 +69,22 @@ end;
 
 procedure TUCaptionBar.UpdateTheme(const UpdateChildren: Boolean);
 var
+  i: Integer;
+begin
+  UpdateColors;
+  Repaint;
+
+  //  Update children
+  if IsContainer and UpdateChildren then
+    for i := 0 to ControlCount - 1 do
+      if Supports(Controls[i], IUControl) then
+        (Controls[i] as IUControl).UpdateTheme(UpdateChildren);
+end;
+
+//  INTERNAL
+
+procedure TUCaptionBar.UpdateColors;
+var
   TM: TUThemeManager;
   _BackColor: TUThemeColorSet;
 begin
@@ -67,10 +92,10 @@ begin
 
   //  Update back color
   _BackColor := SelectColorSet(TM, CustomBackColor, CAPTIONBAR_BACK);
-  Color := _BackColor.GetColor(TM);
+  BackColor := _BackColor.GetColor(TM);
 
   //  Update text color (depends on back color)
-  Font.Color := GetTextColorFromBackground(Color);
+  TextColor := GetTextColorFromBackground(BackColor);
 end;
 
 //  CHILD EVENTS
@@ -99,12 +124,31 @@ begin
   BevelOuter := bvNone;
   Height := 32;
   ParentBackground := false;
+
+  Color := $F2F2F2;
 end;
 
 destructor TUCaptionBar.Destroy;
 begin
   FCustomBackColor.Free;
   inherited;
+end;
+
+//  CUSTOM METHODS
+
+procedure TUCaptionBar.Paint;
+begin
+  //  Paint background
+  Canvas.Brush.Color := BackColor;
+  Canvas.FillRect(Rect(0, 0, Width, Height));
+
+  //  Draw text
+  if ShowCaption then
+    begin
+      Canvas.Font := Font;
+      Canvas.Font.Color := TextColor;
+      DrawTextRect(Canvas, Alignment, VerticalAlignment, Rect(0, 0, Width, Height), Caption, false);
+    end;
 end;
 
 //  MESSAGE
