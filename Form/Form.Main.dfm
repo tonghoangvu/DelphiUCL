@@ -5,6 +5,7 @@ object formDemo: TformDemo
   ClientHeight = 500
   ClientWidth = 700
   Color = clWhite
+  DoubleBuffered = True
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
