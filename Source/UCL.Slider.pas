@@ -7,7 +7,7 @@ uses
   UCL.Classes, UCL.ThemeManager, UCL.Colors, UCL.Utils;
 
 type
-  TUSlider = class(TUCustomControl, IUControl)
+  TUSlider = class(TUGraphicControl, IUControl)
     private
       var BarHeight: Integer;
       var CurWidth, CurHeight, CurCorner: Integer;
@@ -136,11 +136,11 @@ begin
       _BackColor := SelectColorSet(TM, CustomBackColor, SLIDER_BACK);
       _CurColor := SelectColorSet(TM, CustomCursorColor, SLIDER_CURSOR);
 
-      BackColor := _BackColor.GetColor(TM, ControlState, Focused);
+      BackColor := _BackColor.GetColor(TM, ControlState, false);
       if ControlState = csNone then
         CurColor := ActiveColor
       else
-        CurColor := _CurColor.GetColor(TM, ControlState, Focused);
+        CurColor := _CurColor.GetColor(TM, ControlState, false);
     end;
 end;
 
