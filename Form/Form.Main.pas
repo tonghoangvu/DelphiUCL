@@ -7,7 +7,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, UCL.Panel, UCL.Utils,
   UCL.Graphics, UCL.CaptionBar, UCL.ProgressBar, UCL.Button, UCL.Slider,
-  UCL.Text;
+  UCL.Text, UCL.Hyperlink;
 
 type
   TformDemo = class(TUForm)
@@ -31,6 +31,10 @@ type
     UText5: TUText;
     UText6: TUText;
     UText7: TUText;
+    UHyperlink1: TUHyperlink;
+    UHyperlink2: TUHyperlink;
+    UHyperlink3: TUHyperlink;
+    UHyperlink4: TUHyperlink;
     procedure FormCreate(Sender: TObject);
     procedure comboChooseThemeSelect(Sender: TObject);
     procedure buttonReloadClick(Sender: TObject);

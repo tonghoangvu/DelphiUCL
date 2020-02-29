@@ -138,6 +138,115 @@ object formDemo: TformDemo
     ParentFont = False
     TextKind = tkNormal
   end
+  object UHyperlink1: TUHyperlink
+    Left = 180
+    Top = 320
+    Width = 126
+    Height = 17
+    Caption = 'Not set URL hyperlink'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 14120960
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    CustomTextColor.Enabled = False
+    CustomTextColor.LightNone = 14120960
+    CustomTextColor.LightHover = clGray
+    CustomTextColor.LightPress = clMedGray
+    CustomTextColor.LightSelectedNone = 14120960
+    CustomTextColor.LightSelectedHover = clGray
+    CustomTextColor.LightSelectedPress = clMedGray
+    CustomTextColor.DarkNone = 14120960
+    CustomTextColor.DarkHover = clMedGray
+    CustomTextColor.DarkPress = clGray
+    CustomTextColor.DarkSelectedNone = 14120960
+    CustomTextColor.DarkSelectedHover = clMedGray
+    CustomTextColor.DarkSelectedPress = clGray
+  end
+  object UHyperlink2: TUHyperlink
+    Left = 180
+    Top = 340
+    Width = 80
+    Height = 17
+    Caption = 'Go to Google'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = 14120960
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    CustomTextColor.Enabled = False
+    CustomTextColor.LightNone = 14120960
+    CustomTextColor.LightHover = clGray
+    CustomTextColor.LightPress = clMedGray
+    CustomTextColor.LightSelectedNone = 14120960
+    CustomTextColor.LightSelectedHover = clGray
+    CustomTextColor.LightSelectedPress = clMedGray
+    CustomTextColor.DarkNone = 14120960
+    CustomTextColor.DarkHover = clMedGray
+    CustomTextColor.DarkPress = clGray
+    CustomTextColor.DarkSelectedNone = 14120960
+    CustomTextColor.DarkSelectedHover = clMedGray
+    CustomTextColor.DarkSelectedPress = clGray
+    URL = 'https://google.com/'
+  end
+  object UHyperlink3: TUHyperlink
+    Left = 180
+    Top = 360
+    Width = 142
+    Height = 17
+    Cursor = crDefault
+    Caption = 'Go to Google (disabled)'
+    Enabled = False
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clGray
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    CustomTextColor.Enabled = False
+    CustomTextColor.LightNone = 14120960
+    CustomTextColor.LightHover = clGray
+    CustomTextColor.LightPress = clMedGray
+    CustomTextColor.LightSelectedNone = 14120960
+    CustomTextColor.LightSelectedHover = clGray
+    CustomTextColor.LightSelectedPress = clMedGray
+    CustomTextColor.DarkNone = 14120960
+    CustomTextColor.DarkHover = clMedGray
+    CustomTextColor.DarkPress = clGray
+    CustomTextColor.DarkSelectedNone = 14120960
+    CustomTextColor.DarkSelectedHover = clMedGray
+    CustomTextColor.DarkSelectedPress = clGray
+    URL = 'https://google.com/'
+  end
+  object UHyperlink4: TUHyperlink
+    Left = 180
+    Top = 380
+    Width = 168
+    Height = 17
+    Caption = 'Go to Google (custom color)'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clGreen
+    Font.Height = -13
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    CustomTextColor.Enabled = True
+    CustomTextColor.LightNone = clGreen
+    CustomTextColor.LightHover = clGray
+    CustomTextColor.LightPress = clMedGray
+    CustomTextColor.LightSelectedNone = clGreen
+    CustomTextColor.LightSelectedHover = clGray
+    CustomTextColor.LightSelectedPress = clMedGray
+    CustomTextColor.DarkNone = clGreen
+    CustomTextColor.DarkHover = clMedGray
+    CustomTextColor.DarkPress = clGray
+    CustomTextColor.DarkSelectedNone = clGreen
+    CustomTextColor.DarkSelectedHover = clMedGray
+    CustomTextColor.DarkSelectedPress = clGray
+    URL = 'https://google.com/'
+  end
   object panelTest: TUPanel
     Left = 30
     Top = 110

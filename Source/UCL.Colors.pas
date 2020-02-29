@@ -124,6 +124,11 @@ var
   SLIDER_BACK: TUStateColorSet;
   SLIDER_CURSOR: TUStateColorSet;
 
+  //  Hyperlink
+  HYPERLINK_FONT_NAME: string;
+  HYPERLINK_FONT_SIZE: Byte;
+  HYPERLINK_TEXT: TUStateColorSet;
+
 function SelectThemeManager(Control: TControl): TUThemeManager;
 function SelectColorSet(const TM: TUThemeManager;
   CustomColorset, DefaultColorset: TUThemeColorSet): TUThemeColorSet; overload;
@@ -483,6 +488,13 @@ initialization
   SLIDER_CURSOR.SetLightColor($D77800, $171717, $CCCCCC, $D77800, $171717, $CCCCCC);
   SLIDER_CURSOR.SetDarkColor($D77800, $F2F2F2, $767676, $D77800, $F2F2F2, $767676);
 
+  //  Hyperlink
+  HYPERLINK_FONT_NAME := 'Segoe UI';
+  HYPERLINK_FONT_SIZE := 10;
+  HYPERLINK_TEXT := TUStateColorSet.Create;
+  HYPERLINK_TEXT.SetLightColor($D77800, clGray, clMedGray, $D77800, clGray, clMedGray);
+  HYPERLINK_TEXT.SetDarkColor($D77800, clMedGray, clGray, $D77800, clMedGray, clGray);
+
 finalization
   TOOLTIP_BACK.Free;
   TOOLTIP_BORDER.Free;
@@ -500,5 +512,7 @@ finalization
 
   SLIDER_BACK.Free;
   SLIDER_CURSOR.Free;
+
+  HYPERLINK_TEXT.Free;
 
 end.

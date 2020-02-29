@@ -51,6 +51,7 @@ contains
   UCL.ProgressBar in 'Source\UCL.ProgressBar.pas',
   UCL.Button in 'Source\UCL.Button.pas',
   UCL.Slider in 'Source\UCL.Slider.pas',
-  UCL.Text in 'Source\UCL.Text.pas';
+  UCL.Text in 'Source\UCL.Text.pas',
+  UCL.Hyperlink in 'Source\UCL.Hyperlink.pas';
 
 end.
