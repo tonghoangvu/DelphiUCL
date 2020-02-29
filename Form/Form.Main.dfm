@@ -62,7 +62,7 @@ object formDemo: TformDemo
     Color = 15921906
     TabOrder = 3
     CustomBackColor.Enabled = False
-    CustomBackColor.Color = 15132390
+    CustomBackColor.Color = 15921906
     CustomBackColor.LightColor = 15921906
     CustomBackColor.DarkColor = 2829099
   end

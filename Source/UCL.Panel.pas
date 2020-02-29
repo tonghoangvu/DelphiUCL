@@ -87,7 +87,8 @@ end;
 
 procedure TUPanel.CustomBackColor_OnChange(Sender: TObject);
 begin
-  UpdateTheme(true);
+  UpdateColors;
+  Repaint;
 end;
 
 //  MAIN CLASS
@@ -95,6 +96,9 @@ end;
 constructor TUPanel.Create(aOwner: TComponent);
 begin
   inherited;
+  BackColor := $E6E6E6;
+  TextColor := GetTextColorFromBackground(BackColor);
+
   FCustomBackColor := TUThemeColorSet.Create;
   FCustomBackColor.OnChange := CustomBackColor_OnChange;
   FCustomBackColor.Assign(PANEL_BACK);

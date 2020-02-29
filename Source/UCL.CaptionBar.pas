@@ -102,7 +102,8 @@ end;
 
 procedure TUCaptionBar.CustomBackColor_OnChange(Sender: TObject);
 begin
-  UpdateTheme(true);
+  UpdateColors;
+  Repaint;
 end;
 
 //  MAIN CLASS
@@ -110,6 +111,9 @@ end;
 constructor TUCaptionBar.Create(aOwner: TComponent);
 begin
   inherited;
+  BackColor := $F2F2F2;
+  TextColor := GetTextColorFromBackground(BackColor);
+
   FDragToMove := true;
   FSystemMenuEnabled := true;
 
