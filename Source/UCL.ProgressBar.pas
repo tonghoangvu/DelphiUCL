@@ -118,7 +118,7 @@ end;
 procedure TUProgressBar.SetValue(const Value: Byte);
 begin
   if Value <> FValue then
-    if (Value >= 0) and (Value <= 100) then
+    if Value <= 100 then
       begin
         FValue := Value;
         UpdateRects;
