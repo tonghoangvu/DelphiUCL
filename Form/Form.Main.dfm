@@ -15,7 +15,7 @@ object formDemo: TformDemo
   OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
-  object USlider1: TUSlider
+  object sliderHorz: TUSlider
     Left = 30
     Top = 230
     CustomBackColor.Enabled = False
@@ -45,14 +45,20 @@ object formDemo: TformDemo
     CustomCursorColor.DarkSelectedHover = 15921906
     CustomCursorColor.DarkSelectedPress = 7763574
   end
-  object UText1: TUText
+  object textCustom: TUText
     Left = 30
     Top = 470
-    Width = 59
-    Height = 13
+    Width = 77
+    Height = 16
     Caption = 'Custom text'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -11
+    Font.Name = 'System'
+    Font.Style = []
+    ParentFont = False
   end
-  object UText2: TUText
+  object textHeading: TUText
     Left = 30
     Top = 310
     Width = 74
@@ -66,7 +72,7 @@ object formDemo: TformDemo
     ParentFont = False
     TextKind = tkHeading
   end
-  object UText3: TUText
+  object textTitle: TUText
     Left = 30
     Top = 270
     Width = 53
@@ -81,7 +87,7 @@ object formDemo: TformDemo
     TextKind = tkTitle
     UseAccentColor = True
   end
-  object UText4: TUText
+  object textEntry: TUText
     Left = 30
     Top = 350
     Width = 33
@@ -95,12 +101,12 @@ object formDemo: TformDemo
     ParentFont = False
     TextKind = tkEntry
   end
-  object UText5: TUText
+  object textNormal: TUText
     Left = 30
     Top = 380
-    Width = 39
+    Width = 69
     Height = 17
-    Caption = 'UText1'
+    Caption = 'Normal text'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clBlack
     Font.Height = -13
@@ -109,7 +115,7 @@ object formDemo: TformDemo
     ParentFont = False
     TextKind = tkNormal
   end
-  object UText6: TUText
+  object textDescription: TUText
     Left = 30
     Top = 410
     Width = 60
@@ -123,7 +129,7 @@ object formDemo: TformDemo
     ParentFont = False
     TextKind = tkDescription
   end
-  object UText7: TUText
+  object textDisabled: TUText
     Left = 30
     Top = 440
     Width = 51
@@ -138,7 +144,7 @@ object formDemo: TformDemo
     ParentFont = False
     TextKind = tkNormal
   end
-  object UHyperlink1: TUHyperlink
+  object linkEmpty: TUHyperlink
     Left = 180
     Top = 320
     Width = 126
@@ -164,7 +170,7 @@ object formDemo: TformDemo
     CustomTextColor.DarkSelectedHover = clMedGray
     CustomTextColor.DarkSelectedPress = clGray
   end
-  object UHyperlink2: TUHyperlink
+  object linkGoogle: TUHyperlink
     Left = 180
     Top = 340
     Width = 80
@@ -191,7 +197,7 @@ object formDemo: TformDemo
     CustomTextColor.DarkSelectedPress = clGray
     URL = 'https://google.com/'
   end
-  object UHyperlink3: TUHyperlink
+  object linkDisabled: TUHyperlink
     Left = 180
     Top = 360
     Width = 142
@@ -220,7 +226,7 @@ object formDemo: TformDemo
     CustomTextColor.DarkSelectedPress = clGray
     URL = 'https://google.com/'
   end
-  object UHyperlink4: TUHyperlink
+  object linkCustomColor: TUHyperlink
     Left = 180
     Top = 380
     Width = 168
@@ -247,13 +253,49 @@ object formDemo: TformDemo
     CustomTextColor.DarkSelectedPress = clGray
     URL = 'https://google.com/'
   end
+  object sliderVert: TUSlider
+    Left = 160
+    Top = 220
+    Width = 25
+    Height = 50
+    CustomBackColor.Enabled = False
+    CustomBackColor.LightNone = 10066329
+    CustomBackColor.LightHover = 6710886
+    CustomBackColor.LightPress = 10066329
+    CustomBackColor.LightSelectedNone = 10066329
+    CustomBackColor.LightSelectedHover = 6710886
+    CustomBackColor.LightSelectedPress = 10066329
+    CustomBackColor.DarkNone = 6710886
+    CustomBackColor.DarkHover = 10066329
+    CustomBackColor.DarkPress = 6710886
+    CustomBackColor.DarkSelectedNone = 6710886
+    CustomBackColor.DarkSelectedHover = 10066329
+    CustomBackColor.DarkSelectedPress = 6710886
+    CustomCursorColor.Enabled = False
+    CustomCursorColor.LightNone = 14120960
+    CustomCursorColor.LightHover = 1513239
+    CustomCursorColor.LightPress = 13421772
+    CustomCursorColor.LightSelectedNone = 14120960
+    CustomCursorColor.LightSelectedHover = 1513239
+    CustomCursorColor.LightSelectedPress = 13421772
+    CustomCursorColor.DarkNone = 14120960
+    CustomCursorColor.DarkHover = 15921906
+    CustomCursorColor.DarkPress = 7763574
+    CustomCursorColor.DarkSelectedNone = 14120960
+    CustomCursorColor.DarkSelectedHover = 15921906
+    CustomCursorColor.DarkSelectedPress = 7763574
+    Orientation = oVertical
+    Min = 1
+    Max = 5
+    Value = 1
+  end
   object panelTest: TUPanel
     Left = 30
     Top = 110
     Width = 250
     Height = 100
     Hint = 'This is a hint'
-    Caption = 'Demo panel'
+    Caption = 'Move mouse here to show tooltip'
     Color = 15132390
     ParentShowHint = False
     ShowHint = True
@@ -322,8 +364,9 @@ object formDemo: TformDemo
     CustomBackColor.Color = 15132390
     CustomBackColor.LightColor = 13421772
     CustomBackColor.DarkColor = 3355443
+    Value = 50
   end
-  object UButton1: TUButton
+  object buttonFocus: TUButton
     Left = 320
     Top = 150
     Caption = 'Focus button'
@@ -354,7 +397,7 @@ object formDemo: TformDemo
     CustomBorderColor.DarkSelectedHover = 8750469
     CustomBorderColor.DarkSelectedPress = 6710886
   end
-  object UButton2: TUButton
+  object buttonToggle: TUButton
     Left = 320
     Top = 190
     Caption = 'Toggle button'
@@ -386,7 +429,7 @@ object formDemo: TformDemo
     CustomBorderColor.DarkSelectedPress = 6710886
     IsToggleButton = True
   end
-  object UButton3: TUButton
+  object buttonNoFocus: TUButton
     Left = 470
     Top = 150
     Caption = 'No focus button'
@@ -418,7 +461,7 @@ object formDemo: TformDemo
     CustomBorderColor.DarkSelectedPress = 6710886
     AllowFocus = False
   end
-  object UButton4: TUButton
+  object buttonTransparent: TUButton
     Left = 470
     Top = 190
     Caption = 'Transparent button'
@@ -450,7 +493,7 @@ object formDemo: TformDemo
     CustomBorderColor.DarkSelectedPress = 6710886
     Transparent = True
   end
-  object UButton5: TUButton
+  object buttonHighlight: TUButton
     Left = 470
     Top = 230
     Caption = 'Highlight button'
@@ -482,7 +525,7 @@ object formDemo: TformDemo
     CustomBorderColor.DarkSelectedPress = 6710886
     Highlight = True
   end
-  object UButton6: TUButton
+  object buttonDisabled: TUButton
     Left = 320
     Top = 230
     Caption = 'Disabled button'
@@ -513,5 +556,23 @@ object formDemo: TformDemo
     CustomBorderColor.DarkSelectedNone = 8750469
     CustomBorderColor.DarkSelectedHover = 8750469
     CustomBorderColor.DarkSelectedPress = 6710886
+  end
+  object progressVert: TUProgressBar
+    Left = 540
+    Top = 50
+    Width = 5
+    Height = 60
+    Caption = 'progressHorz'
+    AniSet.AniKind = akOut
+    AniSet.AniFunctionKind = afkQuartic
+    AniSet.DelayStartTime = 0
+    AniSet.Duration = 250
+    AniSet.Step = 25
+    CustomBackColor.Enabled = False
+    CustomBackColor.Color = 15132390
+    CustomBackColor.LightColor = 13421772
+    CustomBackColor.DarkColor = 3355443
+    Value = 50
+    Orientation = oVertical
   end
 end
