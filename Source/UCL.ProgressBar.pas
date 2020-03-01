@@ -118,11 +118,12 @@ end;
 procedure TUProgressBar.SetValue(const Value: Byte);
 begin
   if Value <> FValue then
-    begin
-      FValue := Value;
-      UpdateRects;
-      Repaint;
-    end;
+    if (Value >= 0) and (Value <= 100) then
+      begin
+        FValue := Value;
+        UpdateRects;
+        Repaint;
+      end;
 end;
 
 procedure TUProgressBar.SetOrientation(const Value: TUOrientation);
