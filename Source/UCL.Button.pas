@@ -156,7 +156,7 @@ begin
         begin
           BackColor := AccentColor;
           if (ButtonState = csHover) or (AllowFocus and Focused) then
-            BorderColor := MulColor(BackColor, 0.6)
+            BorderColor := BrightenColor(BackColor, -32)
           else
             BorderColor := BackColor;
         end
@@ -363,7 +363,7 @@ begin
     end;
 
   //  Paint text
-  Canvas.Font := Font;
+  Canvas.Font.Assign(Font);
   Canvas.Font.Color := TextColor;
   DrawTextRect(Canvas, Alignment, taVerticalCenter, TextRect, Caption, false);
 end;

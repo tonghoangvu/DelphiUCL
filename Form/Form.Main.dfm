@@ -575,7 +575,7 @@ object formDemo: TformDemo
     Value = 30
     Orientation = oVertical
   end
-  object UListButton1: TUListButton
+  object buttonList1: TUListButton
     Left = 370
     Top = 280
     Width = 251
@@ -603,7 +603,7 @@ object formDemo: TformDemo
     FontIcon = #57492
     Detail = 'Click me'
   end
-  object UListButton2: TUListButton
+  object buttonVList1: TUListButton
     Left = 370
     Top = 410
     Width = 121
@@ -633,7 +633,7 @@ object formDemo: TformDemo
     Detail = 'Not selectable'
     AllowSelected = False
   end
-  object UListButton3: TUListButton
+  object buttonList2: TUListButton
     Left = 370
     Top = 320
     Width = 251
@@ -661,7 +661,7 @@ object formDemo: TformDemo
     FontIcon = #57492
     Detail = 'Click me'
   end
-  object UListButton4: TUListButton
+  object buttonList3: TUListButton
     Left = 370
     Top = 360
     Width = 251
@@ -689,7 +689,7 @@ object formDemo: TformDemo
     FontIcon = #57492
     Detail = 'Click me'
   end
-  object UListButton5: TUListButton
+  object buttonVList2: TUListButton
     Left = 500
     Top = 410
     Width = 121

@@ -149,7 +149,7 @@ begin
   //  Draw text
   if ShowCaption then
     begin
-      Canvas.Font := Font;
+      Canvas.Font.Assign(Font);
       Canvas.Font.Color := TextColor;
       DrawTextRect(Canvas, Alignment, VerticalAlignment, Rect(0, 0, Width, Height), Caption, false);
     end;

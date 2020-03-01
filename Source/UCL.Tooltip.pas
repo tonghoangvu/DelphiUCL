@@ -83,7 +83,7 @@ end;
 
 function TUCustomTooltip.CalcHintRect(MaxWidth: Integer; const AHint: string; AData: Pointer): TRect;
 begin
-  Canvas.Font := Font;
+  Canvas.Font.Assign(Font);
 
   Result := Rect(0, 0, MaxWidth, 0);
   DrawText(Canvas.Handle, AHint, -1, Result,
@@ -107,8 +107,7 @@ begin
   DrawBorder(Canvas, Rect(0, 0, Width, Height), BorderColor, BorderThickness);
 
   //  Draw text
-  Canvas.Font.Name := 'Segoe UI';
-  Canvas.Font.Size := 8;
+  Canvas.Font.Assign(Font);
   Canvas.Font.Color := GetTextColorFromBackground(BackColor);
 
   TextRect := Rect(
