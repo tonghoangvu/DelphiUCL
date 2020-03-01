@@ -17,7 +17,6 @@ function CreateSolidBrushWithAlpha(Color: TColor; Alpha: Byte = $FF): HBRUSH;
 function BrightenColor(aColor: TColor; Delta: Integer): TColor;
 function ColorChangeLightness(aColor: TColor; LValue: Integer): TColor;
 function GetTextColorFromBackground(BackColor: TColor): TColor;
-function MulColor(aColor: TColor; Base: Single): TColor;
 
 //  Blend support
 function CreateBlendFunc(Alpha: Byte; Gradient: Boolean): BLENDFUNCTION;
@@ -135,18 +134,6 @@ begin
       else
         Result := $FFFFFF;
     end;
-end;
-
-function MulColor(aColor: TColor; Base: Single): TColor;
-var
-  C: Integer;
-  R, G, B: Byte;
-begin
-  C := ColorToRGB(aColor);
-  R := Round(GetRValue(C) * Base);
-  G := Round(GetGValue(C) * Base);
-  B := Round(GetBValue(C) * Base);
-  Result := RGB(R, G, B);
 end;
 
 //  BLEND SUPPORT

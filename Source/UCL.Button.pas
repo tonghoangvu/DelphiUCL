@@ -156,7 +156,7 @@ begin
         begin
           BackColor := AccentColor;
           if (ButtonState = csHover) or (AllowFocus and Focused) then
-            BorderColor := MulColor(BackColor, 0.6)
+            BorderColor := BrightenColor(BackColor, -32)
           else
             BorderColor := BackColor;
         end
