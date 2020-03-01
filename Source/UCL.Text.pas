@@ -18,7 +18,7 @@ type
       FUseAccentColor: Boolean;
 
       //  Setters
-      procedure SetEnabled(const Value: Boolean);
+      procedure SetEnabled(const Value: Boolean); reintroduce;
       procedure SetTextKind(const Value: TUTextKind);
       procedure SetUseAccentColor(const Value: Boolean);
 
