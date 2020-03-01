@@ -152,12 +152,7 @@ begin
 end;
 
 procedure TUListButton.UpdateRects;
-var 
-  TextSize, DetailSize: Integer;
 begin
-  //  Safe canvas
-  if not HandleAllocated then exit;
-
   //  Image rect
   if Orientation = oHorizontal then
     ImgRect := Rect(0, 0, ImageSpace, Height)
@@ -165,29 +160,16 @@ begin
     ImgRect := Rect(0, 0, Width, ImageSpace);
 
   //  Text rect
-  Canvas.Font.Assign(Font);
   if Orientation = oHorizontal then
-    begin
-      TextSize := Canvas.TextWidth(Caption);
-      TextRect := Rect(ImageSpace, 0, ImageSpace + TextSize, Height);
-    end
-  else 
-    begin
-      TextSize := Canvas.TextHeight(Caption);  
-      TextRect := Rect(0, ImageSpace, Width, ImageSpace + TextSize);
-    end;
+    TextRect := Rect(ImageSpace, 0, Width - Spacing, Height)
+  else
+    TextRect := Rect(0, ImageSpace, Width, Height - Spacing);
 
   //  Detail rect
   if Orientation = oHorizontal then
-    begin
-      DetailSize := Canvas.TextWidth(Detail);
-      DetailRect := Rect(Width - Spacing - DetailSize, 0, Width - Spacing, Height);
-    end
+    DetailRect := Rect(ImageSpace, 0, Width - Spacing, Height)
   else
-    begin
-      DetailSize := Canvas.TextHeight(Detail);
-      DetailRect := Rect(0, Height - Spacing - DetailSize, Width, Height - Spacing);
-    end;
+    DetailRect := Rect(0, ImageSpace, Width, Height - Spacing);
 end;
 
 //  SETTERS
