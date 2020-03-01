@@ -65,6 +65,7 @@ type
     protected
       procedure Paint; override;
       procedure Resize; override;
+      procedure CreateWindowHandle(const Params: TCreateParams); override;
       procedure ChangeScale(M, D: Integer{$IF CompilerVersion > 29}; isDpiChange: Boolean{$ENDIF}); override;
 
     public
@@ -151,12 +152,7 @@ begin
 end;
 
 procedure TUListButton.UpdateRects;
-var 
-  TextSize, DetailSize: Integer;
 begin
-  //  Safe canvas
-  if not HandleAllocated then exit;
-
   //  Image rect
   if Orientation = oHorizontal then
     ImgRect := Rect(0, 0, ImageSpace, Height)
@@ -164,29 +160,16 @@ begin
     ImgRect := Rect(0, 0, Width, ImageSpace);
 
   //  Text rect
-  Canvas.Font.Assign(Font);
   if Orientation = oHorizontal then
-    begin
-      TextSize := Canvas.TextWidth(Caption);
-      TextRect := Rect(ImageSpace, 0, ImageSpace + TextSize, Height);
-    end
-  else 
-    begin
-      TextSize := Canvas.TextHeight(Caption);  
-      TextRect := Rect(0, ImageSpace, Width, ImageSpace + TextSize);
-    end;
+    TextRect := Rect(ImageSpace, 0, Width - Spacing, Height)
+  else
+    TextRect := Rect(0, ImageSpace, Width, Height - Spacing);
 
   //  Detail rect
   if Orientation = oHorizontal then
-    begin
-      DetailSize := Canvas.TextWidth(Detail);
-      DetailRect := Rect(Width - Spacing - DetailSize, 0, Width - Spacing, Height);
-    end
+    DetailRect := Rect(ImageSpace, 0, Width - Spacing, Height)
   else
-    begin
-      DetailSize := Canvas.TextHeight(Detail);
-      DetailRect := Rect(0, Height - Spacing - DetailSize, Width, Height - Spacing);
-    end;
+    DetailRect := Rect(0, ImageSpace, Width, Height - Spacing);
 end;
 
 //  SETTERS
@@ -318,8 +301,8 @@ begin
   FCustomBackColor.OnChange := CustomBackColor_OnChange;
   FCustomBackColor.Assign(LISTBUTTON_BACK);
 
-  UpdateColors;
-  UpdateRects;
+//  UpdateColors;
+//  UpdateRects;
 
   //  Modify default props
   BevelOuter := bvNone;
@@ -391,12 +374,20 @@ begin
   UpdateRects;
 end;
 
+procedure TUListButton.CreateWindowHandle(const Params: TCreateParams);
+begin
+  inherited;
+  UpdateColors;
+  UpdateRects;
+end;
+
 procedure TUListButton.ChangeScale(M, D: Integer{$IF CompilerVersion > 29}; isDpiChange: Boolean{$ENDIF});
 begin
   inherited;
   FImageSpace := MulDiv(ImageSpace, M, D);
   FSpacing := MulDiv(Spacing, M, D);
   IconFont.Height := MulDiv(IconFont.Height, M, D);
+  UpdateRects;
 end;
 
 //  MESSAGES

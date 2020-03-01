@@ -3,7 +3,7 @@ object formDemo: TformDemo
   Top = 0
   Caption = 'Demo UCL'
   ClientHeight = 530
-  ClientWidth = 650
+  ClientWidth = 630
   Color = clWhite
   DoubleBuffered = True
   Font.Charset = DEFAULT_CHARSET
@@ -145,8 +145,8 @@ object formDemo: TformDemo
     TextKind = tkNormal
   end
   object linkEmpty: TUHyperlink
-    Left = 180
-    Top = 320
+    Left = 130
+    Top = 350
     Width = 126
     Height = 17
     Caption = 'Not set URL hyperlink'
@@ -171,8 +171,8 @@ object formDemo: TformDemo
     CustomTextColor.DarkSelectedPress = clGray
   end
   object linkGoogle: TUHyperlink
-    Left = 180
-    Top = 340
+    Left = 130
+    Top = 370
     Width = 80
     Height = 17
     Caption = 'Go to Google'
@@ -198,8 +198,8 @@ object formDemo: TformDemo
     URL = 'https://google.com/'
   end
   object linkDisabled: TUHyperlink
-    Left = 180
-    Top = 360
+    Left = 130
+    Top = 390
     Width = 142
     Height = 17
     Cursor = crDefault
@@ -227,8 +227,8 @@ object formDemo: TformDemo
     URL = 'https://google.com/'
   end
   object linkCustomColor: TUHyperlink
-    Left = 180
-    Top = 380
+    Left = 130
+    Top = 410
     Width = 168
     Height = 17
     Caption = 'Go to Google (custom color)'
@@ -292,7 +292,7 @@ object formDemo: TformDemo
   object panelTest: TUPanel
     Left = 30
     Top = 110
-    Width = 250
+    Width = 270
     Height = 100
     Hint = 'This is a hint'
     Caption = 'Move mouse here to show tooltip'
@@ -308,7 +308,7 @@ object formDemo: TformDemo
   object comboChooseTheme: TComboBox
     Left = 30
     Top = 50
-    Width = 121
+    Width = 140
     Height = 21
     Style = csDropDownList
     ItemIndex = 0
@@ -321,10 +321,10 @@ object formDemo: TformDemo
       'Dark theme')
   end
   object buttonReload: TButton
-    Left = 160
+    Left = 180
     Top = 50
-    Width = 121
-    Height = 41
+    Width = 120
+    Height = 50
     Caption = 'Reload'
     TabOrder = 2
     OnClick = buttonReloadClick
@@ -332,7 +332,7 @@ object formDemo: TformDemo
   object captionbarMain: TUCaptionBar
     Left = 0
     Top = 0
-    Width = 650
+    Width = 630
     Caption = '   Caption bar'
     Color = 15921906
     TabOrder = 3
@@ -340,18 +340,19 @@ object formDemo: TformDemo
     CustomBackColor.Color = 15921906
     CustomBackColor.LightColor = 15921906
     CustomBackColor.DarkColor = 2829099
+    ExplicitWidth = 650
   end
   object buttonRandomProgress: TButton
-    Left = 320
+    Left = 330
     Top = 70
-    Width = 201
-    Height = 41
+    Width = 200
+    Height = 40
     Caption = 'Random progress bar'
     TabOrder = 4
     OnClick = buttonRandomProgressClick
   end
   object progressHorz: TUProgressBar
-    Left = 320
+    Left = 330
     Top = 50
     Width = 200
     Caption = 'progressHorz'
@@ -367,8 +368,9 @@ object formDemo: TformDemo
     Value = 30
   end
   object buttonFocus: TUButton
-    Left = 320
-    Top = 150
+    Left = 330
+    Top = 140
+    Width = 130
     Caption = 'Focus button'
     CustomBackColor.Enabled = False
     CustomBackColor.LightNone = 13421772
@@ -398,8 +400,9 @@ object formDemo: TformDemo
     CustomBorderColor.DarkSelectedPress = 6710886
   end
   object buttonToggle: TUButton
-    Left = 320
-    Top = 190
+    Left = 330
+    Top = 180
+    Width = 130
     Caption = 'Toggle button'
     CustomBackColor.Enabled = False
     CustomBackColor.LightNone = 13421772
@@ -431,7 +434,8 @@ object formDemo: TformDemo
   end
   object buttonNoFocus: TUButton
     Left = 470
-    Top = 150
+    Top = 140
+    Width = 130
     Caption = 'No focus button'
     CustomBackColor.Enabled = False
     CustomBackColor.LightNone = 13421772
@@ -463,7 +467,8 @@ object formDemo: TformDemo
   end
   object buttonTransparent: TUButton
     Left = 470
-    Top = 190
+    Top = 180
+    Width = 130
     Caption = 'Transparent button'
     CustomBackColor.Enabled = False
     CustomBackColor.LightNone = 13421772
@@ -495,7 +500,8 @@ object formDemo: TformDemo
   end
   object buttonHighlight: TUButton
     Left = 470
-    Top = 230
+    Top = 220
+    Width = 130
     Caption = 'Highlight button'
     CustomBackColor.Enabled = False
     CustomBackColor.LightNone = 13421772
@@ -526,8 +532,9 @@ object formDemo: TformDemo
     Highlight = True
   end
   object buttonDisabled: TUButton
-    Left = 320
-    Top = 230
+    Left = 330
+    Top = 220
+    Width = 130
     Caption = 'Disabled button'
     Enabled = False
     CustomBackColor.Enabled = False
@@ -558,7 +565,7 @@ object formDemo: TformDemo
     CustomBorderColor.DarkSelectedPress = 6710886
   end
   object progressVert: TUProgressBar
-    Left = 540
+    Left = 550
     Top = 50
     Width = 5
     Height = 60
@@ -576,10 +583,10 @@ object formDemo: TformDemo
     Orientation = oVertical
   end
   object buttonList1: TUListButton
-    Left = 370
+    Left = 330
     Top = 280
-    Width = 251
-    Height = 41
+    Width = 270
+    Height = 40
     Caption = 'Selectable list button 1'
     TabOrder = 13
     IconFont.Charset = DEFAULT_CHARSET
@@ -604,9 +611,9 @@ object formDemo: TformDemo
     Detail = 'Click me'
   end
   object buttonVList1: TUListButton
-    Left = 370
+    Left = 330
     Top = 410
-    Width = 121
+    Width = 130
     Height = 90
     Caption = 'Click me'
     TabOrder = 14
@@ -634,10 +641,10 @@ object formDemo: TformDemo
     AllowSelected = False
   end
   object buttonList2: TUListButton
-    Left = 370
+    Left = 330
     Top = 320
-    Width = 251
-    Height = 41
+    Width = 270
+    Height = 40
     Caption = 'Selectable list button 2'
     TabOrder = 15
     IconFont.Charset = DEFAULT_CHARSET
@@ -662,10 +669,10 @@ object formDemo: TformDemo
     Detail = 'Click me'
   end
   object buttonList3: TUListButton
-    Left = 370
+    Left = 330
     Top = 360
-    Width = 251
-    Height = 41
+    Width = 270
+    Height = 40
     Caption = 'Selectable list button 3'
     TabOrder = 16
     IconFont.Charset = DEFAULT_CHARSET
@@ -690,9 +697,9 @@ object formDemo: TformDemo
     Detail = 'Click me'
   end
   object buttonVList2: TUListButton
-    Left = 500
+    Left = 470
     Top = 410
-    Width = 121
+    Width = 130
     Height = 90
     Caption = 'Click me'
     TabOrder = 17
@@ -718,5 +725,22 @@ object formDemo: TformDemo
     FontIcon = #57492
     Detail = 'Not selectable'
     AllowSelected = False
+  end
+  object comboChooseScaleRatio: TComboBox
+    Left = 30
+    Top = 80
+    Width = 140
+    Height = 21
+    Style = csDropDownList
+    ItemIndex = 0
+    TabOrder = 18
+    Text = '100%'
+    OnSelect = comboChooseScaleRatioSelect
+    Items.Strings = (
+      '100%'
+      '125%'
+      '150%'
+      '175%'
+      '200%')
   end
 end
