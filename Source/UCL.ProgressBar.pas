@@ -108,7 +108,7 @@ begin
     end
   else
     begin
-      BackRect := Rect(0, 0, Width, Round(Value / 100 * Height));
+      BackRect := Rect(0, 0, Width, Height - Round(Value / 100 * Height));
       FillRect := Rect(0, BackRect.Bottom, Width, Height);
     end;
 end;
@@ -118,11 +118,12 @@ end;
 procedure TUProgressBar.SetValue(const Value: Byte);
 begin
   if Value <> FValue then
-    begin
-      FValue := Value;
-      UpdateRects;
-      Repaint;
-    end;
+    if (Value >= 0) and (Value <= 100) then
+      begin
+        FValue := Value;
+        UpdateRects;
+        Repaint;
+      end;
 end;
 
 procedure TUProgressBar.SetOrientation(const Value: TUOrientation);

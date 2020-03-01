@@ -364,7 +364,7 @@ object formDemo: TformDemo
     CustomBackColor.Color = 15132390
     CustomBackColor.LightColor = 13421772
     CustomBackColor.DarkColor = 3355443
-    Value = 50
+    Value = 30
   end
   object buttonFocus: TUButton
     Left = 320
@@ -572,7 +572,7 @@ object formDemo: TformDemo
     CustomBackColor.Color = 15132390
     CustomBackColor.LightColor = 13421772
     CustomBackColor.DarkColor = 3355443
-    Value = 50
+    Value = 30
     Orientation = oVertical
   end
 end
