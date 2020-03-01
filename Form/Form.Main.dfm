@@ -324,7 +324,7 @@ object formDemo: TformDemo
     Left = 160
     Top = 50
     Width = 121
-    Height = 41
+    Height = 51
     Caption = 'Reload'
     TabOrder = 2
     OnClick = buttonReloadClick
@@ -718,5 +718,22 @@ object formDemo: TformDemo
     FontIcon = #57492
     Detail = 'Not selectable'
     AllowSelected = False
+  end
+  object comboChooseScaleRatio: TComboBox
+    Left = 30
+    Top = 80
+    Width = 121
+    Height = 21
+    Style = csDropDownList
+    ItemIndex = 0
+    TabOrder = 18
+    Text = '100%'
+    OnSelect = comboChooseScaleRatioSelect
+    Items.Strings = (
+      '100%'
+      '125%'
+      '150%'
+      '175%'
+      '200%')
   end
 end

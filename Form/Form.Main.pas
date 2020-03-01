@@ -42,10 +42,12 @@ type
     buttonList2: TUListButton;
     buttonList3: TUListButton;
     buttonVList2: TUListButton;
+    comboChooseScaleRatio: TComboBox;
     procedure FormCreate(Sender: TObject);
     procedure comboChooseThemeSelect(Sender: TObject);
     procedure buttonReloadClick(Sender: TObject);
     procedure buttonRandomProgressClick(Sender: TObject);
+    procedure comboChooseScaleRatioSelect(Sender: TObject);
   private
     { Private declarations }
   public
@@ -69,6 +71,22 @@ begin
   Randomize;
   progressHorz.GoToValue(Random(100));
   progressVert.GoToValue(Random(100));
+end;
+
+procedure TformDemo.comboChooseScaleRatioSelect(Sender: TObject);
+begin
+  case comboChooseScaleRatio.ItemIndex of
+    0:
+      ScaleForPPI(96);
+    1:
+      ScaleForPPI(120);
+    2:
+      ScaleForPPI(144);
+    3:
+      ScaleForPPI(168);
+    4:
+      ScaleForPPI(192);
+  end;
 end;
 
 procedure TformDemo.comboChooseThemeSelect(Sender: TObject);
