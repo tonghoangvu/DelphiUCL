@@ -107,8 +107,7 @@ begin
   DrawBorder(Canvas, Rect(0, 0, Width, Height), BorderColor, BorderThickness);
 
   //  Draw text
-  Canvas.Font.Name := 'Segoe UI';
-  Canvas.Font.Size := 8;
+  Canvas.Font.Assign(Font);
   Canvas.Font.Color := GetTextColorFromBackground(BackColor);
 
   TextRect := Rect(
