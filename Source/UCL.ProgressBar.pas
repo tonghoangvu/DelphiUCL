@@ -108,7 +108,7 @@ begin
     end
   else
     begin
-      BackRect := Rect(0, 0, Width, Round(Value / 100 * Height));
+      BackRect := Rect(0, 0, Width, Height - Round(Value / 100 * Height));
       FillRect := Rect(0, BackRect.Bottom, Width, Height);
     end;
 end;
