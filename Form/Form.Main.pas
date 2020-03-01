@@ -37,11 +37,11 @@ type
     linkCustomColor: TUHyperlink;
     sliderVert: TUSlider;
     progressVert: TUProgressBar;
-    UListButton1: TUListButton;
-    UListButton2: TUListButton;
-    UListButton3: TUListButton;
-    UListButton4: TUListButton;
-    UListButton5: TUListButton;
+    buttonList1: TUListButton;
+    buttonVList1: TUListButton;
+    buttonList2: TUListButton;
+    buttonList3: TUListButton;
+    buttonVList2: TUListButton;
     procedure FormCreate(Sender: TObject);
     procedure comboChooseThemeSelect(Sender: TObject);
     procedure buttonReloadClick(Sender: TObject);
