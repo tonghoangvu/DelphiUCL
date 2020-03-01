@@ -53,7 +53,7 @@ type
     protected
       procedure Paint; override;
       procedure Resize; override;
-      procedure ChangeScale(M, D: Integer{$IF CompilerVersion > 29}; isDpiChange: Boolean{$IFEND}); override;
+      procedure ChangeScale(M, D: Integer{$IF CompilerVersion > 29}; isDpiChange: Boolean{$ENDIF}); override;
 
     public
       constructor Create(aOwner: TComponent); override;
@@ -325,7 +325,7 @@ begin
   UpdateRects;
 end;
 
-procedure TUSlider.ChangeScale(M, D: Integer{$IF CompilerVersion > 29}; isDpiChange: Boolean{$IFEND});
+procedure TUSlider.ChangeScale(M, D: Integer{$IF CompilerVersion > 29}; isDpiChange: Boolean{$ENDIF});
 begin
   inherited;
   CurWidth := MulDiv(CurWidth, M, D);
