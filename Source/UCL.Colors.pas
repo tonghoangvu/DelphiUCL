@@ -120,6 +120,9 @@ var
   BUTTON_BACK: TUStateColorSet;
   BUTTON_BORDER: TUStateColorSet;
 
+  //  List button
+  LISTBUTTON_BACK: TUStateColorSet;
+
   //  Slider
   SLIDER_BACK: TUStateColorSet;
   SLIDER_CURSOR: TUStateColorSet;
@@ -480,6 +483,11 @@ initialization
   BUTTON_BORDER.SetLightColor($CCCCCC, $7A7A7A, $999999, $7A7A7A, $7A7A7A, $999999);
   BUTTON_BORDER.SetDarkColor($333333, $858585, $666666, $858585, $858585, $666666);
 
+  //  List button
+  LISTBUTTON_BACK := TUStateColorSet.Create;
+  LISTBUTTON_BACK.SetLightColor($E6E6E6, $CFCFCF, $B8B8B8, 127, 103, 89);
+  LISTBUTTON_BACK.SetDarkColor($1F1F1F, $353535, $4C4C4C, 89, 103, 127);
+
   //  Slider
   SLIDER_BACK := TUStateColorSet.Create;
   SLIDER_BACK.SetLightColor($999999, $666666, $999999, $999999, $666666, $999999);
@@ -509,6 +517,8 @@ finalization
 
   BUTTON_BACK.Free;
   BUTTON_BORDER.Free;
+
+  LISTBUTTON_BACK.Free;
 
   SLIDER_BACK.Free;
   SLIDER_CURSOR.Free;

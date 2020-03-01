@@ -18,6 +18,7 @@ uses
   , UCL.Slider
   , UCL.Text
   , UCL.Hyperlink
+  , UCL.ListButton
   ;
 
 procedure Register;
@@ -29,7 +30,8 @@ begin
     TUButton,
     TUSlider,
     TUText,
-    TUHyperlink
+    TUHyperlink,
+    TUListButton
   ]);
 end;
 

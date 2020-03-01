@@ -15,6 +15,7 @@ function CreateSolidBrushWithAlpha(Color: TColor; Alpha: Byte = $FF): HBRUSH;
 
 //  Color
 function BrightenColor(aColor: TColor; Delta: Integer): TColor;
+function ColorChangeLightness(aColor: TColor; LValue: Integer): TColor;
 function GetTextColorFromBackground(BackColor: TColor): TColor;
 function MulColor(aColor: TColor; Base: Single): TColor;
 
@@ -95,9 +96,17 @@ function BrightenColor(aColor: TColor; Delta: Integer): TColor;
 var
   H, S, L: Word;
 begin
-  ColorRGBToHLS(aColor, H, L, S);   //  VCL.GraphUtil
+  ColorRGBToHLS(aColor, H, L, S);
   L := L + Delta;
   Result := ColorHLSToRGB(H, L, S);
+end;
+
+function ColorChangeLightness(aColor: TColor; LValue: Integer): TColor;
+var
+  H, S, L: Word;
+begin
+  ColorRGBToHLS(aColor, H, L, S);
+  Result := ColorHLSToRGB(H, LValue, S);
 end;
 
 function GetTextColorFromBackground(BackColor: TColor): TColor;
