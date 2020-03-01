@@ -164,7 +164,7 @@ begin
     ImgRect := Rect(0, 0, Width, ImageSpace);
 
   //  Text rect
-  Canvas.Font := Font;
+  Canvas.Font.Assign(Font);
   if Orientation = oHorizontal then
     begin
       TextSize := Canvas.TextWidth(Caption);
@@ -357,7 +357,7 @@ begin
   if ImageKind = ikFontIcon then
     begin
       //  Set up icon font
-      Canvas.Font := IconFont;
+      Canvas.Font.Assign(IconFont);
       Canvas.Font.Color := TextColor;
 
       //  Draw font icon
@@ -370,7 +370,7 @@ begin
     end;
   
   //  Draw text
-  Canvas.Font := Font;
+  Canvas.Font.Assign(Font);
   Canvas.Font.Color := TextColor;
   if Orientation = oHorizontal then
     DrawTextRect(Canvas, taLeftJustify, taVerticalCenter, TextRect, Caption, false)

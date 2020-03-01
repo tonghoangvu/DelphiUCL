@@ -363,7 +363,7 @@ begin
     end;
 
   //  Paint text
-  Canvas.Font := Font;
+  Canvas.Font.Assign(Font);
   Canvas.Font.Color := TextColor;
   DrawTextRect(Canvas, Alignment, taVerticalCenter, TextRect, Caption, false);
 end;

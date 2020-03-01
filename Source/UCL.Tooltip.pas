@@ -83,7 +83,7 @@ end;
 
 function TUCustomTooltip.CalcHintRect(MaxWidth: Integer; const AHint: string; AData: Pointer): TRect;
 begin
-  Canvas.Font := Font;
+  Canvas.Font.Assign(Font);
 
   Result := Rect(0, 0, MaxWidth, 0);
   DrawText(Canvas.Handle, AHint, -1, Result,
