@@ -339,6 +339,95 @@ object formDemo: TformDemo
     CustomBackColor.Color = 15921906
     CustomBackColor.LightColor = 15921906
     CustomBackColor.DarkColor = 2829099
+    object qbuttonQuit: TUQuickButton
+      Left = 585
+      Top = 0
+      Align = alRight
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe MDL2 Assets'
+      Font.Style = []
+      ParentFont = False
+      CustomBackColor.Enabled = False
+      CustomBackColor.Color = clBlack
+      CustomBackColor.LightColor = 15132390
+      CustomBackColor.DarkColor = 1644825
+      ButtonStyle = qbsQuit
+      Caption = #57606
+      ExplicitLeft = 150
+    end
+    object qbuttonNone: TUQuickButton
+      Left = 450
+      Top = 0
+      Align = alRight
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe MDL2 Assets'
+      Font.Style = []
+      ParentFont = False
+      CustomBackColor.Enabled = False
+      CustomBackColor.Color = clBlack
+      CustomBackColor.LightColor = 15132390
+      CustomBackColor.DarkColor = 1644825
+      ButtonStyle = qbsHighlight
+      Caption = #57350
+      ExplicitLeft = 150
+    end
+    object qbuttonMin: TUQuickButton
+      Left = 495
+      Top = 0
+      Align = alRight
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe MDL2 Assets'
+      Font.Style = []
+      ParentFont = False
+      CustomBackColor.Enabled = False
+      CustomBackColor.Color = clBlack
+      CustomBackColor.LightColor = 15132390
+      CustomBackColor.DarkColor = 1644825
+      ButtonStyle = qbsMin
+      Caption = #59192
+      ExplicitLeft = 150
+    end
+    object qbuttonMax: TUQuickButton
+      Left = 540
+      Top = 0
+      Align = alRight
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe MDL2 Assets'
+      Font.Style = []
+      ParentFont = False
+      CustomBackColor.Enabled = False
+      CustomBackColor.Color = clBlack
+      CustomBackColor.LightColor = 15132390
+      CustomBackColor.DarkColor = 1644825
+      ButtonStyle = qbsMax
+      Caption = #57347
+      ExplicitLeft = 150
+    end
+    object qbuttonHighlight: TUQuickButton
+      Left = 405
+      Top = 0
+      Align = alRight
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -13
+      Font.Name = 'Segoe MDL2 Assets'
+      Font.Style = []
+      ParentFont = False
+      CustomBackColor.Enabled = False
+      CustomBackColor.Color = clBlack
+      CustomBackColor.LightColor = 15132390
+      CustomBackColor.DarkColor = 1644825
+      Caption = #57510
+      ExplicitLeft = 150
+    end
   end
   object buttonRandomProgress: TButton
     Left = 330

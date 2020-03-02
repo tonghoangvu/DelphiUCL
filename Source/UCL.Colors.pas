@@ -123,6 +123,9 @@ var
   //  List button
   LISTBUTTON_BACK: TUStateColorSet;
 
+  //  Quick button
+  QUICKBUTTON_BACK: TUThemeColorSet;
+
   //  Slider
   SLIDER_BACK: TUStateColorSet;
   SLIDER_CURSOR: TUStateColorSet;
@@ -488,6 +491,9 @@ initialization
   LISTBUTTON_BACK.SetLightColor($E6E6E6, $CFCFCF, $B8B8B8, 127, 103, 89);
   LISTBUTTON_BACK.SetDarkColor($1F1F1F, $353535, $4C4C4C, 89, 103, 127);
 
+  //  Quick button
+  QUICKBUTTON_BACK := TUThemeColorSet.Create(0, $E6E6E6, $191919);
+
   //  Slider
   SLIDER_BACK := TUStateColorSet.Create;
   SLIDER_BACK.SetLightColor($999999, $666666, $999999, $999999, $666666, $999999);
@@ -519,6 +525,8 @@ finalization
   BUTTON_BORDER.Free;
 
   LISTBUTTON_BACK.Free;
+
+  QUICKBUTTON_BACK.Free;
 
   SLIDER_BACK.Free;
   SLIDER_CURSOR.Free;
