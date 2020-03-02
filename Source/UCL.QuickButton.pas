@@ -14,6 +14,7 @@ type
       var BackColor, TextColor: TColor;
 
       FCustomBackColor: TUThemeColorSet;
+      FCustomAccentColor: TColor;
 
       FButtonState: TUControlState;
       FButtonStyle: TUQuickButtonStyle;
@@ -27,6 +28,7 @@ type
       //  Setters
       procedure SetButtonState(const Value: TUControlState);
       procedure SetButtonStyle(const Value: TUQuickButtonStyle);
+      procedure SetCustomAccentColor(const Value: TColor);
 
       //  Messages
       procedure WM_LButtonDblClk(var Msg: TWMLButtonDblClk); message WM_LBUTTONDBLCLK;
@@ -48,6 +50,7 @@ type
 
     published
       property CustomBackColor: TUThemeColorSet read FCustomBackColor write FCustomBackColor;
+      property CustomAccentColor: TColor read FCustomAccentColor write SetCustomAccentColor default $D77800;
 
       property ButtonState: TUControlState read FButtonState write SetButtonState default csNone;
       property ButtonStyle: TUQuickButtonStyle read FButtonStyle write SetButtonStyle default qbsNone;
@@ -84,40 +87,60 @@ var
   TM: TUThemeManager;
   _BackColor: TUThemeColorSet;
   IsDark: Boolean;
+  BaseColor, AccentColor: TColor;
 begin
+  //  Prepairing
   TM := SelectThemeManager(Self);
   IsDark := (TM <> nil) and (TM.Theme = utDark);
+  if TM = nil then
+    AccentColor := CustomAccentColor
+  else
+    AccentColor := TM.AccentColor;
 
-  case ButtonState of
-    csNone:
-      begin
-        ParentColor := true;
-        BackColor := Color;
-      end;
-
-    csHover:
-      begin
-        _BackColor := SelectColorSet(TM, CustomBackColor, QUICKBUTTON_BACK);
-        if ButtonStyle = qbsQuit then
-          BackColor := $2311E8
+  //  Get background color
+  if ButtonState = csNone then
+    begin
+      ParentColor := true;
+      BackColor := Color;
+    end
+  else
+    begin
+      //  Select BaseColor
+      case ButtonStyle of
+        qbsQuit:
+          BaseColor := $2311E8;
+        qbsHighlight:
+          BaseColor := AccentColor;
         else
-          BackColor := _BackColor.GetColor(TM);
+          begin
+            _BackColor := SelectColorSet(TM, CustomBackColor, QUICKBUTTON_BACK);
+            if ButtonStyle = qbsQuit then
+              BaseColor := $2311E8
+            else
+              BaseColor := _BackColor.GetColor(TM);
+          end;
       end;
 
-    csPress:
-      begin
-        _BackColor := SelectColorSet(TM, CustomBackColor, QUICKBUTTON_BACK);
-        if ButtonStyle = qbsQuit then
-          BackColor := $2311E8
-        else
-          BackColor := _BackColor.GetColor(TM);
-        if not IsDark then
-          BackColor := ColorChangeLightness(BackColor, 192)
-        else 
-          BackColor := ColorChangeLightness(BackColor, 64);
+      //  Change BaseColor to BackColor
+      case ButtonState of
+        csHover:
+          BackColor := BaseColor;
+        csPress:
+          if ButtonStyle in [qbsHighlight, qbsQuit] then
+            begin
+              BackColor := BrightenColor(BaseColor, 10);
+            end
+          else
+            begin
+              if not IsDark then
+                BackColor := ColorChangeLightness(BaseColor, 160)
+              else
+                BackColor := ColorChangeLightness(BaseColor, 80);
+            end;
       end;
-  end;
+    end;
 
+  //  Get text color from background
   TextColor := GetTextColorFromBackground(BackColor);
 end;
 
@@ -152,6 +175,16 @@ begin
     end;
 end;
 
+procedure TUQuickButton.SetCustomAccentColor(const Value: TColor);
+begin
+  if Value <> FCustomAccentColor then
+    begin
+      FCustomAccentColor := Value;
+      UpdateColors;
+      Repaint;
+    end;
+end;
+
 //  CHILD EVENTS
 
 procedure TUQuickButton.CustomBackColor_OnChange(Sender: TObject);
@@ -167,6 +200,7 @@ begin
   inherited;
   FButtonState := csNone;
   FButtonStyle := qbsNone;
+  FCustomAccentColor := $D77800;
 
   FCustomBackColor := TUThemeColorSet.Create;
   FCustomBackColor.OnChange := CustomBackColor_OnChange;

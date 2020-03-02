@@ -371,7 +371,6 @@ object formDemo: TformDemo
       CustomBackColor.Color = clBlack
       CustomBackColor.LightColor = 15132390
       CustomBackColor.DarkColor = 1644825
-      ButtonStyle = qbsHighlight
       Caption = #57350
       ExplicitLeft = 150
     end
@@ -425,6 +424,7 @@ object formDemo: TformDemo
       CustomBackColor.Color = clBlack
       CustomBackColor.LightColor = 15132390
       CustomBackColor.DarkColor = 1644825
+      ButtonStyle = qbsHighlight
       Caption = #57510
       ExplicitLeft = 150
     end
