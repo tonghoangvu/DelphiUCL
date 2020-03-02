@@ -7,7 +7,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, UCL.Panel, UCL.Utils,
   UCL.Graphics, UCL.CaptionBar, UCL.ProgressBar, UCL.Button, UCL.Slider,
-  UCL.Text, UCL.Hyperlink, UCL.ListButton;
+  UCL.Text, UCL.Hyperlink, UCL.ListButton, UCL.QuickButton;
 
 type
   TformDemo = class(TUForm)
@@ -43,6 +43,11 @@ type
     buttonList3: TUListButton;
     buttonVList2: TUListButton;
     comboChooseScaleRatio: TComboBox;
+    qbuttonQuit: TUQuickButton;
+    qbuttonNone: TUQuickButton;
+    qbuttonMin: TUQuickButton;
+    qbuttonMax: TUQuickButton;
+    qbuttonHighlight: TUQuickButton;
     procedure FormCreate(Sender: TObject);
     procedure comboChooseThemeSelect(Sender: TObject);
     procedure buttonReloadClick(Sender: TObject);

@@ -53,7 +53,8 @@ contains
   UCL.Slider in 'Source\UCL.Slider.pas',
   UCL.Text in 'Source\UCL.Text.pas',
   UCL.Hyperlink in 'Source\UCL.Hyperlink.pas',
-  UCL.ListButton in 'Source\UCL.ListButton.pas';
+  UCL.ListButton in 'Source\UCL.ListButton.pas',
+  UCL.QuickButton in 'Source\UCL.QuickButton.pas';
 
 end.
 
