@@ -94,10 +94,10 @@ end;
 procedure TUForm.UpdateTheme(const UpdateChildren: Boolean);
 var
   i: Integer;
-
   TM: TUThemeManager;
   _BackColor: TUThemeColorSet;
 begin
+  //  Prepairing
   TM := ThemeManager;
 
   //  Update back color

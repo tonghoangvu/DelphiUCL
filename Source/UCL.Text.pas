@@ -54,27 +54,21 @@ var
 begin
   TM := SelectThemeManager(Self);
 
-  //  Font color
+  //  Disabled or desciption
   if (not Enabled) or (TextKind = tkDescription) then
     Font.Color := $666666
 
-  else if TM = nil then
-    begin
-      if UseAccentColor then
-        Font.Color := $D77800
-      else
-        Font.Color := $000000;
-    end
+  //  Accent color
+  else if UseAccentColor then
+    Font.Color := SelectAccentColor(TM, $D77800)
 
+  //  Light theme
+  else if (TM = nil) or (TM.Theme = utLight) then
+    Font.Color := $000000
+
+  //  Dark theme
   else
-    begin
-      if UseAccentColor then
-        Font.Color := TM.AccentColor
-      else if TM.Theme = utLight then
-        Font.Color := $000000
-      else
-        Font.Color := $FFFFFF;
-    end;
+    Font.Color := $FFFFFF;
 
   //  Do not update children
 end;

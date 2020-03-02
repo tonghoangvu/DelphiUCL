@@ -122,17 +122,10 @@ var
   _BackColor: TUStateColorSet;
   _BorderColor: TUStateColorSet;
 begin
+  //  Prepairing
   TM := SelectThemeManager(Self);
-  if TM = nil then
-    begin
-      AccentColor := $D77800;
-      IsDark := false;
-    end
-  else
-    begin
-      AccentColor := TM.AccentColor;
-      IsDark := TM.Theme = utDark;
-    end;
+  IsDark := (TM <> nil) and (TM.Theme = utDark);
+  AccentColor := SelectAccentColor(TM, $D77800);
 
   //  Disabled
   if not Enabled then
@@ -182,7 +175,6 @@ begin
 
       TextColor := GetTextColorFromBackground(BackColor);
     end;
-
 end;
 
 procedure TUButton.UpdateRects;

@@ -140,6 +140,7 @@ function SelectColorSet(const TM: TUThemeManager;
   CustomColorset, DefaultColorset: TUThemeColorSet): TUThemeColorSet; overload;
 function SelectColorSet(const TM: TUThemeManager;
   CustomColorset, DefaultColorset: TUStateColorSet): TUStateColorSet; overload;
+function SelectAccentColor(const TM: TUThemeManager; CustomAccentColor: TColor): TColor;
 
 implementation
 
@@ -180,6 +181,14 @@ begin
     Result := CustomColorset
   else
     Result := DefaultColorset;
+end;
+
+function SelectAccentColor(const TM: TUThemeManager; CustomAccentColor: TColor): TColor;
+begin
+  if TM = nil then
+    Result := CustomAccentColor
+  else
+    Result := TM.AccentColor;
 end;
 
 { TUThemeColorSet }
