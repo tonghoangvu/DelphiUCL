@@ -20,6 +20,8 @@ type
       FValue: Byte;
       FOrientation: TUOrientation;
 
+      FOnChange: TNotifyEvent;
+
       //  Internal
       procedure UpdateColors;
       procedure UpdateRects;
@@ -53,6 +55,8 @@ type
 
       property Value: Byte read FValue write SetValue default 0;
       property Orientation: TUOrientation read FOrientation write SetOrientation default oHorizontal;
+
+      property OnChange: TNotifyEvent read FOnChange write FOnChange;
 
       //  Modify default props
       property Height default 5;
@@ -121,6 +125,8 @@ begin
     if Value <= 100 then
       begin
         FValue := Value;
+        if Assigned(FOnChange) then
+          FOnChange(Self);
         UpdateRects;
         Repaint;
       end;
