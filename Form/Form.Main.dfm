@@ -16,8 +16,9 @@ object formDemo: TformDemo
   PixelsPerInch = 96
   TextHeight = 13
   object sliderHorz: TUSlider
-    Left = 30
-    Top = 230
+    Left = 130
+    Top = 240
+    Width = 150
     CustomBackColor.Enabled = False
     CustomBackColor.LightNone = 10066329
     CustomBackColor.LightHover = 6710886
@@ -47,7 +48,7 @@ object formDemo: TformDemo
   end
   object textCustom: TUText
     Left = 30
-    Top = 470
+    Top = 430
     Width = 77
     Height = 16
     Caption = 'Custom text'
@@ -60,7 +61,7 @@ object formDemo: TformDemo
   end
   object textHeading: TUText
     Left = 30
-    Top = 310
+    Top = 270
     Width = 74
     Height = 28
     Caption = 'Heading'
@@ -74,7 +75,7 @@ object formDemo: TformDemo
   end
   object textTitle: TUText
     Left = 30
-    Top = 270
+    Top = 230
     Width = 53
     Height = 38
     Caption = 'Title'
@@ -89,7 +90,7 @@ object formDemo: TformDemo
   end
   object textEntry: TUText
     Left = 30
-    Top = 350
+    Top = 310
     Width = 33
     Height = 17
     Caption = 'Entry'
@@ -103,7 +104,7 @@ object formDemo: TformDemo
   end
   object textNormal: TUText
     Left = 30
-    Top = 380
+    Top = 340
     Width = 69
     Height = 17
     Caption = 'Normal text'
@@ -117,7 +118,7 @@ object formDemo: TformDemo
   end
   object textDescription: TUText
     Left = 30
-    Top = 410
+    Top = 370
     Width = 60
     Height = 15
     Caption = 'Description'
@@ -131,7 +132,7 @@ object formDemo: TformDemo
   end
   object textDisabled: TUText
     Left = 30
-    Top = 440
+    Top = 400
     Width = 51
     Height = 17
     Caption = 'Disabled'
@@ -146,7 +147,7 @@ object formDemo: TformDemo
   end
   object linkEmpty: TUHyperlink
     Left = 130
-    Top = 350
+    Top = 310
     Width = 126
     Height = 17
     Caption = 'Not set URL hyperlink'
@@ -172,7 +173,7 @@ object formDemo: TformDemo
   end
   object linkGoogle: TUHyperlink
     Left = 130
-    Top = 370
+    Top = 330
     Width = 80
     Height = 17
     Caption = 'Go to Google'
@@ -199,7 +200,7 @@ object formDemo: TformDemo
   end
   object linkDisabled: TUHyperlink
     Left = 130
-    Top = 390
+    Top = 350
     Width = 142
     Height = 17
     Cursor = crDefault
@@ -228,7 +229,7 @@ object formDemo: TformDemo
   end
   object linkCustomColor: TUHyperlink
     Left = 130
-    Top = 410
+    Top = 370
     Width = 168
     Height = 17
     Caption = 'Go to Google (custom color)'
@@ -254,10 +255,10 @@ object formDemo: TformDemo
     URL = 'https://google.com/'
   end
   object sliderVert: TUSlider
-    Left = 160
-    Top = 220
+    Left = 575
+    Top = 50
     Width = 25
-    Height = 50
+    Height = 60
     CustomBackColor.Enabled = False
     CustomBackColor.LightNone = 10066329
     CustomBackColor.LightHover = 6710886
@@ -285,9 +286,7 @@ object formDemo: TformDemo
     CustomCursorColor.DarkSelectedHover = 15921906
     CustomCursorColor.DarkSelectedPress = 7763574
     Orientation = oVertical
-    Min = 1
-    Max = 5
-    Value = 1
+    OnChange = sliderVertChange
   end
   object panelTest: TUPanel
     Left = 30
@@ -340,7 +339,6 @@ object formDemo: TformDemo
     CustomBackColor.Color = 15921906
     CustomBackColor.LightColor = 15921906
     CustomBackColor.DarkColor = 2829099
-    ExplicitWidth = 650
   end
   object buttonRandomProgress: TButton
     Left = 330
