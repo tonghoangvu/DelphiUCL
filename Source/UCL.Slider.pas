@@ -381,9 +381,7 @@ begin
       else if TempValue > Max then
         TempValue := Max;
 
-      FValue := TempValue;
-      UpdateRects;
-      Repaint;
+      Value := TempValue;
     end
   else
     Repaint;
