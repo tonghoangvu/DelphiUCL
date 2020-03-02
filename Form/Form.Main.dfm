@@ -340,7 +340,6 @@ object formDemo: TformDemo
     CustomBackColor.Color = 15921906
     CustomBackColor.LightColor = 15921906
     CustomBackColor.DarkColor = 2829099
-    ExplicitWidth = 650
   end
   object buttonRandomProgress: TButton
     Left = 330
@@ -674,6 +673,7 @@ object formDemo: TformDemo
     Width = 270
     Height = 40
     Caption = 'Selectable list button 3'
+    Enabled = False
     TabOrder = 16
     IconFont.Charset = DEFAULT_CHARSET
     IconFont.Color = clWindowText

@@ -129,6 +129,7 @@ var
   _BackColor: TUStateColorSet;
   AccentColor: TColor;
   Selected: Boolean;
+  IsDark: Boolean;
 begin
   TM := SelectThemeManager(Self);
   _BackColor := SelectColorSet(TM, CustomBackColor, LISTBUTTON_BACK);
@@ -137,18 +138,36 @@ begin
     AccentColor := $D77800
   else 
     AccentColor := TM.AccentColor;
-  
-  Selected := AllowSelected and Focused;
-  if not Selected then
-    BackColor := _BackColor.GetColor(TM, ButtonState, Selected)
-  else 
-    BackColor := ColorChangeLightness(AccentColor, _BackColor.GetColor(TM, ButtonState, Selected));
-  
-  TextColor := GetTextColorFromBackground(BackColor);
-  if not Selected then
-    DetailColor := $808080
-  else 
-    DetailColor := clSilver;
+  IsDark := (TM <> nil) and (TM.Theme = utDark);
+
+  //  Disabled
+  if not Enabled then
+    begin
+      if IsDark then
+        BackColor := $333333
+      else
+        BackColor := $CCCCCC;
+      TextColor := $666666;
+      DetailColor := $808080;
+    end
+
+  //  Enabled
+  else
+    begin
+      Selected := AllowSelected and Focused;
+      if not Selected then
+        //  Get color from colorset
+        BackColor := _BackColor.GetColor(TM, ButtonState, Selected)
+      else
+        //  Change lightness of color
+        BackColor := ColorChangeLightness(AccentColor, _BackColor.GetColor(TM, ButtonState, Selected));
+
+      TextColor := GetTextColorFromBackground(BackColor);
+      if not Selected then
+        DetailColor := $808080    //  Detail on grayed color
+      else
+        DetailColor := $D0D0D0;   //  Detail on background color
+    end;
 end;
 
 procedure TUListButton.UpdateRects;
