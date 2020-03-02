@@ -96,6 +96,9 @@ begin
 
   //  Update text color (depends on back color)
   TextColor := GetTextColorFromBackground(BackColor);
+
+  //  Update Color for container (let children using ParentColor)
+  Color := BackColor;
 end;
 
 //  CHILD EVENTS
