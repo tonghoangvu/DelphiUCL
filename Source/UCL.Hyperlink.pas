@@ -16,6 +16,8 @@ type
       FOpenLink: Boolean;   //  Open link or Click action?
       FURL: string;
 
+      FOnOpenURL: TNotifyEvent;
+
       //  Setters
       procedure SetControlState(const Value: TUControlState);
       procedure SetEnabled(const Value: Boolean); reintroduce;
@@ -46,6 +48,8 @@ type
       property Enabled: Boolean read FEnabled write SetEnabled default true;
       property OpenLink: Boolean read FOpenLink write FOpenLink default true;
       property URL: string read FURL write FURL;
+
+      property OnOpenURL: TNotifyEvent read FOnOpenURL write FOnOpenURL;
 
       //  Modify default props
       property Cursor default crHandPoint;
@@ -163,7 +167,11 @@ begin
   if not Enabled then exit;
   ControlState := csHover;
   if OpenLink and (URL <> '') then
-    ShellExecute(0, '', PWideChar(URL), '', '', SW_SHOWNORMAL);
+    begin
+      if Assigned(FOnOpenURL) then
+        FOnOpenURL(Self);
+      ShellExecute(0, '', PWideChar(URL), '', '', SW_SHOWNORMAL);
+    end;
   inherited;
 end;
 
