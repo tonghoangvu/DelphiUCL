@@ -412,8 +412,8 @@ end;
 procedure TUSlider.WM_LButtonUp(var Msg: TWMLButtonUp);
 begin
   if not Enabled then exit;
-  ControlState := csNone;
   FIsSliding := false;
+  ControlState := csNone;
   inherited;
 end;
 

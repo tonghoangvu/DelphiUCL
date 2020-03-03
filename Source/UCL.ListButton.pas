@@ -477,15 +477,24 @@ begin
 end;
 
 procedure TUListButton.WM_LButtonUp(var Msg: TWMLButtonUp);
+var
+  MousePoint: TPoint;
 begin
   if not Enabled then exit;
-  case SelectMode of
-    smNone: ;
-    smFocus:
-      SetFocus;
-    smToggle:
-      Selected := not Selected;
-  end;
+
+  MousePoint := ScreenToClient(Mouse.CursorPos);
+  if PtInRect(GetClientRect, MousePoint) then
+    begin
+      //  Select actions
+      case SelectMode of
+        smNone: ;
+        smFocus:
+          SetFocus;
+        smToggle:
+          Selected := not Selected;
+      end;
+    end;
+
   ButtonState := csHover;   //  True, SetFocus does not call UpdateColors
   inherited;
 end;
