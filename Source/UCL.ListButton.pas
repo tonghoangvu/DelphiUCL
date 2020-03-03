@@ -211,6 +211,8 @@ begin
         Result := Focused;
       smToggle:
         Result := FSelected;
+      else
+        Result := false;
     end;
 end;
 
