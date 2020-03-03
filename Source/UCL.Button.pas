@@ -421,10 +421,19 @@ begin
 end;
 
 procedure TUButton.WM_LButtonUp(var Msg: TWMLButtonUp);
+var
+  MousePoint: TPoint;
 begin
   if not Enabled then exit;
-  if IsToggleButton then
-    FIsToggled := not FIsToggled;
+
+  MousePoint := ScreenToClient(Mouse.CursorPos);
+  if PtInRect(GetClientRect, MousePoint) then
+    begin
+      //  Change toggle state
+      if IsToggleButton then
+        FIsToggled := not FIsToggled;
+    end;
+
   ButtonState := csHover;
   inherited;
 end;

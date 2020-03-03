@@ -259,26 +259,32 @@ end;
 procedure TUQuickButton.WM_LButtonUp(var Msg: TWMLButtonUp);
 var
   ParentForm: TCustomForm;
+  MousePoint: TPoint;
 begin
   if not Enabled then exit;
-  ButtonState := csHover;
 
-  if ButtonStyle in [qbsQuit, qbsMax, qbsMin] then
+  MousePoint := ScreenToClient(Mouse.CursorPos);
+  if PtInRect(GetClientRect, MousePoint) then
     begin
-      ParentForm := GetParentForm(Self, true);
-      case ButtonStyle of
-        qbsQuit:
-          ParentForm.Close;
-        qbsMin:
-          ParentForm.WindowState := wsMinimized;
-        qbsMax:
-          if ParentForm.WindowState <> wsNormal then
-            ParentForm.WindowState := wsNormal
-          else
-            ParentForm.WindowState := wsMaximized;
-      end;
+      //  Default actions for Quit, Max, Min sysbutton
+      if ButtonStyle in [qbsQuit, qbsMax, qbsMin] then
+        begin
+          ParentForm := GetParentForm(Self, true);
+          case ButtonStyle of
+            qbsQuit:
+              ParentForm.Close;
+            qbsMin:
+              ParentForm.WindowState := wsMinimized;
+            qbsMax:
+              if ParentForm.WindowState <> wsNormal then
+                ParentForm.WindowState := wsNormal
+              else
+                ParentForm.WindowState := wsMaximized;
+          end;
+        end;
     end;
 
+  FButtonState := csHover;
   inherited;
 end;
 
