@@ -38,22 +38,24 @@ type
     sliderVert: TUSlider;
     progressVert: TUProgressBar;
     buttonList1: TUListButton;
-    buttonVList1: TUListButton;
     buttonList2: TUListButton;
     buttonList3: TUListButton;
-    buttonVList2: TUListButton;
+    buttonVListToggleSelection: TUListButton;
     comboChooseScaleRatio: TComboBox;
     qbuttonQuit: TUQuickButton;
     qbuttonNone: TUQuickButton;
     qbuttonMin: TUQuickButton;
     qbuttonMax: TUQuickButton;
     qbuttonHighlight: TUQuickButton;
+    buttonList4: TUListButton;
+    buttonList5: TUListButton;
     procedure FormCreate(Sender: TObject);
     procedure comboChooseThemeSelect(Sender: TObject);
     procedure buttonReloadClick(Sender: TObject);
     procedure buttonRandomProgressClick(Sender: TObject);
     procedure comboChooseScaleRatioSelect(Sender: TObject);
     procedure sliderVertChange(Sender: TObject);
+    procedure buttonVListToggleSelectionClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -70,6 +72,22 @@ implementation
 procedure TformDemo.buttonReloadClick(Sender: TObject);
 begin
   ThemeManager.UpdateTheme;
+end;
+
+procedure TformDemo.buttonVListToggleSelectionClick(Sender: TObject);
+var
+  Value: TUSelectMode;
+begin
+  if buttonVListToggleSelection.Selected then
+    Value := smToggle
+  else
+    Value := smFocus;
+
+  buttonList1.SelectMode := Value;
+  buttonList2.SelectMode := Value;
+  buttonList3.SelectMode := Value;
+  buttonList4.SelectMode := Value;
+  buttonList5.SelectMode := Value;
 end;
 
 procedure TformDemo.buttonRandomProgressClick(Sender: TObject);

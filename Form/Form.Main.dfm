@@ -147,7 +147,7 @@ object formDemo: TformDemo
   end
   object linkEmpty: TUHyperlink
     Left = 130
-    Top = 310
+    Top = 280
     Width = 126
     Height = 17
     Caption = 'Not set URL hyperlink'
@@ -173,7 +173,7 @@ object formDemo: TformDemo
   end
   object linkGoogle: TUHyperlink
     Left = 130
-    Top = 330
+    Top = 340
     Width = 80
     Height = 17
     Caption = 'Go to Google'
@@ -200,7 +200,7 @@ object formDemo: TformDemo
   end
   object linkDisabled: TUHyperlink
     Left = 130
-    Top = 350
+    Top = 320
     Width = 142
     Height = 17
     Cursor = crDefault
@@ -229,7 +229,7 @@ object formDemo: TformDemo
   end
   object linkCustomColor: TUHyperlink
     Left = 130
-    Top = 370
+    Top = 360
     Width = 168
     Height = 17
     Caption = 'Go to Google (custom color)'
@@ -696,13 +696,14 @@ object formDemo: TformDemo
     CustomBackColor.DarkSelectedPress = 127
     FontIcon = #57492
     Detail = 'Click me'
+    SelectMode = smFocus
   end
-  object buttonVList1: TUListButton
+  object buttonList2: TUListButton
     Left = 330
-    Top = 410
-    Width = 130
-    Height = 90
-    Caption = 'Click me'
+    Top = 320
+    Width = 270
+    Height = 40
+    Caption = 'Selectable list button 2'
     TabOrder = 14
     IconFont.Charset = DEFAULT_CHARSET
     IconFont.Color = clWindowText
@@ -722,17 +723,16 @@ object formDemo: TformDemo
     CustomBackColor.DarkSelectedNone = 89
     CustomBackColor.DarkSelectedHover = 103
     CustomBackColor.DarkSelectedPress = 127
-    Orientation = oVertical
     FontIcon = #57492
-    Detail = 'Not selectable'
-    AllowSelected = False
+    Detail = 'Click me'
+    SelectMode = smFocus
   end
-  object buttonList2: TUListButton
+  object buttonList3: TUListButton
     Left = 330
-    Top = 320
+    Top = 360
     Width = 270
     Height = 40
-    Caption = 'Selectable list button 2'
+    Caption = 'Selectable list button 3'
     TabOrder = 15
     IconFont.Charset = DEFAULT_CHARSET
     IconFont.Color = clWindowText
@@ -754,15 +754,63 @@ object formDemo: TformDemo
     CustomBackColor.DarkSelectedPress = 127
     FontIcon = #57492
     Detail = 'Click me'
+    SelectMode = smFocus
   end
-  object buttonList3: TUListButton
+  object buttonVListToggleSelection: TUListButton
+    Left = 130
+    Top = 390
+    Width = 170
+    Height = 90
+    Caption = 'Toggle selection'
+    TabOrder = 16
+    OnClick = buttonVListToggleSelectionClick
+    IconFont.Charset = DEFAULT_CHARSET
+    IconFont.Color = clWindowText
+    IconFont.Height = -16
+    IconFont.Name = 'Segoe MDL2 Assets'
+    IconFont.Style = []
+    CustomBackColor.Enabled = False
+    CustomBackColor.LightNone = 15132390
+    CustomBackColor.LightHover = 13619151
+    CustomBackColor.LightPress = 12105912
+    CustomBackColor.LightSelectedNone = 127
+    CustomBackColor.LightSelectedHover = 103
+    CustomBackColor.LightSelectedPress = 89
+    CustomBackColor.DarkNone = 2039583
+    CustomBackColor.DarkHover = 3487029
+    CustomBackColor.DarkPress = 5000268
+    CustomBackColor.DarkSelectedNone = 89
+    CustomBackColor.DarkSelectedHover = 103
+    CustomBackColor.DarkSelectedPress = 127
+    Orientation = oVertical
+    FontIcon = #57604
+    Detail = 'SelectMode property'
+    SelectMode = smToggle
+  end
+  object comboChooseScaleRatio: TComboBox
+    Left = 30
+    Top = 80
+    Width = 140
+    Height = 21
+    Style = csDropDownList
+    ItemIndex = 0
+    TabOrder = 17
+    Text = '100%'
+    OnSelect = comboChooseScaleRatioSelect
+    Items.Strings = (
+      '100%'
+      '125%'
+      '150%'
+      '175%'
+      '200%')
+  end
+  object buttonList4: TUListButton
     Left = 330
-    Top = 360
+    Top = 400
     Width = 270
     Height = 40
-    Caption = 'Selectable list button 3'
-    Enabled = False
-    TabOrder = 16
+    Caption = 'Selectable list button 4'
+    TabOrder = 18
     IconFont.Charset = DEFAULT_CHARSET
     IconFont.Color = clWindowText
     IconFont.Height = -16
@@ -783,14 +831,16 @@ object formDemo: TformDemo
     CustomBackColor.DarkSelectedPress = 127
     FontIcon = #57492
     Detail = 'Click me'
+    SelectMode = smFocus
   end
-  object buttonVList2: TUListButton
-    Left = 470
-    Top = 410
-    Width = 130
-    Height = 90
-    Caption = 'Click me'
-    TabOrder = 17
+  object buttonList5: TUListButton
+    Left = 330
+    Top = 440
+    Width = 270
+    Height = 40
+    Caption = 'Selectable list button 5'
+    Enabled = False
+    TabOrder = 19
     IconFont.Charset = DEFAULT_CHARSET
     IconFont.Color = clWindowText
     IconFont.Height = -16
@@ -809,26 +859,8 @@ object formDemo: TformDemo
     CustomBackColor.DarkSelectedNone = 89
     CustomBackColor.DarkSelectedHover = 103
     CustomBackColor.DarkSelectedPress = 127
-    Orientation = oVertical
     FontIcon = #57492
-    Detail = 'Not selectable'
-    AllowSelected = False
-  end
-  object comboChooseScaleRatio: TComboBox
-    Left = 30
-    Top = 80
-    Width = 140
-    Height = 21
-    Style = csDropDownList
-    ItemIndex = 0
-    TabOrder = 18
-    Text = '100%'
-    OnSelect = comboChooseScaleRatioSelect
-    Items.Strings = (
-      '100%'
-      '125%'
-      '150%'
-      '175%'
-      '200%')
+    Detail = 'Click me'
+    SelectMode = smFocus
   end
 end

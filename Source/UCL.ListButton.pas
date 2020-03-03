@@ -7,6 +7,8 @@ uses
   UCL.Classes, UCL.ThemeManager, UCL.Colors, UCL.Graphics, UCL.Utils;
 
 type
+  TUSelectMode = (smNone, smFocus, smToggle);
+
   TUListButton = class(TPanel, IUControl)
     private
       var BackColor, TextColor, DetailColor: TColor;
@@ -27,12 +29,13 @@ type
       FSpacing: Integer;
 
       FDetail: string;
-      FAllowSelected: Boolean;
+      FSelectMode: TUSelectMode;
+      FSelected: Boolean;
 
       //  Internal
       procedure UpdateColors;
       procedure UpdateRects;
-      
+
       //  Setters
       procedure SetButtonState(const Value: TUControlState);
       procedure SetOrientation(const Value: TUOrientation);
@@ -45,7 +48,11 @@ type
       procedure SetSpacing(const Value: Integer);
 
       procedure SetDetail(const Value: string);
-      procedure SetAllowSelected(const Value: Boolean);
+      procedure SetSelectMode(const Value: TUSelectMode);
+      procedure SetSelected(const Value: Boolean);
+
+      //  Getters
+      function GetSelected: Boolean;
 
       //  Child events
       procedure CustomBackColor_OnChange(Sender: TObject);
@@ -93,7 +100,8 @@ type
       property Spacing: Integer read FSpacing write SetSpacing default 10;
       
       property Detail: string read FDetail write SetDetail;
-      property AllowSelected: Boolean read FAllowSelected write SetAllowSelected default true;
+      property SelectMode: TUSelectMode read FSelectMode write SetSelectMode default smNone;
+      property Selected: Boolean read GetSelected write SetSelected default false;
 
       //  Modify default props
       property BevelOuter default bvNone;
@@ -128,7 +136,7 @@ var
   TM: TUThemeManager;
   _BackColor: TUStateColorSet;
   AccentColor: TColor;
-  Selected: Boolean;
+  IsSelected: Boolean;
   IsDark: Boolean;
 begin
   //  Prepairing
@@ -151,19 +159,17 @@ begin
   //  Enabled
   else
     begin
-      Selected := AllowSelected and Focused;
-      if not Selected then
-        //  Get back color from colorset
-        BackColor := _BackColor.GetColor(TM, ButtonState, Selected)
+      IsSelected := Selected;
+      if not IsSelected then
+        //  Get color from colorset
+        BackColor := _BackColor.GetColor(TM, ButtonState, IsSelected)
       else
         //  Change lightness of color
-        BackColor := ColorChangeLightness(AccentColor, _BackColor.GetColor(TM, ButtonState, Selected));
+        BackColor := ColorChangeLightness(AccentColor, _BackColor.GetColor(TM, ButtonState, IsSelected));
 
       //  Update text color from background
       TextColor := GetTextColorFromBackground(BackColor);
-
-      //  Update detail color
-      if not Selected then
+      if not IsSelected then
         DetailColor := $808080    //  Detail on grayed color
       else
         DetailColor := $D0D0D0;   //  Detail on background color
@@ -191,7 +197,44 @@ begin
     DetailRect := Rect(0, ImageSpace, Width, Height - Spacing);
 end;
 
+//  GETTERS
+
+function TUListButton.GetSelected: Boolean;
+begin
+  if not Enabled then
+    Result := false
+  else
+    case SelectMode of
+      smNone:
+        Result := false;
+      smFocus:
+        Result := Focused;
+      smToggle:
+        Result := FSelected;
+    end;
+end;
+
 //  SETTERS
+
+procedure TUListButton.SetSelected(const Value: Boolean);
+begin
+  if Value <> FSelected then
+    begin
+      FSelected := Value;
+      UpdateColors;
+      Repaint;
+    end;
+end;
+
+procedure TUListButton.SetSelectMode(const Value: TUSelectMode);
+begin
+  if Value <> FSelectMode then
+    begin
+      FSelectMode := Value;
+      UpdateColors;
+      Repaint;
+    end;
+end;
 
 procedure TUListButton.SetButtonState(const Value: TUControlState);
 begin
@@ -279,16 +322,6 @@ begin
     end;
 end;
 
-procedure TUListButton.SetAllowSelected(const Value: Boolean);
-begin
-  if Value <> FAllowSelected then
-    begin
-      FAllowSelected := Value;
-      UpdateColors;
-      Repaint;
-    end;
-end;
-
 //  CHILD EVENTS
 
 procedure TUListButton.CustomBackColor_OnChange(Sender: TObject);
@@ -310,7 +343,8 @@ begin
   FImageSpace := 40;
   FSpacing := 10;
   FDetail := 'Detail';
-  FAllowSelected := true;
+  FSelectMode := smNone;
+  FSelected := false;
 
   FIconFont := TFont.Create;
   IconFont.Name := 'Segoe MDL2 Assets';
@@ -319,9 +353,6 @@ begin
   FCustomBackColor := TUStateColorSet.Create;
   FCustomBackColor.OnChange := CustomBackColor_OnChange;
   FCustomBackColor.Assign(LISTBUTTON_BACK);
-
-//  UpdateColors;
-//  UpdateRects;
 
   //  Modify default props
   BevelOuter := bvNone;
@@ -414,15 +445,21 @@ end;
 procedure TUListButton.WM_SetFocus(var Msg: TWMSetFocus);
 begin
   if not Enabled then exit;
-  UpdateColors;
-  Repaint;
+  if SelectMode = smFocus then
+    begin
+      UpdateColors;
+      Repaint;
+    end;
 end;
 
 procedure TUListButton.WM_KillFocus(var Msg: TWMKillFocus);
 begin
   if not Enabled then exit;
-  UpdateColors;
-  Repaint;
+  if SelectMode = smFocus then
+    begin
+      UpdateColors;
+      Repaint;
+    end;
 end;
 
 procedure TUListButton.WM_LButtonDblClk(var Msg: TWMLButtonDblClk);
@@ -442,8 +479,14 @@ end;
 procedure TUListButton.WM_LButtonUp(var Msg: TWMLButtonUp);
 begin
   if not Enabled then exit;
+  case SelectMode of
+    smNone: ;
+    smFocus:
+      SetFocus;
+    smToggle:
+      Selected := not Selected;
+  end;
   ButtonState := csHover;   //  True, SetFocus does not call UpdateColors
-  SetFocus;
   inherited;
 end;
 
