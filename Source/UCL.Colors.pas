@@ -501,7 +501,7 @@ initialization
   LISTBUTTON_BACK.SetDarkColor($1F1F1F, $353535, $4C4C4C, 89, 103, 127);
 
   //  Quick button
-  QUICKBUTTON_BACK := TUThemeColorSet.Create(0, $E6E6E6, $191919);
+  QUICKBUTTON_BACK := TUThemeColorSet.Create(0, $CFCFCF, $3C3C3C);
 
   //  Slider
   SLIDER_BACK := TUStateColorSet.Create;
