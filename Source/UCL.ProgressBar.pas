@@ -90,13 +90,11 @@ var
   TM: TUThemeManager;
   _BackColor: TUThemeColorSet;
 begin
+  //  Preparing
   TM := SelectThemeManager(Self);
 
   //  Update fill color
-  if TM = nil then
-    FillColor := CustomFillColor
-  else
-    FillColor := TM.AccentColor;
+  FillColor := SelectAccentColor(TM, CustomFillColor);
 
   //  Update back color
   _BackColor := SelectColorSet(TM, CustomBackColor, PROGRESSBAR_BACK);

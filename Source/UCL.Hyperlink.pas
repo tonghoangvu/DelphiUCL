@@ -71,14 +71,17 @@ var
   TM: TUThemeManager;
   _TextColor: TUStateColorSet;
 begin
+  //  Preparing
   TM := SelectThemeManager(Self);
 
+  //  Update font color
   if not Enabled then
     Font.Color := $808080
   else if TM = nil then
     Font.Color := CustomTextColor.GetColor(TM, ControlState, false)
   else
     begin
+      //  Get font color from color set
       _TextColor := SelectColorSet(TM, CustomTextColor, HYPERLINK_TEXT);
       if (ControlState = csNone) and (not CustomTextColor.Enabled) then
         Font.Color := TM.AccentColor

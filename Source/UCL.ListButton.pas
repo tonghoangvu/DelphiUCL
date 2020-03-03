@@ -131,14 +131,11 @@ var
   Selected: Boolean;
   IsDark: Boolean;
 begin
+  //  Prepairing
   TM := SelectThemeManager(Self);
-  _BackColor := SelectColorSet(TM, CustomBackColor, LISTBUTTON_BACK);
-
-  if TM = nil then
-    AccentColor := $D77800
-  else 
-    AccentColor := TM.AccentColor;
   IsDark := (TM <> nil) and (TM.Theme = utDark);
+  AccentColor := SelectAccentColor(TM, $D77800);
+  _BackColor := SelectColorSet(TM, CustomBackColor, LISTBUTTON_BACK);
 
   //  Disabled
   if not Enabled then
@@ -156,13 +153,16 @@ begin
     begin
       Selected := AllowSelected and Focused;
       if not Selected then
-        //  Get color from colorset
+        //  Get back color from colorset
         BackColor := _BackColor.GetColor(TM, ButtonState, Selected)
       else
         //  Change lightness of color
         BackColor := ColorChangeLightness(AccentColor, _BackColor.GetColor(TM, ButtonState, Selected));
 
+      //  Update text color from background
       TextColor := GetTextColorFromBackground(BackColor);
+
+      //  Update detail color
       if not Selected then
         DetailColor := $808080    //  Detail on grayed color
       else

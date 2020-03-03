@@ -92,10 +92,7 @@ begin
   //  Prepairing
   TM := SelectThemeManager(Self);
   IsDark := (TM <> nil) and (TM.Theme = utDark);
-  if TM = nil then
-    AccentColor := CustomAccentColor
-  else
-    AccentColor := TM.AccentColor;
+  AccentColor := SelectAccentColor(TM, CustomAccentColor);
 
   //  Get background color
   if ButtonState = csNone then

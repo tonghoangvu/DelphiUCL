@@ -73,6 +73,7 @@ var
   TM: TUThemeManager;
   _BackColor: TUThemeColorSet;
 begin
+  //  Preparing
   TM := SelectThemeManager(Self);
 
   //  Update back color

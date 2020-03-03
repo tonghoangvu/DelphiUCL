@@ -108,11 +108,9 @@ var
   _BackColor: TUStateColorSet;
   _CurColor: TUStateColorSet;
 begin
+  //  Preparing
   TM := SelectThemeManager(Self);
-  if (TM <> nil) and (TM.Theme = utDark) then
-    IsDark := true
-  else
-    IsDark := false;
+  IsDark := (TM <> nil) and (TM.Theme = utDark);
 
   //  Disabled
   if not Enabled then
@@ -128,10 +126,7 @@ begin
   //  Normal
   else
     begin
-      if TM = nil then
-        ActiveColor := $D77800
-      else
-        ActiveColor := TM.AccentColor;
+      ActiveColor := SelectAccentColor(TM, $D77800);
 
       _BackColor := SelectColorSet(TM, CustomBackColor, SLIDER_BACK);
       _CurColor := SelectColorSet(TM, CustomCursorColor, SLIDER_CURSOR);
