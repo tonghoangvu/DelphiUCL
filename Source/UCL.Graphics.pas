@@ -27,9 +27,6 @@ const
 
 {$ENDREGION}
 
-function PointInRect(const X, Y: Integer; const Rect: TRect): Boolean; overload;
-function PointInRect(const p: TPoint; const Rect: TRect): Boolean; overload;
-function PointInRect(const p: TSmallPoint; const Rect: TRect): Boolean; overload;
 procedure GetCenterPos(Width, Height: Integer; Rect: TRect; out X, Y: Integer);
 procedure DrawTextRect(const Canvas: TCanvas; HAlign: TAlignment; VAlign: TVerticalAlignment; Rect: TRect; Text: string; TextOnGlass: Boolean);
 procedure DrawBorder(const Canvas: TCanvas; R: TRect; Color: TColor; Thickness: Byte);
@@ -75,27 +72,6 @@ const
 const
   HAlignments: Array[TAlignment] of Longint = (DT_LEFT, DT_RIGHT, DT_CENTER);
   VAlignments: Array[TVerticalAlignment] of Longint = (DT_TOP, DT_BOTTOM, DT_VCENTER);
-
-  {$IF CompilerVersion > 29}
-    CStates: Array[Boolean] of TThemedTextLabel = (ttlTextLabelDisabled, ttlTextLabelNormal);
-  {$ENDIF}
-
-function PointInRect(const X, Y: Integer; const Rect: TRect): Boolean;
-begin
-  Result :=
-    (X >= Rect.Left) and (X <= Rect.Right) and
-    (Y >= Rect.Top ) and (Y <= Rect.Bottom);
-end;
-
-function PointInRect(const p: TPoint; const Rect: TRect): Boolean;
-begin
-  Result := PointInRect(p.X, p.Y, Rect);
-end;
-
-function PointInRect(const p: TSmallPoint; const Rect: TRect): Boolean;
-begin
-  Result := PointInRect(p.x, p.y, Rect);
-end;
 
 procedure GetCenterPos(Width, Height: Integer; Rect: TRect; out X, Y: Integer);
 begin
