@@ -284,7 +284,7 @@ begin
         end;
     end;
 
-  FButtonState := csHover;
+  ButtonState := csHover;
   inherited;
 end;
 
