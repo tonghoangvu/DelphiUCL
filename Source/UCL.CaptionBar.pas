@@ -171,6 +171,10 @@ begin
   if ParentForm is TForm then
     if biMaximize in (ParentForm as TForm).BorderIcons then
       begin
+        if ParentForm is TUForm then
+          if (ParentForm as TUForm).FullScreen then
+            exit;
+
         if ParentForm.WindowState = wsMaximized then
           ParentForm.WindowState := wsNormal
         else if ParentForm.WindowState = wsNormal then

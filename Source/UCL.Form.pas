@@ -347,20 +347,32 @@ var
 begin
   inherited;
 
+  //  Space for top border
   if CanDrawBorder then
     Padding.Top := 1
   else
     Padding.Top := 0;
 
+  CurrentScreen := Screen.MonitorFromWindow(Handle);
+
+  //  Full screen
+  if FullScreen and (WindowState = wsMaximized) then
+    begin
+      Top := 0;
+      Left := 0;
+      Width := CurrentScreen.Width;
+      Height := CurrentScreen.Height;
+      exit;
+    end;
+
+  //  Fit desktop size
   if
-    FitDesktop and
     (WindowState = wsMaximized) and
+    FitDesktop and
     (BorderStyle in [bsDialog, bsSizeToolWin, bsToolWindow])
   then
     begin
-      CurrentScreen := Screen.MonitorFromWindow(Handle);
       Space := GetBorderSpace;
-
       Top := - Space;
       Left :=  - Space;
       Width := CurrentScreen.WorkareaRect.Width + 2 * Space;

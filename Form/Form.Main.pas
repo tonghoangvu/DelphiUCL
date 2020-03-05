@@ -121,7 +121,6 @@ end;
 
 procedure TformDemo.FormCreate(Sender: TObject);
 begin
-  FullScreen := true;
   panelTest.Hint :=
     'This is line 1' + sLineBreak +
     'This is line 2' + sLineBreak +
