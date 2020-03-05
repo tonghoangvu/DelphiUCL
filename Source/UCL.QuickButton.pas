@@ -36,6 +36,7 @@ type
       procedure WM_LButtonUp(var Msg: TWMLButtonUp); message WM_LBUTTONUP;
       procedure CM_MouseEnter(var Msg: TMessage); message CM_MOUSEENTER;
       procedure CM_MouseLeave(var Msg: TMessage); message CM_MOUSELEAVE;
+      procedure CM_TextChanged(var Msg: TMessage); message CM_TEXTCHANGED;
 
     protected
       procedure Paint; override;
@@ -315,6 +316,12 @@ begin
   if not Enabled then exit;
   ButtonState := csNone;
   inherited;
+end;
+
+procedure TUQuickButton.CM_TextChanged(var Msg: TMessage);
+begin
+  inherited;
+  Repaint;
 end;
 
 end.
