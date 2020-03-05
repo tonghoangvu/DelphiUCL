@@ -57,6 +57,7 @@ type
       procedure CM_MouseLeave(var Msg: TMessage); message CM_MOUSELEAVE;
       procedure CM_EnabledChanged(var Msg: TMessage); message CM_ENABLEDCHANGED;
       procedure CM_DialogKey(var Msg: TCMDialogKey); message CM_DIALOGKEY;
+      procedure CM_TextChanged(var Msg: TMessage); message CM_TEXTCHANGED;
 
     protected
       procedure Paint; override;
@@ -468,6 +469,12 @@ begin
     end
   else
     inherited;
+end;
+
+procedure TUButton.CM_TextChanged(var Msg: TMessage);
+begin
+  inherited;
+  Repaint;
 end;
 
 end.
