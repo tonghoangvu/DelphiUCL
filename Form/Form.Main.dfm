@@ -173,7 +173,7 @@ object formDemo: TformDemo
   end
   object linkGoogle: TUHyperlink
     Left = 130
-    Top = 340
+    Top = 320
     Width = 80
     Height = 17
     Caption = 'Go to Google'
@@ -200,7 +200,7 @@ object formDemo: TformDemo
   end
   object linkDisabled: TUHyperlink
     Left = 130
-    Top = 320
+    Top = 300
     Width = 142
     Height = 17
     Cursor = crDefault
@@ -229,7 +229,7 @@ object formDemo: TformDemo
   end
   object linkCustomColor: TUHyperlink
     Left = 130
-    Top = 360
+    Top = 340
     Width = 168
     Height = 17
     Caption = 'Go to Google (custom color)'
@@ -373,6 +373,7 @@ object formDemo: TformDemo
       ParentFont = False
       ParentShowHint = False
       ShowHint = True
+      OnClick = qbuttonNoneClick
       CustomBackColor.Enabled = False
       CustomBackColor.Color = clBlack
       CustomBackColor.LightColor = 15132390
