@@ -23,6 +23,7 @@ type
       FIsActive: Boolean;
       FPPI: Integer;
       FFitDesktop: Boolean;
+      FFullScreen: Boolean;
 
       //  Internal
       function IsWin7: Boolean;
@@ -33,11 +34,15 @@ type
       procedure UpdateBorderColor;
       procedure DoDrawBorder;
 
+      //  Setters
+      procedure SetFullScreen(const Value: Boolean);
+
       //  Child events
       procedure ThemeManager_OnChange(Sender: TObject);
       procedure CustomBackColor_OnChange(Sender: TObject);
 
       //  Messages
+      procedure WM_SysCommand(var Msg: TWMSysCommand); message WM_SYSCOMMAND;
       procedure WM_Activate(var Msg: TWMActivate); message WM_ACTIVATE;
       procedure WM_DPIChanged(var Msg: TWMDpi); message WM_DPICHANGED;
       procedure WM_DWMColorizationColorChanged(var Msg: TMessage); message WM_DWMCOLORIZATIONCOLORCHANGED;
@@ -73,6 +78,7 @@ type
       property IsActive: Boolean read FIsActive default true;
       property PPI: Integer read FPPI write FPPI default 96;
       property FitDesktop: Boolean read FFitDesktop write FFitDesktop default true;
+      property FullScreen: Boolean read FFullScreen write SetFullScreen default false;
 
       property Padding stored false;
   end;
@@ -220,6 +226,35 @@ begin
   Canvas.LineTo(Width, 0);  //  Top border
 end;
 
+//  SETTERS
+
+procedure TUForm.SetFullScreen(const Value: Boolean);
+begin
+  if Value <> FFullScreen then
+    begin
+      FFullScreen := Value;
+
+      LockWindowUpdate(Handle);
+      if Value then
+        //  Go full screen
+        begin
+          BorderStyle := bsNone;
+          if WindowState = wsMaximized then
+            WindowState := wsNormal;
+          WindowState := wsMaximized;
+          FormStyle := fsStayOnTop;
+        end
+      else
+        //  Exit full screen
+        begin
+          BorderStyle := bsSizeable;
+          WindowState := wsNormal;
+          FormStyle := fsNormal;
+        end;
+      LockWindowUpdate(0);
+    end;
+end;
+
 //  CHILD EVENTS
 
 procedure TUForm.ThemeManager_OnChange(Sender: TObject);
@@ -250,6 +285,7 @@ begin
   //  Default props
   FIsActive := true;
   FFitDesktop := true;
+  FFullScreen := false;
 
   //  Get PPI
   CurrentScreen := Screen.MonitorFromWindow(Handle);
@@ -311,20 +347,32 @@ var
 begin
   inherited;
 
+  //  Space for top border
   if CanDrawBorder then
     Padding.Top := 1
   else
     Padding.Top := 0;
 
+  CurrentScreen := Screen.MonitorFromWindow(Handle);
+
+  //  Full screen
+  if FullScreen and (WindowState = wsMaximized) then
+    begin
+      Top := 0;
+      Left := 0;
+      Width := CurrentScreen.Width;
+      Height := CurrentScreen.Height;
+      exit;
+    end;
+
+  //  Fit desktop size
   if
-    FitDesktop and
     (WindowState = wsMaximized) and
+    FitDesktop and
     (BorderStyle in [bsDialog, bsSizeToolWin, bsToolWindow])
   then
     begin
-      CurrentScreen := Screen.MonitorFromWindow(Handle);
       Space := GetBorderSpace;
-
       Top := - Space;
       Left :=  - Space;
       Width := CurrentScreen.WorkareaRect.Width + 2 * Space;
@@ -399,6 +447,18 @@ begin
       else
         Msg.Result := HTTOP;
     end;
+end;
+
+procedure TUForm.WM_SysCommand(var Msg: TWMSysCommand);
+begin
+  if FullScreen then
+    //  Prevent move and restore
+    case Msg.CmdType and $FFF0 of
+      SC_MOVE, SC_RESTORE:
+        exit;
+    end;
+
+  inherited;
 end;
 
 //  COMPATIBLE CODE

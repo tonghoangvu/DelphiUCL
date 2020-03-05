@@ -56,6 +56,7 @@ type
     procedure comboChooseScaleRatioSelect(Sender: TObject);
     procedure sliderVertChange(Sender: TObject);
     procedure buttonVListToggleSelectionClick(Sender: TObject);
+    procedure qbuttonNoneClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -124,6 +125,11 @@ begin
     'This is line 1' + sLineBreak +
     'This is line 2' + sLineBreak +
     'This is a multi-line tooltip';
+end;
+
+procedure TformDemo.qbuttonNoneClick(Sender: TObject);
+begin
+  FullScreen := not FullScreen;
 end;
 
 procedure TformDemo.sliderVertChange(Sender: TObject);

@@ -63,6 +63,9 @@ type
 
 implementation
 
+uses
+  UCL.Form;
+
 { TUQuickButton }
 
 //  INTERFACE
@@ -259,6 +262,7 @@ end;
 procedure TUQuickButton.WM_LButtonUp(var Msg: TWMLButtonUp);
 var
   ParentForm: TCustomForm;
+  FullScreen: Boolean;
   MousePoint: TPoint;
 begin
   if not Enabled then exit;
@@ -270,16 +274,27 @@ begin
       if ButtonStyle in [qbsQuit, qbsMax, qbsMin] then
         begin
           ParentForm := GetParentForm(Self, true);
+          if ParentForm is TUForm then
+            FullScreen := (ParentForm as TUForm).FullScreen
+          else 
+            FullScreen := false;
+
           case ButtonStyle of
             qbsQuit:
               ParentForm.Close;
+
             qbsMin:
-              ParentForm.WindowState := wsMinimized;
+              if not FullScreen then
+                ParentForm.WindowState := wsMinimized;
+
             qbsMax:
-              if ParentForm.WindowState <> wsNormal then
-                ParentForm.WindowState := wsNormal
-              else
-                ParentForm.WindowState := wsMaximized;
+              if not FullScreen then
+                begin
+                  if ParentForm.WindowState <> wsNormal then
+                    ParentForm.WindowState := wsNormal
+                  else
+                    ParentForm.WindowState := wsMaximized;
+                end;
           end;
         end;
     end;

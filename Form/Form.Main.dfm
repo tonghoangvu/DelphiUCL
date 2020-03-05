@@ -173,7 +173,7 @@ object formDemo: TformDemo
   end
   object linkGoogle: TUHyperlink
     Left = 130
-    Top = 340
+    Top = 320
     Width = 80
     Height = 17
     Caption = 'Go to Google'
@@ -200,7 +200,7 @@ object formDemo: TformDemo
   end
   object linkDisabled: TUHyperlink
     Left = 130
-    Top = 320
+    Top = 300
     Width = 142
     Height = 17
     Cursor = crDefault
@@ -229,7 +229,7 @@ object formDemo: TformDemo
   end
   object linkCustomColor: TUHyperlink
     Left = 130
-    Top = 360
+    Top = 340
     Width = 168
     Height = 17
     Caption = 'Go to Google (custom color)'
@@ -342,6 +342,7 @@ object formDemo: TformDemo
     object qbuttonQuit: TUQuickButton
       Left = 585
       Top = 0
+      Hint = 'Close'
       Align = alRight
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -349,6 +350,8 @@ object formDemo: TformDemo
       Font.Name = 'Segoe MDL2 Assets'
       Font.Style = []
       ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
       CustomBackColor.Enabled = False
       CustomBackColor.Color = clBlack
       CustomBackColor.LightColor = 15132390
@@ -360,6 +363,7 @@ object formDemo: TformDemo
     object qbuttonNone: TUQuickButton
       Left = 450
       Top = 0
+      Hint = 'Full screen'
       Align = alRight
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -367,16 +371,20 @@ object formDemo: TformDemo
       Font.Name = 'Segoe MDL2 Assets'
       Font.Style = []
       ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
+      OnClick = qbuttonNoneClick
       CustomBackColor.Enabled = False
       CustomBackColor.Color = clBlack
       CustomBackColor.LightColor = 15132390
       CustomBackColor.DarkColor = 1644825
-      Caption = #57350
+      Caption = #57667
       ExplicitLeft = 150
     end
     object qbuttonMin: TUQuickButton
       Left = 495
       Top = 0
+      Hint = 'Minimize'
       Align = alRight
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -384,6 +392,8 @@ object formDemo: TformDemo
       Font.Name = 'Segoe MDL2 Assets'
       Font.Style = []
       ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
       CustomBackColor.Enabled = False
       CustomBackColor.Color = clBlack
       CustomBackColor.LightColor = 15132390
@@ -395,6 +405,7 @@ object formDemo: TformDemo
     object qbuttonMax: TUQuickButton
       Left = 540
       Top = 0
+      Hint = 'Maximize'
       Align = alRight
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -402,6 +413,8 @@ object formDemo: TformDemo
       Font.Name = 'Segoe MDL2 Assets'
       Font.Style = []
       ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
       CustomBackColor.Enabled = False
       CustomBackColor.Color = clBlack
       CustomBackColor.LightColor = 15132390
@@ -413,6 +426,7 @@ object formDemo: TformDemo
     object qbuttonHighlight: TUQuickButton
       Left = 405
       Top = 0
+      Hint = 'Back'
       Align = alRight
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
@@ -420,6 +434,8 @@ object formDemo: TformDemo
       Font.Name = 'Segoe MDL2 Assets'
       Font.Style = []
       ParentFont = False
+      ParentShowHint = False
+      ShowHint = True
       CustomBackColor.Enabled = False
       CustomBackColor.Color = clBlack
       CustomBackColor.LightColor = 15132390
