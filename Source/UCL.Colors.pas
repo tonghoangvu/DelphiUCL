@@ -113,6 +113,9 @@ var
   //  Panel
   PANEL_BACK: TUThemeColorSet;
 
+  //  Scrollbox
+  SCROLLBOX_BACK: TUThemeColorSet;
+
   //  Caption bar
   CAPTIONBAR_BACK: TUThemeColorSet;
 
@@ -484,6 +487,9 @@ initialization
   //  Panel
   PANEL_BACK := TUThemeColorSet.Create($E6E6E6, $E6E6E6, $1F1F1F);
 
+  //  Scrollbox
+  SCROLLBOX_BACK := TUThemeColorSet.Create($E6E6E6, $E6E6E6, $1F1F1F);
+
   //  Caption bar
   CAPTIONBAR_BACK := TUThemeColorSet.Create($F2F2F2, $F2F2F2, $2B2B2B);
 
@@ -527,6 +533,8 @@ finalization
   PROGRESSBAR_BACK.Free;
 
   PANEL_BACK.Free;
+
+  SCROLLBOX_BACK.Free;
 
   CAPTIONBAR_BACK.Free;
 

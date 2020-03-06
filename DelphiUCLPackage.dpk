@@ -55,7 +55,8 @@ contains
   UCL.Hyperlink in 'Source\UCL.Hyperlink.pas',
   UCL.ListButton in 'Source\UCL.ListButton.pas',
   UCL.QuickButton in 'Source\UCL.QuickButton.pas',
-  UCL.DragReorder in 'Source\UCL.DragReorder.pas';
+  UCL.DragReorder in 'Source\UCL.DragReorder.pas',
+  UCL.ScrollBox in 'Source\UCL.ScrollBox.pas';
 
 end.
 
