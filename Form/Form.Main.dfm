@@ -361,7 +361,7 @@ object formDemo: TformDemo
       ExplicitLeft = 150
     end
     object qbuttonFullScreen: TUQuickButton
-      Left = 450
+      Left = 645
       Top = 0
       Hint = 'Full screen'
       Align = alRight
@@ -424,7 +424,7 @@ object formDemo: TformDemo
       ExplicitLeft = 150
     end
     object qbuttonHighlight: TUQuickButton
-      Left = 645
+      Left = 690
       Top = 0
       Hint = 'Back'
       Align = alRight

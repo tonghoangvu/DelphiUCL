@@ -56,7 +56,6 @@ type
     procedure sliderVertChange(Sender: TObject);
     procedure buttonVListMultiSelectionClick(Sender: TObject);
     procedure buttonVListDragReorderClick(Sender: TObject);
-    procedure buttonVListToggleSelectionClick(Sender: TObject);
     procedure qbuttonFullScreenClick(Sender: TObject);
     procedure buttonVListAddItemClick(Sender: TObject);
   private
