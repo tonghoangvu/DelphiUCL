@@ -712,8 +712,8 @@ object formDemo: TformDemo
     CustomBackColor.DarkSelectedHover = 103
     CustomBackColor.DarkSelectedPress = 127
     Orientation = oVertical
-    FontIcon = #57604
-    Detail = 'Toggle selection'
+    FontIcon = #57692
+    Detail = 'Enable multi selection'
     SelectMode = smToggle
   end
   object comboChooseScaleRatio: TComboBox
@@ -733,168 +733,26 @@ object formDemo: TformDemo
       '175%'
       '200%')
   end
-  object boxList: TScrollBox
+  object boxList: TUScrollBox
     Left = 630
     Top = 32
     Width = 240
     Height = 468
+    HorzScrollBar.Tracking = True
+    VertScrollBar.Tracking = True
     Align = alRight
-    BorderStyle = bsNone
-    Color = 15921906
+    Color = 15132390
     ParentColor = False
     TabOrder = 15
-    ExplicitHeight = 498
-    object buttonList5: TUListButton
-      Left = 0
-      Top = 160
-      Width = 240
-      Height = 40
-      Align = alTop
-      Caption = 'List button 5'
-      Enabled = False
-      TabOrder = 0
-      IconFont.Charset = DEFAULT_CHARSET
-      IconFont.Color = clWindowText
-      IconFont.Height = -16
-      IconFont.Name = 'Segoe MDL2 Assets'
-      IconFont.Style = []
-      CustomBackColor.Enabled = False
-      CustomBackColor.LightNone = 15132390
-      CustomBackColor.LightHover = 13619151
-      CustomBackColor.LightPress = 12105912
-      CustomBackColor.LightSelectedNone = 127
-      CustomBackColor.LightSelectedHover = 103
-      CustomBackColor.LightSelectedPress = 89
-      CustomBackColor.DarkNone = 2039583
-      CustomBackColor.DarkHover = 3487029
-      CustomBackColor.DarkPress = 5000268
-      CustomBackColor.DarkSelectedNone = 89
-      CustomBackColor.DarkSelectedHover = 103
-      CustomBackColor.DarkSelectedPress = 127
-      FontIcon = #57492
-      Detail = 'Disabled'
-      SelectMode = smFocus
-    end
-    object buttonList4: TUListButton
-      Left = 0
-      Top = 120
-      Width = 240
-      Height = 40
-      Align = alTop
-      Caption = 'List button 4'
-      TabOrder = 1
-      IconFont.Charset = DEFAULT_CHARSET
-      IconFont.Color = clWindowText
-      IconFont.Height = -16
-      IconFont.Name = 'Segoe MDL2 Assets'
-      IconFont.Style = []
-      CustomBackColor.Enabled = False
-      CustomBackColor.LightNone = 15132390
-      CustomBackColor.LightHover = 13619151
-      CustomBackColor.LightPress = 12105912
-      CustomBackColor.LightSelectedNone = 127
-      CustomBackColor.LightSelectedHover = 103
-      CustomBackColor.LightSelectedPress = 89
-      CustomBackColor.DarkNone = 2039583
-      CustomBackColor.DarkHover = 3487029
-      CustomBackColor.DarkPress = 5000268
-      CustomBackColor.DarkSelectedNone = 89
-      CustomBackColor.DarkSelectedHover = 103
-      CustomBackColor.DarkSelectedPress = 127
-      FontIcon = #57492
-      Detail = 'Click me'
-      SelectMode = smFocus
-    end
-    object buttonList3: TUListButton
-      Left = 0
-      Top = 80
-      Width = 240
-      Height = 40
-      Align = alTop
-      Caption = 'List button 3'
-      TabOrder = 2
-      IconFont.Charset = DEFAULT_CHARSET
-      IconFont.Color = clWindowText
-      IconFont.Height = -16
-      IconFont.Name = 'Segoe MDL2 Assets'
-      IconFont.Style = []
-      CustomBackColor.Enabled = False
-      CustomBackColor.LightNone = 15132390
-      CustomBackColor.LightHover = 13619151
-      CustomBackColor.LightPress = 12105912
-      CustomBackColor.LightSelectedNone = 127
-      CustomBackColor.LightSelectedHover = 103
-      CustomBackColor.LightSelectedPress = 89
-      CustomBackColor.DarkNone = 2039583
-      CustomBackColor.DarkHover = 3487029
-      CustomBackColor.DarkPress = 5000268
-      CustomBackColor.DarkSelectedNone = 89
-      CustomBackColor.DarkSelectedHover = 103
-      CustomBackColor.DarkSelectedPress = 127
-      FontIcon = #57492
-      Detail = 'Click me'
-      SelectMode = smFocus
-    end
-    object buttonList2: TUListButton
-      Left = 0
-      Top = 40
-      Width = 240
-      Height = 40
-      Align = alTop
-      Caption = 'List button 2'
-      TabOrder = 3
-      IconFont.Charset = DEFAULT_CHARSET
-      IconFont.Color = clWindowText
-      IconFont.Height = -16
-      IconFont.Name = 'Segoe MDL2 Assets'
-      IconFont.Style = []
-      CustomBackColor.Enabled = False
-      CustomBackColor.LightNone = 15132390
-      CustomBackColor.LightHover = 13619151
-      CustomBackColor.LightPress = 12105912
-      CustomBackColor.LightSelectedNone = 127
-      CustomBackColor.LightSelectedHover = 103
-      CustomBackColor.LightSelectedPress = 89
-      CustomBackColor.DarkNone = 2039583
-      CustomBackColor.DarkHover = 3487029
-      CustomBackColor.DarkPress = 5000268
-      CustomBackColor.DarkSelectedNone = 89
-      CustomBackColor.DarkSelectedHover = 103
-      CustomBackColor.DarkSelectedPress = 127
-      FontIcon = #57492
-      Detail = 'Click me'
-      SelectMode = smFocus
-    end
-    object buttonList1: TUListButton
-      Left = 0
-      Top = 0
-      Width = 240
-      Height = 40
-      Align = alTop
-      Caption = 'List button 1'
-      TabOrder = 4
-      IconFont.Charset = DEFAULT_CHARSET
-      IconFont.Color = clWindowText
-      IconFont.Height = -16
-      IconFont.Name = 'Segoe MDL2 Assets'
-      IconFont.Style = []
-      CustomBackColor.Enabled = False
-      CustomBackColor.LightNone = 15132390
-      CustomBackColor.LightHover = 13619151
-      CustomBackColor.LightPress = 12105912
-      CustomBackColor.LightSelectedNone = 127
-      CustomBackColor.LightSelectedHover = 103
-      CustomBackColor.LightSelectedPress = 89
-      CustomBackColor.DarkNone = 2039583
-      CustomBackColor.DarkHover = 3487029
-      CustomBackColor.DarkPress = 5000268
-      CustomBackColor.DarkSelectedNone = 89
-      CustomBackColor.DarkSelectedHover = 103
-      CustomBackColor.DarkSelectedPress = 127
-      FontIcon = #57492
-      Detail = 'Click me'
-      SelectMode = smFocus
-    end
+    AniSet.AniKind = akOut
+    AniSet.AniFunctionKind = afkQuintic
+    AniSet.DelayStartTime = 0
+    AniSet.Duration = 120
+    AniSet.Step = 11
+    CustomBackColor.Enabled = False
+    CustomBackColor.Color = 15132390
+    CustomBackColor.LightColor = 15132390
+    CustomBackColor.DarkColor = 2039583
   end
   object buttonVListDragReorder: TUListButton
     Left = 430
@@ -924,7 +782,37 @@ object formDemo: TformDemo
     CustomBackColor.DarkSelectedPress = 127
     Orientation = oVertical
     FontIcon = #57604
-    Detail = 'Enable/disable drag reorder'
+    Detail = 'Enable drag reorder'
     SelectMode = smToggle
+  end
+  object buttonVListAddItem: TUListButton
+    Left = 250
+    Top = 380
+    Width = 170
+    Height = 90
+    Caption = 'Add item'
+    TabOrder = 17
+    OnClick = buttonVListAddItemClick
+    IconFont.Charset = DEFAULT_CHARSET
+    IconFont.Color = clWindowText
+    IconFont.Height = -16
+    IconFont.Name = 'Segoe MDL2 Assets'
+    IconFont.Style = []
+    CustomBackColor.Enabled = False
+    CustomBackColor.LightNone = 15132390
+    CustomBackColor.LightHover = 13619151
+    CustomBackColor.LightPress = 12105912
+    CustomBackColor.LightSelectedNone = 127
+    CustomBackColor.LightSelectedHover = 103
+    CustomBackColor.LightSelectedPress = 89
+    CustomBackColor.DarkNone = 2039583
+    CustomBackColor.DarkHover = 3487029
+    CustomBackColor.DarkPress = 5000268
+    CustomBackColor.DarkSelectedNone = 89
+    CustomBackColor.DarkSelectedHover = 103
+    CustomBackColor.DarkSelectedPress = 127
+    Orientation = oVertical
+    FontIcon = #57609
+    Detail = 'Add an item to list'
   end
 end
