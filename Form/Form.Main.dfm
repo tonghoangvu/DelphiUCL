@@ -733,27 +733,6 @@ object formDemo: TformDemo
       '175%'
       '200%')
   end
-  object boxList: TUScrollBox
-    Left = 630
-    Top = 32
-    Width = 240
-    Height = 468
-    HorzScrollBar.Tracking = True
-    VertScrollBar.Tracking = True
-    Align = alRight
-    Color = 15132390
-    ParentColor = False
-    TabOrder = 15
-    AniSet.AniKind = akOut
-    AniSet.AniFunctionKind = afkQuintic
-    AniSet.DelayStartTime = 0
-    AniSet.Duration = 120
-    AniSet.Step = 11
-    CustomBackColor.Enabled = False
-    CustomBackColor.Color = 15132390
-    CustomBackColor.LightColor = 15132390
-    CustomBackColor.DarkColor = 2039583
-  end
   object buttonVListDragReorder: TUListButton
     Left = 430
     Top = 280
@@ -814,5 +793,26 @@ object formDemo: TformDemo
     Orientation = oVertical
     FontIcon = #57609
     Detail = 'Add an item to list'
+  end
+  object boxList: TUScrollBox
+    Left = 630
+    Top = 32
+    Width = 240
+    Height = 468
+    HorzScrollBar.Tracking = True
+    VertScrollBar.Tracking = True
+    Align = alRight
+    Color = 15132390
+    ParentColor = False
+    TabOrder = 15
+    AniSet.AniKind = akOut
+    AniSet.AniFunctionKind = afkQuintic
+    AniSet.DelayStartTime = 0
+    AniSet.Duration = 120
+    AniSet.Step = 11
+    CustomBackColor.Enabled = False
+    CustomBackColor.Color = 15132390
+    CustomBackColor.LightColor = 15132390
+    CustomBackColor.DarkColor = 2039583
   end
 end
