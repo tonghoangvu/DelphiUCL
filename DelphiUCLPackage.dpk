@@ -54,7 +54,10 @@ contains
   UCL.Text in 'Source\UCL.Text.pas',
   UCL.Hyperlink in 'Source\UCL.Hyperlink.pas',
   UCL.ListButton in 'Source\UCL.ListButton.pas',
-  UCL.QuickButton in 'Source\UCL.QuickButton.pas';
+  UCL.QuickButton in 'Source\UCL.QuickButton.pas',
+  UCL.ScrollBox in 'Source\UCL.ScrollBox.pas';
 
 end.
+
+
 

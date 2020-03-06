@@ -94,12 +94,12 @@ type
       property ImageKind: TUImageKind read FImageKind write SetImageKind default ikFontIcon;
       property Images: TCustomImageList read FImages write SetImages;
       property ImageIndex: Integer read FImageIndex write SetImageIndex default -1;
-      property FontIcon: string read FFontIcon write SetFontIcon;
+      property FontIcon: string read FFontIcon write SetFontIcon nodefault;
 
       property ImageSpace: Integer read FImageSpace write SetImageSpace default 40;
       property Spacing: Integer read FSpacing write SetSpacing default 10;
       
-      property Detail: string read FDetail write SetDetail;
+      property Detail: string read FDetail write SetDetail nodefault;
       property SelectMode: TUSelectMode read FSelectMode write SetSelectMode default smNone;
       property Selected: Boolean read GetSelected write SetSelected default false;
 

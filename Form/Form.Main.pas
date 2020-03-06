@@ -1,4 +1,4 @@
-unit Form.Main;
+﻿unit Form.Main;
 
 interface
 
@@ -7,7 +7,8 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, UCL.Panel, UCL.Utils,
   UCL.Graphics, UCL.CaptionBar, UCL.ProgressBar, UCL.Button, UCL.Slider,
-  UCL.Text, UCL.Hyperlink, UCL.ListButton, UCL.QuickButton;
+  UCL.Text, UCL.Hyperlink, UCL.ListButton, UCL.QuickButton, UCL.DragReorder,
+  UCL.ScrollBox;
 
 type
   TformDemo = class(TUForm)
@@ -37,26 +38,26 @@ type
     linkCustomColor: TUHyperlink;
     sliderVert: TUSlider;
     progressVert: TUProgressBar;
-    buttonList1: TUListButton;
-    buttonList2: TUListButton;
-    buttonList3: TUListButton;
-    buttonVListToggleSelection: TUListButton;
+    buttonVListMultiSelection: TUListButton;
     comboChooseScaleRatio: TComboBox;
     qbuttonQuit: TUQuickButton;
-    qbuttonNone: TUQuickButton;
+    qbuttonFullScreen: TUQuickButton;
     qbuttonMin: TUQuickButton;
     qbuttonMax: TUQuickButton;
     qbuttonHighlight: TUQuickButton;
-    buttonList4: TUListButton;
-    buttonList5: TUListButton;
+    boxList: TUScrollBox;
+    buttonVListDragReorder: TUListButton;
+    buttonVListAddItem: TUListButton;
     procedure FormCreate(Sender: TObject);
     procedure comboChooseThemeSelect(Sender: TObject);
     procedure buttonReloadClick(Sender: TObject);
     procedure buttonRandomProgressClick(Sender: TObject);
     procedure comboChooseScaleRatioSelect(Sender: TObject);
     procedure sliderVertChange(Sender: TObject);
-    procedure buttonVListToggleSelectionClick(Sender: TObject);
-    procedure qbuttonNoneClick(Sender: TObject);
+    procedure buttonVListMultiSelectionClick(Sender: TObject);
+    procedure buttonVListDragReorderClick(Sender: TObject);
+    procedure qbuttonFullScreenClick(Sender: TObject);
+    procedure buttonVListAddItemClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -75,20 +76,44 @@ begin
   ThemeManager.UpdateTheme;
 end;
 
-procedure TformDemo.buttonVListToggleSelectionClick(Sender: TObject);
+procedure TformDemo.buttonVListAddItemClick(Sender: TObject);
+var
+  Item: TUListButton;
+begin
+  Item := TUListButton.Create(boxList);
+  Item.Parent := boxList;
+  Item.Caption := 'List button ' + boxList.ControlCount.ToString;
+  Item.Align := alTop;
+  Item.SelectMode := smFocus;
+end;
+
+procedure TformDemo.buttonVListDragReorderClick(Sender: TObject);
+var
+  i: Integer;
+begin
+  for i := 0 to boxList.ControlCount - 1 do
+    if boxList.Controls[i] is TUListButton then
+      begin
+        if buttonVListDragReorder.Selected then
+          AssignDragVertHandle(boxList.Controls[i] as TUListButton)
+        else
+          RemoveDragHandle(boxList.Controls[i] as TUListButton);
+      end;
+end;
+
+procedure TformDemo.buttonVListMultiSelectionClick(Sender: TObject);
 var
   Value: TUSelectMode;
+  i: Integer;
 begin
-  if buttonVListToggleSelection.Selected then
+  if buttonVListMultiSelection.Selected then
     Value := smToggle
   else
     Value := smFocus;
 
-  buttonList1.SelectMode := Value;
-  buttonList2.SelectMode := Value;
-  buttonList3.SelectMode := Value;
-  buttonList4.SelectMode := Value;
-  buttonList5.SelectMode := Value;
+  for i := 0 to boxList.ControlCount - 1 do
+    if boxList.Controls[i] is TUListButton then
+      (boxList.Controls[i] as TUListButton).SelectMode := Value;
 end;
 
 procedure TformDemo.buttonRandomProgressClick(Sender: TObject);
@@ -127,9 +152,13 @@ begin
     'This is a multi-line tooltip';
 end;
 
-procedure TformDemo.qbuttonNoneClick(Sender: TObject);
+procedure TformDemo.qbuttonFullScreenClick(Sender: TObject);
 begin
   FullScreen := not FullScreen;
+  if FullScreen then
+    qbuttonFullScreen.Caption := ''
+  else
+    qbuttonFullScreen.Caption := '';
 end;
 
 procedure TformDemo.sliderVertChange(Sender: TObject);
