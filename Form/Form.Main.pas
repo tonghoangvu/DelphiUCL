@@ -7,7 +7,7 @@ uses
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, UCL.Panel, UCL.Utils,
   UCL.Graphics, UCL.CaptionBar, UCL.ProgressBar, UCL.Button, UCL.Slider,
-  UCL.Text, UCL.Hyperlink, UCL.ListButton, UCL.QuickButton;
+  UCL.Text, UCL.Hyperlink, UCL.ListButton, UCL.QuickButton, UCL.DragReorder;
 
 type
   TformDemo = class(TUForm)
@@ -37,26 +37,29 @@ type
     linkCustomColor: TUHyperlink;
     sliderVert: TUSlider;
     progressVert: TUProgressBar;
-    buttonList1: TUListButton;
-    buttonList2: TUListButton;
-    buttonList3: TUListButton;
-    buttonVListToggleSelection: TUListButton;
+    buttonVListMultiSelection: TUListButton;
     comboChooseScaleRatio: TComboBox;
     qbuttonQuit: TUQuickButton;
     qbuttonNone: TUQuickButton;
     qbuttonMin: TUQuickButton;
     qbuttonMax: TUQuickButton;
     qbuttonHighlight: TUQuickButton;
-    buttonList4: TUListButton;
+    boxList: TScrollBox;
     buttonList5: TUListButton;
+    buttonList4: TUListButton;
+    buttonList3: TUListButton;
+    buttonList2: TUListButton;
+    buttonList1: TUListButton;
+    buttonVListDragReorder: TUListButton;
     procedure FormCreate(Sender: TObject);
     procedure comboChooseThemeSelect(Sender: TObject);
     procedure buttonReloadClick(Sender: TObject);
     procedure buttonRandomProgressClick(Sender: TObject);
     procedure comboChooseScaleRatioSelect(Sender: TObject);
     procedure sliderVertChange(Sender: TObject);
-    procedure buttonVListToggleSelectionClick(Sender: TObject);
+    procedure buttonVListMultiSelectionClick(Sender: TObject);
     procedure qbuttonNoneClick(Sender: TObject);
+    procedure buttonVListDragReorderClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -75,11 +78,31 @@ begin
   ThemeManager.UpdateTheme;
 end;
 
-procedure TformDemo.buttonVListToggleSelectionClick(Sender: TObject);
+procedure TformDemo.buttonVListDragReorderClick(Sender: TObject);
+begin
+  if buttonVListDragReorder.Selected then
+    begin
+      AssignDragVertHandle(buttonList1);
+      AssignDragVertHandle(buttonList2);
+      AssignDragVertHandle(buttonList3);
+      AssignDragVertHandle(buttonList4);
+      AssignDragVertHandle(buttonList5);
+    end
+  else
+    begin
+      RemoveDragHandle(buttonList1);
+      RemoveDragHandle(buttonList2);
+      RemoveDragHandle(buttonList3);
+      RemoveDragHandle(buttonList4);
+      RemoveDragHandle(buttonList5);
+    end;
+end;
+
+procedure TformDemo.buttonVListMultiSelectionClick(Sender: TObject);
 var
   Value: TUSelectMode;
 begin
-  if buttonVListToggleSelection.Selected then
+  if buttonVListMultiSelection.Selected then
     Value := smToggle
   else
     Value := smFocus;
