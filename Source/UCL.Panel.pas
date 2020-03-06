@@ -36,6 +36,7 @@ type
       //  Modify props
       property BevelOuter default bvNone;
       property ParentBackground default false;
+      property FullRepaint default false;
   end;
 
 implementation
@@ -110,6 +111,7 @@ begin
   //  Modify props
   BevelOuter := bvNone;
   ParentBackground := false;
+  FullRepaint := false;
 
   Color := $E6E6E6;
 end;

@@ -85,7 +85,7 @@ type
       procedure UpdateTheme(const UpdateChildren: Boolean);
 
     published
-      property IconFont: TFont read FIconFont write FIconFont;
+      property IconFont: TFont read FIconFont write FIconFont nodefault;
       property CustomBackColor: TUStateColorSet read FCustomBackColor write FCustomBackColor;
     
       property ButtonState: TUControlState read FButtonState write SetButtonState default csNone;
@@ -99,7 +99,7 @@ type
       property ImageSpace: Integer read FImageSpace write SetImageSpace default 40;
       property Spacing: Integer read FSpacing write SetSpacing default 10;
       
-      property Detail: string read FDetail write SetDetail;
+      property Detail: string read FDetail write SetDetail nodefault;
       property SelectMode: TUSelectMode read FSelectMode write SetSelectMode default smNone;
       property Selected: Boolean read GetSelected write SetSelected default false;
 

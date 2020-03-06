@@ -360,8 +360,8 @@ object formDemo: TformDemo
       Caption = #57606
       ExplicitLeft = 150
     end
-    object qbuttonNone: TUQuickButton
-      Left = 690
+    object qbuttonFullScreen: TUQuickButton
+      Left = 450
       Top = 0
       Hint = 'Full screen'
       Align = alRight
@@ -373,12 +373,12 @@ object formDemo: TformDemo
       ParentFont = False
       ParentShowHint = False
       ShowHint = True
-      OnClick = qbuttonNoneClick
+      OnClick = qbuttonFullScreenClick
       CustomBackColor.Enabled = False
       CustomBackColor.Color = clBlack
       CustomBackColor.LightColor = 15132390
       CustomBackColor.DarkColor = 1644825
-      Caption = #57667
+      Caption = #59200
       ExplicitLeft = 150
     end
     object qbuttonMin: TUQuickButton
@@ -713,7 +713,7 @@ object formDemo: TformDemo
     CustomBackColor.DarkSelectedPress = 127
     Orientation = oVertical
     FontIcon = #57604
-    Detail = 'Enable/disable multi selection'
+    Detail = 'Toggle selection'
     SelectMode = smToggle
   end
   object comboChooseScaleRatio: TComboBox
