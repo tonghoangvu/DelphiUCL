@@ -360,7 +360,7 @@ object formDemo: TformDemo
       Caption = #57606
       ExplicitLeft = 150
     end
-    object qbuttonNone: TUQuickButton
+    object qbuttonFullScreen: TUQuickButton
       Left = 450
       Top = 0
       Hint = 'Full screen'
@@ -373,12 +373,12 @@ object formDemo: TformDemo
       ParentFont = False
       ParentShowHint = False
       ShowHint = True
-      OnClick = qbuttonNoneClick
+      OnClick = qbuttonFullScreenClick
       CustomBackColor.Enabled = False
       CustomBackColor.Color = clBlack
       CustomBackColor.LightColor = 15132390
       CustomBackColor.DarkColor = 1644825
-      Caption = #57667
+      Caption = #59200
       ExplicitLeft = 150
     end
     object qbuttonMin: TUQuickButton

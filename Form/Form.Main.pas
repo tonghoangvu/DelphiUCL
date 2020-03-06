@@ -1,4 +1,4 @@
-unit Form.Main;
+﻿unit Form.Main;
 
 interface
 
@@ -43,7 +43,7 @@ type
     buttonVListToggleSelection: TUListButton;
     comboChooseScaleRatio: TComboBox;
     qbuttonQuit: TUQuickButton;
-    qbuttonNone: TUQuickButton;
+    qbuttonFullScreen: TUQuickButton;
     qbuttonMin: TUQuickButton;
     qbuttonMax: TUQuickButton;
     qbuttonHighlight: TUQuickButton;
@@ -56,7 +56,7 @@ type
     procedure comboChooseScaleRatioSelect(Sender: TObject);
     procedure sliderVertChange(Sender: TObject);
     procedure buttonVListToggleSelectionClick(Sender: TObject);
-    procedure qbuttonNoneClick(Sender: TObject);
+    procedure qbuttonFullScreenClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -127,9 +127,13 @@ begin
     'This is a multi-line tooltip';
 end;
 
-procedure TformDemo.qbuttonNoneClick(Sender: TObject);
+procedure TformDemo.qbuttonFullScreenClick(Sender: TObject);
 begin
   FullScreen := not FullScreen;
+  if FullScreen then
+    qbuttonFullScreen.Caption := ''
+  else
+    qbuttonFullScreen.Caption := '';
 end;
 
 procedure TformDemo.sliderVertChange(Sender: TObject);
