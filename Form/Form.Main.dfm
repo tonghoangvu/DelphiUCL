@@ -800,7 +800,7 @@ object formDemo: TformDemo
     CustomBackColor.DarkSelectedPress = 127
     Orientation = oVertical
     FontIcon = #57604
-    Detail = 'SelectMode property'
+    Detail = 'Toggle selection'
     SelectMode = smToggle
   end
   object comboChooseScaleRatio: TComboBox
