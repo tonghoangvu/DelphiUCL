@@ -8,7 +8,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, UCL.Panel, UCL.Utils,
   UCL.Graphics, UCL.CaptionBar, UCL.ProgressBar, UCL.Button, UCL.Slider,
   UCL.Text, UCL.Hyperlink, UCL.ListButton, UCL.QuickButton, UCL.DragReorder,
-  UCL.ScrollBox;
+  UCL.ScrollBox, UCL.Edit;
 
 type
   TformDemo = class(TUForm)
@@ -48,6 +48,7 @@ type
     boxList: TUScrollBox;
     buttonVListDragReorder: TUListButton;
     buttonVListAddItem: TUListButton;
+    UEdit1: TUEdit;
     procedure FormCreate(Sender: TObject);
     procedure comboChooseThemeSelect(Sender: TObject);
     procedure buttonReloadClick(Sender: TObject);
