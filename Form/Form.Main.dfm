@@ -2,7 +2,7 @@ object formDemo: TformDemo
   Left = 0
   Top = 0
   Caption = 'Demo UCL'
-  ClientHeight = 500
+  ClientHeight = 510
   ClientWidth = 870
   Color = clWhite
   DoubleBuffered = True
@@ -146,7 +146,7 @@ object formDemo: TformDemo
     TextKind = tkNormal
   end
   object linkEmpty: TUHyperlink
-    Left = 130
+    Left = 140
     Top = 280
     Width = 126
     Height = 17
@@ -172,7 +172,7 @@ object formDemo: TformDemo
     CustomTextColor.DarkSelectedPress = clGray
   end
   object linkGoogle: TUHyperlink
-    Left = 130
+    Left = 140
     Top = 320
     Width = 80
     Height = 17
@@ -199,7 +199,7 @@ object formDemo: TformDemo
     URL = 'https://google.com/'
   end
   object linkDisabled: TUHyperlink
-    Left = 130
+    Left = 140
     Top = 300
     Width = 142
     Height = 17
@@ -228,7 +228,7 @@ object formDemo: TformDemo
     URL = 'https://google.com/'
   end
   object linkCustomColor: TUHyperlink
-    Left = 130
+    Left = 140
     Top = 340
     Width = 168
     Height = 17
@@ -687,9 +687,9 @@ object formDemo: TformDemo
   end
   object buttonVListMultiSelection: TUListButton
     Left = 430
-    Top = 380
+    Top = 335
     Width = 170
-    Height = 90
+    Height = 65
     Caption = 'Multi selection'
     TabOrder = 13
     OnClick = buttonVListMultiSelectionClick
@@ -714,7 +714,7 @@ object formDemo: TformDemo
     Orientation = oVertical
     FontIcon = #57692
     SelectMode = smToggle
-    Detail = 'Enable multi selection'
+    Detail = ''
   end
   object comboChooseScaleRatio: TComboBox
     Left = 30
@@ -735,9 +735,9 @@ object formDemo: TformDemo
   end
   object buttonVListDragReorder: TUListButton
     Left = 430
-    Top = 280
+    Top = 260
     Width = 170
-    Height = 90
+    Height = 65
     Caption = 'Drag reorder'
     TabOrder = 16
     OnClick = buttonVListDragReorderClick
@@ -762,13 +762,13 @@ object formDemo: TformDemo
     Orientation = oVertical
     FontIcon = #57604
     SelectMode = smToggle
-    Detail = 'Enable drag reorder'
+    Detail = ''
   end
   object buttonVListAddItem: TUListButton
-    Left = 250
-    Top = 380
+    Left = 430
+    Top = 410
     Width = 170
-    Height = 90
+    Height = 65
     Caption = 'Add item'
     ParentColor = True
     TabOrder = 17
@@ -793,14 +793,14 @@ object formDemo: TformDemo
     CustomBackColor.DarkSelectedPress = 127
     Orientation = oVertical
     FontIcon = #57609
-    Detail = 'Add an item to list'
+    Detail = ''
     Transparent = True
   end
   object boxList: TUScrollBox
     Left = 630
     Top = 32
     Width = 240
-    Height = 468
+    Height = 478
     HorzScrollBar.Tracking = True
     VertScrollBar.Tracking = True
     Align = alRight
@@ -816,5 +816,30 @@ object formDemo: TformDemo
     CustomBackColor.Color = 15132390
     CustomBackColor.LightColor = 15132390
     CustomBackColor.DarkColor = 2039583
+  end
+  object UEdit1: TUEdit
+    Left = 140
+    Top = 380
+    Width = 170
+    Color = clWhite
+    TabOrder = 18
+    TextHint = 'Enter something here'
+    CustomBackColor.Enabled = False
+    CustomBackColor.Color = clWhite
+    CustomBackColor.LightColor = clWhite
+    CustomBackColor.DarkColor = clBlack
+    CustomBorderColor.Enabled = False
+    CustomBorderColor.LightNone = 10066329
+    CustomBorderColor.LightHover = 6710886
+    CustomBorderColor.LightPress = 14120960
+    CustomBorderColor.LightSelectedNone = 14120960
+    CustomBorderColor.LightSelectedHover = 14120960
+    CustomBorderColor.LightSelectedPress = 14120960
+    CustomBorderColor.DarkNone = 6710886
+    CustomBorderColor.DarkHover = 10066329
+    CustomBorderColor.DarkPress = 14120960
+    CustomBorderColor.DarkSelectedNone = 14120960
+    CustomBorderColor.DarkSelectedHover = 14120960
+    CustomBorderColor.DarkSelectedPress = 14120960
   end
 end
