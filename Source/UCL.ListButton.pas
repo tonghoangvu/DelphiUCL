@@ -28,9 +28,11 @@ type
       FImageSpace: Integer;
       FSpacing: Integer;
 
-      FDetail: string;
       FSelectMode: TUSelectMode;
       FSelected: Boolean;
+
+      FDetail: string;
+      FTransparent: Boolean;
 
       //  Internal
       procedure UpdateColors;
@@ -47,9 +49,11 @@ type
       procedure SetImageSpace(const Value: Integer);
       procedure SetSpacing(const Value: Integer);
 
-      procedure SetDetail(const Value: string);
       procedure SetSelectMode(const Value: TUSelectMode);
       procedure SetSelected(const Value: Boolean);
+
+      procedure SetDetail(const Value: string);
+      procedure SetTransparent(const Value: Boolean);
 
       //  Getters
       function GetSelected: Boolean;
@@ -60,7 +64,6 @@ type
       //  Messages
       procedure WM_SetFocus(var Msg: TWMSetFocus); message WM_SETFOCUS;
       procedure WM_KillFocus(var Msg: TWMKillFocus); message WM_KILLFOCUS;
-      procedure WM_LButtonDblClk(var Msg: TWMLButtonDblClk); message WM_LBUTTONDBLCLK;
       procedure WM_LButtonDown(var Msg: TWMLButtonDown); message WM_LBUTTONDOWN;
       procedure WM_LButtonUp(var Msg: TWMLButtonUp); message WM_LBUTTONUP;
 
@@ -99,9 +102,11 @@ type
       property ImageSpace: Integer read FImageSpace write SetImageSpace default 40;
       property Spacing: Integer read FSpacing write SetSpacing default 10;
       
-      property Detail: string read FDetail write SetDetail nodefault;
       property SelectMode: TUSelectMode read FSelectMode write SetSelectMode default smNone;
       property Selected: Boolean read GetSelected write SetSelected default false;
+
+      property Detail: string read FDetail write SetDetail nodefault;
+      property Transparent: Boolean read FTransparent write SetTransparent default false;
 
       //  Modify default props
       property BevelOuter default bvNone;
@@ -160,11 +165,20 @@ begin
   else
     begin
       IsSelected := Selected;
-      if not IsSelected then
-        //  Get color from colorset
+
+      //  Transparent
+      if Transparent and (ButtonState = csNone) then
+        begin
+          ParentColor := true;
+          BackColor := Color;
+        end
+
+      //  Not selected
+      else if not IsSelected then
         BackColor := _BackColor.GetColor(TM, ButtonState, IsSelected)
+
+      //  Selected
       else
-        //  Change lightness of color
         BackColor := ColorChangeLightness(AccentColor, _BackColor.GetColor(TM, ButtonState, IsSelected));
 
       //  Update text color from background
@@ -324,6 +338,16 @@ begin
     end;
 end;
 
+procedure TUListButton.SetTransparent(const Value: Boolean);
+begin
+  if Value <> FTransparent then
+    begin
+      FTransparent := Value;
+      UpdateColors;
+      Repaint;
+    end;
+end;
+
 //  CHILD EVENTS
 
 procedure TUListButton.CustomBackColor_OnChange(Sender: TObject);
@@ -337,6 +361,9 @@ end;
 constructor TUListButton.Create(aOwner: TComponent);
 begin
   inherited;
+
+  ControlStyle := ControlStyle - [csDoubleClicks];
+
   FButtonState := csNone;
   FImageKind := ikFontIcon;
   FImageIndex := -1;
@@ -344,9 +371,10 @@ begin
   FOrientation := oHorizontal;
   FImageSpace := 40;
   FSpacing := 10;
-  FDetail := 'Detail';
   FSelectMode := smNone;
   FSelected := false;
+  FDetail := 'Detail';
+  FTransparent := false;
 
   FIconFont := TFont.Create;
   IconFont.Name := 'Segoe MDL2 Assets';
@@ -462,13 +490,6 @@ begin
       UpdateColors;
       Repaint;
     end;
-end;
-
-procedure TUListButton.WM_LButtonDblClk(var Msg: TWMLButtonDblClk);
-begin
-  if not Enabled then exit;
-  ButtonState := csPress;
-  inherited;
 end;
 
 procedure TUListButton.WM_LButtonDown(var Msg: TWMLButtonDown);
