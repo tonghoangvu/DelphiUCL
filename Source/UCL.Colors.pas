@@ -138,6 +138,10 @@ var
   HYPERLINK_FONT_SIZE: Byte;
   HYPERLINK_TEXT: TUStateColorSet;
 
+  //  Edit
+  EDIT_BACK: TUThemeColorSet;
+  EDIT_BORDER: TUStateColorSet;
+
 function SelectThemeManager(Control: TControl): TUThemeManager;
 function SelectColorSet(const TM: TUThemeManager;
   CustomColorset, DefaultColorset: TUThemeColorSet): TUThemeColorSet; overload;
@@ -524,6 +528,12 @@ initialization
   HYPERLINK_TEXT.SetLightColor($D77800, clGray, clMedGray, $D77800, clGray, clMedGray);
   HYPERLINK_TEXT.SetDarkColor($D77800, clMedGray, clGray, $D77800, clMedGray, clGray);
 
+  //  Edit
+  EDIT_BACK := TUThemeColorSet.Create($FFFFFF, $FFFFFF, $000000);
+  EDIT_BORDER := TUStateColorSet.Create;
+  EDIT_BORDER.SetLightColor($999999, $666666, $D77800, $D77800, $D77800, $D77800);
+  EDIT_BORDER.SetDarkColor($666666, $999999, $D77800, $D77800, $D77800, $D77800);
+
 finalization
   TOOLTIP_BACK.Free;
   TOOLTIP_BORDER.Free;
@@ -549,5 +559,8 @@ finalization
   SLIDER_CURSOR.Free;
 
   HYPERLINK_TEXT.Free;
+
+  EDIT_BACK.Free;
+  EDIT_BORDER.Free;
 
 end.

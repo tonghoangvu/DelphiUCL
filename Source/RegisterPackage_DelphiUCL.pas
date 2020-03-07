@@ -21,6 +21,7 @@ uses
   , UCL.ListButton
   , UCL.QuickButton
   , UCL.ScrollBox
+  , UCL.Edit
   ;
 
 procedure Register;
@@ -35,7 +36,8 @@ begin
     TUHyperlink,
     TUListButton,
     TUQuickButton,
-    TUScrollBox
+    TUScrollBox,
+    TUEdit
   ]);
 end;
 
