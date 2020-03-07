@@ -713,8 +713,8 @@ object formDemo: TformDemo
     CustomBackColor.DarkSelectedPress = 127
     Orientation = oVertical
     FontIcon = #57692
-    Detail = 'Enable multi selection'
     SelectMode = smToggle
+    Detail = 'Enable multi selection'
   end
   object comboChooseScaleRatio: TComboBox
     Left = 30
@@ -761,8 +761,8 @@ object formDemo: TformDemo
     CustomBackColor.DarkSelectedPress = 127
     Orientation = oVertical
     FontIcon = #57604
-    Detail = 'Enable drag reorder'
     SelectMode = smToggle
+    Detail = 'Enable drag reorder'
   end
   object buttonVListAddItem: TUListButton
     Left = 250
@@ -770,6 +770,7 @@ object formDemo: TformDemo
     Width = 170
     Height = 90
     Caption = 'Add item'
+    ParentColor = True
     TabOrder = 17
     OnClick = buttonVListAddItemClick
     IconFont.Charset = DEFAULT_CHARSET
@@ -793,6 +794,7 @@ object formDemo: TformDemo
     Orientation = oVertical
     FontIcon = #57609
     Detail = 'Add an item to list'
+    Transparent = True
   end
   object boxList: TUScrollBox
     Left = 630
