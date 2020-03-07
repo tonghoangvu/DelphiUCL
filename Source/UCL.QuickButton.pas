@@ -31,7 +31,6 @@ type
       procedure SetCustomAccentColor(const Value: TColor);
 
       //  Messages
-      procedure WM_LButtonDblClk(var Msg: TWMLButtonDblClk); message WM_LBUTTONDBLCLK;
       procedure WM_LButtonDown(var Msg: TWMLButtonDown); message WM_LBUTTONDOWN;
       procedure WM_LButtonUp(var Msg: TWMLButtonUp); message WM_LBUTTONUP;
       procedure CM_MouseEnter(var Msg: TMessage); message CM_MOUSEENTER;
@@ -199,6 +198,9 @@ end;
 constructor TUQuickButton.Create(aOwner: TComponent);
 begin
   inherited;
+
+  ControlStyle := ControlStyle - [csDoubleClicks];
+
   FButtonState := csNone;
   FButtonStyle := qbsNone;
   FCustomAccentColor := $D77800;
@@ -245,13 +247,6 @@ begin
 end;
 
 //  MESSAGES
-
-procedure TUQuickButton.WM_LButtonDblClk(var Msg: TWMLButtonDblClk);
-begin
-  if not Enabled then exit;
-  ButtonState := csPress;
-  inherited;
-end;
 
 procedure TUQuickButton.WM_LButtonDown(var Msg: TWMLButtonDown);
 begin

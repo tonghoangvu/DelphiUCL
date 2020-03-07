@@ -60,7 +60,6 @@ type
       //  Messages
       procedure WM_SetFocus(var Msg: TWMSetFocus); message WM_SETFOCUS;
       procedure WM_KillFocus(var Msg: TWMKillFocus); message WM_KILLFOCUS;
-      procedure WM_LButtonDblClk(var Msg: TWMLButtonDblClk); message WM_LBUTTONDBLCLK;
       procedure WM_LButtonDown(var Msg: TWMLButtonDown); message WM_LBUTTONDOWN;
       procedure WM_LButtonUp(var Msg: TWMLButtonUp); message WM_LBUTTONUP;
 
@@ -337,6 +336,9 @@ end;
 constructor TUListButton.Create(aOwner: TComponent);
 begin
   inherited;
+
+  ControlStyle := ControlStyle - [csDoubleClicks];
+
   FButtonState := csNone;
   FImageKind := ikFontIcon;
   FImageIndex := -1;
@@ -462,13 +464,6 @@ begin
       UpdateColors;
       Repaint;
     end;
-end;
-
-procedure TUListButton.WM_LButtonDblClk(var Msg: TWMLButtonDblClk);
-begin
-  if not Enabled then exit;
-  ButtonState := csPress;
-  inherited;
 end;
 
 procedure TUListButton.WM_LButtonDown(var Msg: TWMLButtonDown);

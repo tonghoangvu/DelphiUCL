@@ -26,7 +26,6 @@ type
       procedure CustomTextColor_OnChange(Sender: TObject);
 
       //  Messages
-      procedure WM_LButtonDblClk(var Msg: TWMLButtonDblClk); message WM_LBUTTONDBLCLK;
       procedure WM_LButtonDown(var Msg: TWMLButtonDown); message WM_LBUTTONDOWN;
       procedure WM_LButtonUp(var Msg: TWMLButtonUp); message WM_LBUTTONUP;
 
@@ -126,6 +125,9 @@ end;
 constructor TUHyperlink.Create(aOwner: TComponent);
 begin
   inherited;
+
+  ControlStyle := ControlStyle - [csDoubleClicks];
+
   FControlState := csNone;
   FEnabled := true;
   FOpenLink := true;
@@ -150,13 +152,6 @@ begin
 end;
 
 //  MESSAGES
-
-procedure TUHyperlink.WM_LButtonDblClk(var Msg: TWMLButtonDblClk);
-begin
-  if not Enabled then exit;
-  ControlState := csPress;
-  inherited;
-end;
 
 procedure TUHyperlink.WM_LButtonDown(var Msg: TWMLButtonDown);
 begin
