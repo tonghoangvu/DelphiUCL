@@ -817,7 +817,7 @@ object formDemo: TformDemo
     CustomBackColor.LightColor = 15132390
     CustomBackColor.DarkColor = 2039583
   end
-  object UEdit1: TUEdit
+  object editSomething: TUEdit
     Left = 140
     Top = 380
     Width = 170
