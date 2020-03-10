@@ -259,11 +259,13 @@ end;
 
 procedure TUForm.ThemeManager_OnChange(Sender: TObject);
 begin
-  UpdateTheme(True);
+  //  For container
+  UpdateTheme(true);
 end;
 
 procedure TUForm.CustomBackColor_OnChange(Sender: TObject);
 begin
+  //  For container
   UpdateTheme(true);
 end;
 
