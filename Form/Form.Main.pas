@@ -3,7 +3,7 @@
 interface
 
 uses
-  UCL.Form, UCL.Classes, UCL.ThemeManager,
+  UCL.Form, UCL.Classes, UCL.ThemeManager, UCL.IntAnimation,
   Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, UCL.Panel, UCL.Utils,
   UCL.Graphics, UCL.CaptionBar, UCL.ProgressBar, UCL.Button, UCL.Slider,
@@ -49,6 +49,7 @@ type
     buttonVListDragReorder: TUListButton;
     buttonVListAddItem: TUListButton;
     editSomething: TUEdit;
+    buttonVListRefreshEffect: TUListButton;
     procedure FormCreate(Sender: TObject);
     procedure comboChooseThemeSelect(Sender: TObject);
     procedure buttonReloadClick(Sender: TObject);
@@ -59,6 +60,7 @@ type
     procedure buttonVListDragReorderClick(Sender: TObject);
     procedure qbuttonFullScreenClick(Sender: TObject);
     procedure buttonVListAddItemClick(Sender: TObject);
+    procedure buttonVListRefreshEffectClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -115,6 +117,29 @@ begin
   for i := 0 to boxList.ControlCount - 1 do
     if boxList.Controls[i] is TUListButton then
       (boxList.Controls[i] as TUListButton).SelectMode := Value;
+end;
+
+procedure TformDemo.buttonVListRefreshEffectClick(Sender: TObject);
+var
+  Ani: TIntAni;
+  Control: TWinControl;
+  Space: Integer;
+begin
+  Control := boxList;
+  Space := 25;
+
+  Ani := TIntAni.Create(0, Space,
+    procedure (V: Integer)
+    begin
+      SetOpacity(Control.Handle, Round(255 * V / Space));
+      Control.Padding.Top := Space - V;
+    end,
+    procedure
+    begin
+      StopOpacity(Handle, false);
+    end);
+  Ani.AniSet.QuickAssign(akOut, afkQuartic, 0, 120, 12);
+  Ani.Start;
 end;
 
 procedure TformDemo.buttonRandomProgressClick(Sender: TObject);

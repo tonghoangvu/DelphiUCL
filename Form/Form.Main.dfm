@@ -686,10 +686,10 @@ object formDemo: TformDemo
     Orientation = oVertical
   end
   object buttonVListMultiSelection: TUListButton
-    Left = 430
-    Top = 335
-    Width = 170
-    Height = 65
+    Left = 330
+    Top = 260
+    Width = 130
+    Height = 70
     Caption = 'Multi selection'
     TabOrder = 13
     OnClick = buttonVListMultiSelectionClick
@@ -713,7 +713,6 @@ object formDemo: TformDemo
     CustomBackColor.DarkSelectedPress = 127
     Orientation = oVertical
     FontIcon = #57692
-    ImageSpace = 37
     SelectMode = smToggle
     Detail = ''
   end
@@ -735,10 +734,10 @@ object formDemo: TformDemo
       '200%')
   end
   object buttonVListDragReorder: TUListButton
-    Left = 430
-    Top = 260
-    Width = 170
-    Height = 65
+    Left = 330
+    Top = 340
+    Width = 130
+    Height = 70
     Caption = 'Drag reorder'
     TabOrder = 16
     OnClick = buttonVListDragReorderClick
@@ -762,15 +761,14 @@ object formDemo: TformDemo
     CustomBackColor.DarkSelectedPress = 127
     Orientation = oVertical
     FontIcon = #57604
-    ImageSpace = 37
     SelectMode = smToggle
     Detail = ''
   end
   object buttonVListAddItem: TUListButton
-    Left = 430
-    Top = 410
-    Width = 170
-    Height = 65
+    Left = 470
+    Top = 260
+    Width = 130
+    Height = 70
     Caption = 'Add item'
     ParentColor = True
     TabOrder = 17
@@ -795,30 +793,7 @@ object formDemo: TformDemo
     CustomBackColor.DarkSelectedPress = 127
     Orientation = oVertical
     FontIcon = #57609
-    ImageSpace = 37
     Detail = ''
-    Transparent = True
-  end
-  object boxList: TUScrollBox
-    Left = 630
-    Top = 32
-    Width = 240
-    Height = 478
-    HorzScrollBar.Tracking = True
-    VertScrollBar.Tracking = True
-    Align = alRight
-    Color = 15132390
-    ParentColor = False
-    TabOrder = 15
-    AniSet.AniKind = akOut
-    AniSet.AniFunctionKind = afkQuintic
-    AniSet.DelayStartTime = 0
-    AniSet.Duration = 120
-    AniSet.Step = 11
-    CustomBackColor.Enabled = False
-    CustomBackColor.Color = 15132390
-    CustomBackColor.LightColor = 15132390
-    CustomBackColor.DarkColor = 2039583
   end
   object editSomething: TUEdit
     Left = 140
@@ -844,5 +819,56 @@ object formDemo: TformDemo
     CustomBorderColor.DarkSelectedNone = 14120960
     CustomBorderColor.DarkSelectedHover = 14120960
     CustomBorderColor.DarkSelectedPress = 14120960
+  end
+  object buttonVListRefreshEffect: TUListButton
+    Left = 470
+    Top = 340
+    Width = 130
+    Height = 70
+    Caption = 'Refresh effect'
+    TabOrder = 19
+    OnClick = buttonVListRefreshEffectClick
+    IconFont.Charset = DEFAULT_CHARSET
+    IconFont.Color = clWindowText
+    IconFont.Height = -16
+    IconFont.Name = 'Segoe MDL2 Assets'
+    IconFont.Style = []
+    CustomBackColor.Enabled = False
+    CustomBackColor.LightNone = 15132390
+    CustomBackColor.LightHover = 13619151
+    CustomBackColor.LightPress = 12105912
+    CustomBackColor.LightSelectedNone = 127
+    CustomBackColor.LightSelectedHover = 103
+    CustomBackColor.LightSelectedPress = 89
+    CustomBackColor.DarkNone = 2039583
+    CustomBackColor.DarkHover = 3487029
+    CustomBackColor.DarkPress = 5000268
+    CustomBackColor.DarkSelectedNone = 89
+    CustomBackColor.DarkSelectedHover = 103
+    CustomBackColor.DarkSelectedPress = 127
+    Orientation = oVertical
+    FontIcon = #57673
+    Detail = ''
+  end
+  object boxList: TUScrollBox
+    Left = 630
+    Top = 32
+    Width = 240
+    Height = 478
+    HorzScrollBar.Tracking = True
+    VertScrollBar.Tracking = True
+    Align = alRight
+    Color = 15132390
+    ParentColor = False
+    TabOrder = 15
+    AniSet.AniKind = akOut
+    AniSet.AniFunctionKind = afkQuintic
+    AniSet.DelayStartTime = 0
+    AniSet.Duration = 120
+    AniSet.Step = 11
+    CustomBackColor.Enabled = False
+    CustomBackColor.Color = 15132390
+    CustomBackColor.LightColor = 15132390
+    CustomBackColor.DarkColor = 2039583
   end
 end
