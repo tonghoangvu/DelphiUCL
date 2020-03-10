@@ -13,11 +13,15 @@ type
 
       FCustomBackColor: TUThemeColorSet;
 
+      FCollapsed: Boolean;
       FDragToMove: Boolean;
       FSystemMenuEnabled: Boolean;
 
       //  Internal
       procedure UpdateColors;
+
+      //  Setters
+      procedure SetCollapsed(const Value: Boolean);
 
       //  Child events
       procedure CustomBackColor_OnChange(Sender: TObject);
@@ -27,6 +31,8 @@ type
       procedure WM_LButtonDown(var Msg: TWMLButtonDown); message WM_LBUTTONDOWN;
       procedure WM_RButtonUp(var Msg: TMessage); message WM_RBUTTONUP;
       procedure WM_NCHitTest(var Msg: TWMNCHitTest); message WM_NCHITTEST;
+      procedure CM_MouseEnter(var Msg: TMessage); message CM_MOUSEENTER;
+      procedure CM_MouseLeave(var Msg: TMessage); message CM_MOUSELEAVE;
 
     protected
       procedure Paint; override;
@@ -42,6 +48,7 @@ type
     published
       property CustomBackColor: TUThemeColorSet read FCustomBackColor write FCustomBackColor;
 
+      property Collapsed: Boolean read FCollapsed write SetCollapsed default false;
       property DragToMove: Boolean read FDragToMove write FDragToMove default true;
       property SystemMenuEnabled: Boolean read FSystemMenuEnabled write FSystemMenuEnabled default true;
 
@@ -56,6 +63,7 @@ type
 implementation
 
 uses
+  UCL.IntAnimation,
   UCL.Graphics;
 
 { TUCaptionBar }
@@ -102,6 +110,40 @@ begin
   Color := BackColor;
 end;
 
+//  SETTERS
+
+procedure TUCaptionBar.SetCollapsed(const Value: Boolean);
+var 
+  Ani: TIntAni;
+  Delta: Integer;
+begin
+  if Value <> FCollapsed then
+    begin
+      FCollapsed := Value;
+
+      if csDesigning in ComponentState then
+        exit;
+
+      ShowCaption := not Value;
+      if Value then
+        Padding.Bottom := 1
+      else
+        Padding.Bottom := 0;
+      if Value then
+        Delta := 1 - Height
+      else
+        Delta := 32 - Height;
+
+      Ani := TIntAni.Create(Height, Delta,
+        procedure (V: Integer)
+        begin
+          Height := V;
+        end, nil);
+      Ani.AniSet.QuickAssign(akOut, afkQuartic, 0, 120, 24);
+      Ani.Start;
+    end;
+end;
+
 //  CHILD EVENTS
 
 procedure TUCaptionBar.CustomBackColor_OnChange(Sender: TObject);
@@ -118,6 +160,7 @@ begin
   BackColor := $F2F2F2;
   TextColor := GetTextColorFromBackground(BackColor);
 
+  FCollapsed := false;
   FDragToMove := true;
   FSystemMenuEnabled := true;
 
@@ -225,6 +268,27 @@ begin
       if P.Y < 5 then
         Msg.Result := HTTRANSPARENT;  //  Send event to parent
     end;
+end;
+
+procedure TUCaptionBar.CM_MouseEnter(var Msg: TMessage);
+var
+  ParentForm: TCustomForm;
+begin
+  inherited;
+  ParentForm := GetParentForm(Self, true);
+  if (ParentForm is TUForm) and ((ParentForm as TUForm).FullScreen) then
+    Collapsed := false;
+end;
+
+procedure TUCaptionBar.CM_MouseLeave(var Msg: TMessage);
+var
+  ParentForm: TCustomForm;
+begin
+  inherited;
+  ParentForm := GetParentForm(Self, true);
+  if (ParentForm is TUForm) and ((ParentForm as TUForm).FullScreen) then
+    if not PtInRect(GetClientRect, ScreenToClient(Mouse.CursorPos)) then
+      Collapsed := true;
 end;
 
 end.
