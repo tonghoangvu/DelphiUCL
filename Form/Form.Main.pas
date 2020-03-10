@@ -48,7 +48,7 @@ type
     boxList: TUScrollBox;
     buttonVListDragReorder: TUListButton;
     buttonVListAddItem: TUListButton;
-    UEdit1: TUEdit;
+    editSomething: TUEdit;
     procedure FormCreate(Sender: TObject);
     procedure comboChooseThemeSelect(Sender: TObject);
     procedure buttonReloadClick(Sender: TObject);

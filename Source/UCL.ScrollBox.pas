@@ -112,7 +112,8 @@ end;
 
 procedure TUScrollBox.CustomBackColor_OnChange(Sender: TObject);
 begin
-  UpdateTheme(false);
+  //  For container
+  UpdateTheme(true);
 end;
 
 //  MAIN CLASS

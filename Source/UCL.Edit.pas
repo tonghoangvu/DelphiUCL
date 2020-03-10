@@ -192,7 +192,7 @@ begin
   AutoSize := false;
   BorderStyle := bsNone;
   BevelKind := bkFlat;
-  BorderWidth := 3;
+  BorderWidth := 4;
   Ctl3D := false;
   Height := 30;
 

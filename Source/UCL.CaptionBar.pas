@@ -106,8 +106,8 @@ end;
 
 procedure TUCaptionBar.CustomBackColor_OnChange(Sender: TObject);
 begin
-  UpdateColors;
-  Repaint;
+  //  For container
+  UpdateTheme(true);
 end;
 
 //  MAIN CLASS
