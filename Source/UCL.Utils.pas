@@ -24,6 +24,10 @@ procedure AssignBlendBitmap(const Bmp: TBitmap; Color: TColor);
 procedure AssignGradientBlendBitmap(const Bmp: TBitmap; Color: TColor; A1, A2: Byte; Direction: TUDirection);
 procedure PaintBlendBitmap(const Canvas: TCanvas; DestRect: TRect; const BlendBitmap: TBitmap; BlendFunc: BLENDFUNCTION);
 
+//  Opacity
+procedure SetOpacity(Handle: THandle; Value: Byte);
+procedure StopOpacity(Handle: THandle; Repaint: Boolean);
+
 // OS
 function CheckMaxWin32Version(AMajor: Integer; AMinor: Integer = 0): Boolean;
 
@@ -213,6 +217,30 @@ begin
     BlendBitmap.Canvas.Handle, 0, 0, BlendBitmap.Width, BlendBitmap.Height,
     BlendFunc);
 end;
+
+//  OPACITY
+
+procedure SetOpacity(Handle: THandle; Value: Byte);
+var
+  Style: Longint;
+begin
+  Style := GetWindowLong(Handle, GWL_EXSTYLE);
+  if (Style and WS_EX_LAYERED) = 0 then
+    SetWindowLong(Handle, GWL_EXSTYLE, Style or WS_EX_LAYERED);
+  SetLayeredWindowAttributes(Handle, 0, Value, LWA_ALPHA);
+end;
+
+procedure StopOpacity(Handle: THandle; Repaint: Boolean);
+var
+  Style: Longint;
+begin
+  Style := GetWindowLong(Handle, GWL_EXSTYLE);
+  SetWindowLong(Handle, GWL_EXSTYLE, Style and not WS_EX_LAYERED);
+  if Repaint then
+    RedrawWindow(Handle, nil, 0, RDW_ERASE or RDW_INVALIDATE or RDW_FRAME or RDW_ALLCHILDREN);
+end;
+
+//  OS
 
 function CheckMaxWin32Version(AMajor: Integer; AMinor: Integer = 0): Boolean;
 begin

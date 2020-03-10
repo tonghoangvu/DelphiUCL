@@ -139,7 +139,7 @@ begin
         begin
           Height := V;
         end, nil);
-      Ani.AniSet.QuickAssign(akOut, afkQuartic, 0, 120, 24);
+      Ani.AniSet.QuickAssign(akOut, afkQuartic, 0, 120, 12);
       Ani.Start;
     end;
 end;

@@ -713,6 +713,7 @@ object formDemo: TformDemo
     CustomBackColor.DarkSelectedPress = 127
     Orientation = oVertical
     FontIcon = #57692
+    ImageSpace = 37
     SelectMode = smToggle
     Detail = ''
   end
@@ -761,6 +762,7 @@ object formDemo: TformDemo
     CustomBackColor.DarkSelectedPress = 127
     Orientation = oVertical
     FontIcon = #57604
+    ImageSpace = 37
     SelectMode = smToggle
     Detail = ''
   end
@@ -793,6 +795,7 @@ object formDemo: TformDemo
     CustomBackColor.DarkSelectedPress = 127
     Orientation = oVertical
     FontIcon = #57609
+    ImageSpace = 37
     Detail = ''
     Transparent = True
   end
