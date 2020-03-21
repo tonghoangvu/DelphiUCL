@@ -57,7 +57,8 @@ contains
   UCL.QuickButton in 'Source\UCL.QuickButton.pas',
   UCL.ScrollBox in 'Source\UCL.ScrollBox.pas',
   UCL.Edit in 'Source\UCL.Edit.pas',
-  UCL.FontIcons in 'Source\UCL.FontIcons.pas';
+  UCL.FontIcons in 'Source\UCL.FontIcons.pas',
+  UCL.CheckBox in 'Source\UCL.CheckBox.pas';
 
 end.
 
