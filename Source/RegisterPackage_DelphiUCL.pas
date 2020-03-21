@@ -22,6 +22,7 @@ uses
   , UCL.QuickButton
   , UCL.ScrollBox
   , UCL.Edit
+  , UCL.CheckBox
   ;
 
 procedure Register;
@@ -37,7 +38,8 @@ begin
     TUListButton,
     TUQuickButton,
     TUScrollBox,
-    TUEdit
+    TUEdit,
+    TUCheckBox
   ]);
 end;
 
