@@ -72,6 +72,9 @@ var
 
 implementation
 
+uses
+  UCL.FontIcons;
+
 {$R *.dfm}
 
 procedure TformDemo.buttonReloadClick(Sender: TObject);
@@ -182,9 +185,9 @@ procedure TformDemo.qbuttonFullScreenClick(Sender: TObject);
 begin
   FullScreen := not FullScreen;
   if FullScreen then
-    qbuttonFullScreen.Caption := ''
+    qbuttonFullScreen.Caption := UF_EXIT_FULL_SCREEN
   else
-    qbuttonFullScreen.Caption := '';
+    qbuttonFullScreen.Caption := UF_FULL_SCREEN;
 end;
 
 procedure TformDemo.sliderVertChange(Sender: TObject);
