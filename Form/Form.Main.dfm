@@ -288,6 +288,31 @@ object formDemo: TformDemo
     Orientation = oVertical
     OnChange = sliderVertChange
   end
+  object checkbox2States: TUCheckBox
+    Left = 140
+    Top = 420
+    Width = 180
+    Height = 30
+    IconFont.Charset = DEFAULT_CHARSET
+    IconFont.Color = clWindowText
+    IconFont.Height = -20
+    IconFont.Name = 'Segoe MDL2 Assets'
+    IconFont.Style = []
+    Caption = '2 states checkbox'
+  end
+  object checkbox3States: TUCheckBox
+    Left = 140
+    Top = 450
+    Width = 180
+    Height = 30
+    IconFont.Charset = DEFAULT_CHARSET
+    IconFont.Color = clWindowText
+    IconFont.Height = -20
+    IconFont.Name = 'Segoe MDL2 Assets'
+    IconFont.Style = []
+    AllowGrayed = True
+    Caption = '3 states checkbox'
+  end
   object panelTest: TUPanel
     Left = 30
     Top = 110

@@ -116,6 +116,9 @@ type
 
 implementation
 
+uses
+  UCL.FontIcons;
+
 { TUListButton }
 
 //  INTERFACE
@@ -367,7 +370,7 @@ begin
   FButtonState := csNone;
   FImageKind := ikFontIcon;
   FImageIndex := -1;
-  FFontIcon := '';
+  FFontIcon := UF_BACK;
   FOrientation := oHorizontal;
   FImageSpace := 40;
   FSpacing := 10;

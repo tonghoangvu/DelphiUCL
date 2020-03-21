@@ -8,7 +8,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, UCL.Panel, UCL.Utils,
   UCL.Graphics, UCL.CaptionBar, UCL.ProgressBar, UCL.Button, UCL.Slider,
   UCL.Text, UCL.Hyperlink, UCL.ListButton, UCL.QuickButton, UCL.DragReorder,
-  UCL.ScrollBox, UCL.Edit;
+  UCL.ScrollBox, UCL.Edit, UCL.CheckBox;
 
 type
   TformDemo = class(TUForm)
@@ -50,6 +50,8 @@ type
     buttonVListAddItem: TUListButton;
     editSomething: TUEdit;
     buttonVListRefreshEffect: TUListButton;
+    checkbox2States: TUCheckBox;
+    checkbox3States: TUCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure comboChooseThemeSelect(Sender: TObject);
     procedure buttonReloadClick(Sender: TObject);
@@ -71,6 +73,9 @@ var
   formDemo: TformDemo;
 
 implementation
+
+uses
+  UCL.FontIcons;
 
 {$R *.dfm}
 
@@ -175,16 +180,16 @@ begin
   panelTest.Hint :=
     'This is line 1' + sLineBreak +
     'This is line 2' + sLineBreak +
-    'This is a multi-line tooltip';
+    'This is a multi-line tooltip' + sLineBreak;
 end;
 
 procedure TformDemo.qbuttonFullScreenClick(Sender: TObject);
 begin
   FullScreen := not FullScreen;
   if FullScreen then
-    qbuttonFullScreen.Caption := ''
+    qbuttonFullScreen.Caption := UF_EXIT_FULL_SCREEN
   else
-    qbuttonFullScreen.Caption := '';
+    qbuttonFullScreen.Caption := UF_FULL_SCREEN;
 end;
 
 procedure TformDemo.sliderVertChange(Sender: TObject);

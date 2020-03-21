@@ -64,7 +64,7 @@ type
 implementation
 
 uses
-  UCL.Form;
+  UCL.Form, UCL.FontIcons;
 
 { TUQuickButton }
 
@@ -166,11 +166,11 @@ begin
         qbsNone, qbsHighlight:  //  Custom caption 
           ;
         qbsQuit:
-          Caption := '';
+          Caption := UF_CLOSE;
         qbsMax:
-          Caption := '';
+          Caption := UF_MAXIMIZE;
         qbsMin:
-          Caption := '';
+          Caption := UF_MINIMIZE;
       end;
     end;
 end;
@@ -210,7 +210,7 @@ begin
   FCustomBackColor.Assign(QUICKBUTTON_BACK);
 
   //  Modify default props
-  Caption := '';
+  Caption := UF_BACK;
   Font.Name := 'Segoe MDL2 Assets';
   Font.Size := 10;
   Height := 32;
