@@ -290,7 +290,7 @@ object formDemo: TformDemo
   end
   object checkbox2States: TUCheckBox
     Left = 140
-    Top = 420
+    Top = 430
     Width = 180
     Height = 30
     IconFont.Charset = DEFAULT_CHARSET
@@ -302,7 +302,7 @@ object formDemo: TformDemo
   end
   object checkbox3States: TUCheckBox
     Left = 140
-    Top = 450
+    Top = 460
     Width = 180
     Height = 30
     IconFont.Charset = DEFAULT_CHARSET
@@ -312,6 +312,32 @@ object formDemo: TformDemo
     IconFont.Style = []
     AllowGrayed = True
     Caption = '3 states checkbox'
+  end
+  object radioA: TURadioButton
+    Left = 330
+    Top = 430
+    Width = 180
+    Height = 30
+    IconFont.Charset = DEFAULT_CHARSET
+    IconFont.Color = clWindowText
+    IconFont.Height = -20
+    IconFont.Name = 'Segoe MDL2 Assets'
+    IconFont.Style = []
+    Group = ''
+    Caption = 'Radio button A'
+  end
+  object radioB: TURadioButton
+    Left = 330
+    Top = 460
+    Width = 180
+    Height = 30
+    IconFont.Charset = DEFAULT_CHARSET
+    IconFont.Color = clWindowText
+    IconFont.Height = -20
+    IconFont.Name = 'Segoe MDL2 Assets'
+    IconFont.Style = []
+    Group = ''
+    Caption = 'Radio button B'
   end
   object panelTest: TUPanel
     Left = 30

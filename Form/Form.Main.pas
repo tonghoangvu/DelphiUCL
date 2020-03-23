@@ -8,7 +8,7 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, UCL.Panel, UCL.Utils,
   UCL.Graphics, UCL.CaptionBar, UCL.ProgressBar, UCL.Button, UCL.Slider,
   UCL.Text, UCL.Hyperlink, UCL.ListButton, UCL.QuickButton, UCL.DragReorder,
-  UCL.ScrollBox, UCL.Edit, UCL.CheckBox;
+  UCL.ScrollBox, UCL.Edit, UCL.CheckBox, UCL.RadioButton;
 
 type
   TformDemo = class(TUForm)
@@ -52,6 +52,8 @@ type
     buttonVListRefreshEffect: TUListButton;
     checkbox2States: TUCheckBox;
     checkbox3States: TUCheckBox;
+    radioA: TURadioButton;
+    radioB: TURadioButton;
     procedure FormCreate(Sender: TObject);
     procedure comboChooseThemeSelect(Sender: TObject);
     procedure buttonReloadClick(Sender: TObject);
