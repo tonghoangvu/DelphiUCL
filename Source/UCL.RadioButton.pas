@@ -9,7 +9,7 @@ uses
 type
   TURadioButton = class(TUGraphicControl, IUControl)
     private
-      var ActiveColor, TextColor: TColor;
+      var AccentColor, TextColor: TColor;
       var IconRect, TextRect: TRect;
 
       FIconFont: TFont;
@@ -91,12 +91,12 @@ begin
 
   if not Enabled then
     begin
-      ActiveColor := $808080;
+      AccentColor := $808080;
       TextColor := $808080;
     end
   else
     begin
-      ActiveColor := SelectAccentColor(TM, CustomAccentColor);
+      AccentColor := SelectAccentColor(TM, CustomAccentColor);
       if (TM <> nil) and (TM.Theme = utDark) then
         TextColor := $FFFFFF
       else
@@ -221,7 +221,7 @@ begin
     end
   else
     begin
-      Canvas.Font.Color := ActiveColor;
+      Canvas.Font.Color := AccentColor;
       DrawTextRect(Canvas, taCenter, taVerticalCenter, IconRect, UF_RADIO_OUTLINE, Transparent);
 
       Canvas.Font.Color := TextColor;
