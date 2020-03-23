@@ -104,7 +104,6 @@ begin
       else
         TextColor := $000000;
     end;
-
 end;
 
 procedure TUCheckBox.UpdateRects;
