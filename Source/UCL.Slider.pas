@@ -12,7 +12,7 @@ type
       var BarHeight: Integer;
       var CurWidth, CurHeight, CurCorner: Integer;
       var ActiveRect, NormalRect, CurRect: TRect;
-      var ActiveColor, BackColor, CurColor: TColor;
+      var AccentColor, BackColor, CurColor: TColor;
 
       FCustomBackColor: TUStateColorSet;
       FCustomCursorColor: TUStateColorSet;
@@ -116,24 +116,24 @@ begin
   if not Enabled then
     begin
       if not IsDark then
-        ActiveColor := $CCCCCC
+        AccentColor := $CCCCCC
       else
-        ActiveColor := $333333;
-      BackColor := ActiveColor;
-      CurColor := ActiveColor;
+        AccentColor := $333333;
+      BackColor := AccentColor;
+      CurColor := AccentColor;
     end
 
   //  Normal
   else
     begin
-      ActiveColor := SelectAccentColor(TM, $D77800);
+      AccentColor := SelectAccentColor(TM, $D77800);
 
       _BackColor := SelectColorSet(TM, CustomBackColor, SLIDER_BACK);
       _CurColor := SelectColorSet(TM, CustomCursorColor, SLIDER_CURSOR);
 
       BackColor := _BackColor.GetColor(TM, ControlState, false);
       if ControlState = csNone then
-        CurColor := ActiveColor
+        CurColor := AccentColor
       else
         CurColor := _CurColor.GetColor(TM, ControlState, false);
     end;
@@ -300,7 +300,7 @@ begin
   inherited;
 
   //  Paint active part
-  Canvas.Brush.Handle := CreateSolidBrushWithAlpha(ActiveColor, 255);
+  Canvas.Brush.Handle := CreateSolidBrushWithAlpha(AccentColor, 255);
   Canvas.FillRect(ActiveRect);
 
   //  Paint normal part

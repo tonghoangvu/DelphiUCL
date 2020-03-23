@@ -11,7 +11,7 @@ type
 
   TUCheckBox = class(TUGraphicControl, IUControl)
     private
-      var ActiveColor, TextColor: TColor;
+      var AccentColor, TextColor: TColor;
       var IconRect, TextRect: TRect;
 
       FIconFont: TFont;
@@ -93,12 +93,12 @@ begin
 
   if not Enabled then
     begin
-      ActiveColor := $808080;
+      AccentColor := $808080;
       TextColor := $808080;
     end
   else
     begin
-      ActiveColor := SelectAccentColor(TM, CustomAccentColor);
+      AccentColor := SelectAccentColor(TM, CustomAccentColor);
       if (TM <> nil) and (TM.Theme = utDark) then
         TextColor := $FFFFFF
       else
@@ -231,7 +231,7 @@ begin
   case State of
     cbsChecked:
       begin
-        Canvas.Font.Color := ActiveColor;
+        Canvas.Font.Color := AccentColor;
         DrawTextRect(Canvas, taCenter, taVerticalCenter, IconRect, UF_CHECKBOX_CHECKED, Transparent);
       end;
 
@@ -243,7 +243,7 @@ begin
 
     cbsGrayed:
       begin
-        Canvas.Font.Color := ActiveColor;
+        Canvas.Font.Color := AccentColor;
         DrawTextRect(Canvas, taCenter, taVerticalCenter, IconRect, UF_CHECKBOX_OUTLINE, Transparent);
 
         Canvas.Font.Color := TextColor;
