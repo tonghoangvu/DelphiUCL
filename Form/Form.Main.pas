@@ -16,7 +16,6 @@ type
     comboChooseTheme: TComboBox;
     buttonReload: TButton;
     captionbarMain: TUCaptionBar;
-    buttonRandomProgress: TButton;
     progressHorz: TUProgressBar;
     buttonFocus: TUButton;
     buttonToggle: TUButton;
@@ -54,6 +53,7 @@ type
     checkbox3States: TUCheckBox;
     radioA: TURadioButton;
     radioB: TURadioButton;
+    buttonRandomProgress: TUButton;
     procedure FormCreate(Sender: TObject);
     procedure comboChooseThemeSelect(Sender: TObject);
     procedure buttonReloadClick(Sender: TObject);
@@ -182,7 +182,7 @@ begin
   panelTest.Hint :=
     'This is line 1' + sLineBreak +
     'This is line 2' + sLineBreak +
-    'This is a multi-line tooltip' + sLineBreak;
+    'This is a multi-line tooltip';
 end;
 
 procedure TformDemo.qbuttonFullScreenClick(Sender: TObject);
