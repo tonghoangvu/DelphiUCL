@@ -299,19 +299,24 @@ procedure TUSlider.Paint;
 begin
   inherited;
 
-  //  Paint active part
-  Canvas.Brush.Handle := CreateSolidBrushWithAlpha(AccentColor, 255);
-  Canvas.FillRect(ActiveRect);
+  Canvas.Lock;
+  try
+    //  Paint active part
+    Canvas.Brush.Handle := CreateSolidBrushWithAlpha(AccentColor, 255);
+    Canvas.FillRect(ActiveRect);
 
-  //  Paint normal part
-  Canvas.Brush.Handle := CreateSolidBrushWithAlpha(BackColor, 255);
-  Canvas.FillRect(NormalRect);
+    //  Paint normal part
+    Canvas.Brush.Handle := CreateSolidBrushWithAlpha(BackColor, 255);
+    Canvas.FillRect(NormalRect);
 
-  //  Paint cursor
-  Canvas.Pen.Color := CurColor;
-  Canvas.Brush.Handle := CreateSolidBrushWithAlpha(CurColor, 255);
-  Canvas.RoundRect(CurRect, CurCorner, CurCorner);
-  Canvas.FloodFill(CurRect.Left + CurRect.Width div 2, CurRect.Top + CurRect.Height div 2, CurColor, fsSurface);
+    //  Paint cursor
+    Canvas.Pen.Color := CurColor;
+    Canvas.Brush.Handle := CreateSolidBrushWithAlpha(CurColor, 255);
+    Canvas.RoundRect(CurRect, CurCorner, CurCorner);
+    Canvas.FloodFill(CurRect.Left + CurRect.Width div 2, CurRect.Top + CurRect.Height div 2, CurColor, fsSurface);
+  finally
+    Canvas.Unlock;
+  end;
 end;
 
 procedure TUSlider.Resize;

@@ -126,17 +126,22 @@ end;
 
 procedure TUPanel.Paint;
 begin
-  //  Paint background
-  Canvas.Brush.Color := BackColor;
-  Canvas.FillRect(Rect(0, 0, Width, Height));
+  Canvas.Lock;
+  try
+    //  Paint background
+    Canvas.Brush.Color := BackColor;
+    Canvas.FillRect(Rect(0, 0, Width, Height));
 
-  //  Paint text
-  if ShowCaption then
-    begin
-      Canvas.Font.Assign(Font);
-      Canvas.Font.Color := TextColor;
-      DrawTextRect(Canvas, Alignment, VerticalAlignment, Rect(0, 0, Width, Height), Caption, false);
-    end;
+    //  Paint text
+    if ShowCaption then
+      begin
+        Canvas.Font.Assign(Font);
+        Canvas.Font.Color := TextColor;
+        DrawTextRect(Canvas, Alignment, VerticalAlignment, Rect(0, 0, Width, Height), Caption, false);
+      end;
+  finally
+    Canvas.Unlock;
+  end;
 end;
 
 end.
