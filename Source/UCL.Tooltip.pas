@@ -97,6 +97,8 @@ procedure TUCustomTooltip.Paint;
 var
   TextRect: TRect;
 begin
+  //  Do not inherited
+
   Canvas.Lock;
   try
     //  Paint background

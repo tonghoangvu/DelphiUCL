@@ -413,6 +413,8 @@ procedure TUListButton.Paint;
 var 
   ImgX, ImgY: Integer;
 begin
+  //  Do not inherited
+
   Canvas.Lock;
   try
     //  Paint background

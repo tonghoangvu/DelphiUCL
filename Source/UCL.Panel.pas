@@ -126,6 +126,8 @@ end;
 
 procedure TUPanel.Paint;
 begin
+  //  Do not inherited
+
   Canvas.Lock;
   try
     //  Paint background

@@ -189,6 +189,8 @@ end;
 
 procedure TUCaptionBar.Paint;
 begin
+  //  Do not inherited
+
   Canvas.Lock;
   try
     //  Paint background
