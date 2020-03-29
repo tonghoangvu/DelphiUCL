@@ -92,7 +92,8 @@ var
 begin
   Item := TUListButton.Create(boxList);
   Item.Parent := boxList;
-  Item.Caption := 'List button ' + boxList.ControlCount.ToString;
+  Item.Caption := 'List button ' + (boxList.ControlCount - 1).ToString;
+  Item.FontIcon := UF_SEARCH;
   Item.Align := alTop;
   Item.SelectMode := smFocus;
 end;
