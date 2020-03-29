@@ -16,6 +16,7 @@ type
       var BackColor: TColor;
 
       FAniSet: TIntAniSet;
+      FCustomBackColor: TUThemeColorSet;
 
       FItemWidth: Integer;
       FItemHeight: Integer;
@@ -25,6 +26,7 @@ type
       FOnItemClick: TIndexNotifyEvent;
 
       //  Child events
+      procedure CustomBackColor_OnChange(Sender: TObject);
       procedure PopupForm_OnDeactivate(Sender: TObject);
       procedure PopupItem_OnClick(Sender: TObject);
 
@@ -45,6 +47,7 @@ type
 
     published
       property AniSet: TIntAniSet read FAniSet write FAniSet;
+      property CustomBackColor: TUThemeColorSet read FCustomBackColor write FCustomBackColor;
 
       property ItemWidth: Integer read FItemWidth write FItemWidth default 200;
       property ItemHeight: Integer read FItemHeight write FItemHeight default 32;
@@ -68,6 +71,7 @@ end;
 procedure TUPopupMenu.UpdateTheme(const UpdateChildren: Boolean);
 var
   TM: TUThemeManager;
+  _BackColor: TUThemeColorSet;
 begin
   //  Update colors
   if (Owner is TForm) and (Owner <> nil) then
@@ -75,18 +79,18 @@ begin
   else
     TM := nil;
 
-  if TM = nil then
-    BackColor := $E6E6E6
-  else if TM.Theme = utLight then
-    BackColor := $E6E6E6
-  else
-    BackColor := $1F1F1F;
+  _BackColor := SelectColorSet(TM, CustomBackColor, POPUP_BACK);
+  BackColor := _BackColor.GetColor(TM);
 
-  CloseMenu;
   //  Do not update children
 end;
 
 //  CHILD EVENT
+
+procedure TUPopupMenu.CustomBackColor_OnChange(Sender: TObject);
+begin
+  UpdateTheme(false);
+end;
 
 procedure TUPopupMenu.PopupForm_OnDeactivate(Sender: TObject);
 var
@@ -108,7 +112,6 @@ end;
 constructor TUPopupMenu.Create(aOwner: TComponent);
 begin
   inherited;
-  BackColor := $E6E6E6;
 
   FItemWidth := 200;
   FItemHeight := 32;
@@ -117,11 +120,16 @@ begin
 
   FAniSet := TIntAniSet.Create;
   FAniSet.QuickAssign(akOut, afkQuartic, 0, 120, 12);
+
+  FCustomBackColor := TUThemeColorSet.Create;
+  FCustomBackColor.OnChange := CustomBackColor_OnChange;
+  FCustomBackColor.Assign(POPUP_BACK);
 end;
 
 destructor TUPopupMenu.Destroy;
 begin
   FAniSet.Free;
+  FCustomBackColor.Free;
   inherited;
 end;
 
@@ -170,6 +178,9 @@ var
   Spacing: Integer;
   ItemW: Integer;
 begin
+  //  Update theme
+  UpdateTheme(false);
+
   //  High DPI
   if Owner is TUForm then
     DPI := (Owner as TUForm).PPI
@@ -223,6 +234,7 @@ begin
       UItem.Width := ItemWidth;
       UItem.Height := ItemHeight;
       UItem.ShowHint := true;
+      UItem.Transparent := true;
 
       //  Scale item
       UItem.ScaleForPPI(DPI);

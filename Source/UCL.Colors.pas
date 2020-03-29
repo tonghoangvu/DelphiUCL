@@ -107,6 +107,9 @@ var
   FORM_FONT_SIZE: Byte;
   FORM_BACK: TUThemeColorSet;
 
+  //  Popup menu
+  POPUP_BACK: TUThemeColorSet;
+
   //  Progress bar
   PROGRESSBAR_BACK: TUThemeColorSet;
 
@@ -485,6 +488,9 @@ initialization
   FORM_FONT_SIZE := 10;
   FORM_BACK := TUThemeColorSet.Create(0, $FFFFFF, $000000);
 
+  //  Popup menu
+  POPUP_BACK := TUThemeColorSet.Create($E6E6E6, $E6E6E6, $1F1F1F);
+
   //  Progress bar
   PROGRESSBAR_BACK := TUThemeColorSet.Create($E6E6E6, $CCCCCC, $333333);
 
@@ -539,6 +545,8 @@ finalization
   TOOLTIP_BORDER.Free;
 
   FORM_BACK.Free;
+
+  POPUP_BACK.Free;
 
   PROGRESSBAR_BACK.Free;
 

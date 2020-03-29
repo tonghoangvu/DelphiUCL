@@ -959,6 +959,10 @@ object formDemo: TformDemo
     AniSet.DelayStartTime = 0
     AniSet.Duration = 120
     AniSet.Step = 12
+    CustomBackColor.Enabled = True
+    CustomBackColor.Color = clRed
+    CustomBackColor.LightColor = clYellow
+    CustomBackColor.DarkColor = clBlue
     OnItemClick = popupEditItemClick
     Left = 550
     Top = 430
