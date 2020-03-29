@@ -45,6 +45,7 @@ object formDemo: TformDemo
     CustomCursorColor.DarkSelectedNone = 14120960
     CustomCursorColor.DarkSelectedHover = 15921906
     CustomCursorColor.DarkSelectedPress = 7763574
+    Value = 30
   end
   object textCustom: TUText
     Left = 30
@@ -286,6 +287,7 @@ object formDemo: TformDemo
     CustomCursorColor.DarkSelectedHover = 15921906
     CustomCursorColor.DarkSelectedPress = 7763574
     Orientation = oVertical
+    Value = 30
     OnChange = sliderVertChange
   end
   object checkbox2States: TUCheckBox
@@ -298,6 +300,7 @@ object formDemo: TformDemo
     IconFont.Height = -20
     IconFont.Name = 'Segoe MDL2 Assets'
     IconFont.Style = []
+    State = cbsChecked
     Caption = '2 states checkbox'
   end
   object checkbox3States: TUCheckBox
@@ -311,6 +314,7 @@ object formDemo: TformDemo
     IconFont.Name = 'Segoe MDL2 Assets'
     IconFont.Style = []
     AllowGrayed = True
+    State = cbsGrayed
     Caption = '3 states checkbox'
   end
   object radioA: TURadioButton
@@ -336,6 +340,7 @@ object formDemo: TformDemo
     IconFont.Height = -20
     IconFont.Name = 'Segoe MDL2 Assets'
     IconFont.Style = []
+    IsChecked = True
     Group = ''
     Caption = 'Radio button B'
   end
@@ -383,7 +388,7 @@ object formDemo: TformDemo
     Left = 0
     Top = 0
     Width = 870
-    Caption = '   Caption bar'
+    Caption = '   Demo UCL app'
     Color = 15921906
     TabOrder = 3
     CustomBackColor.Enabled = False
@@ -495,15 +500,6 @@ object formDemo: TformDemo
       Caption = #57510
       ExplicitLeft = 150
     end
-  end
-  object buttonRandomProgress: TButton
-    Left = 330
-    Top = 70
-    Width = 200
-    Height = 40
-    Caption = 'Random progress bar'
-    TabOrder = 4
-    OnClick = buttonRandomProgressClick
   end
   object progressHorz: TUProgressBar
     Left = 330
@@ -742,7 +738,7 @@ object formDemo: TformDemo
     Width = 130
     Height = 70
     Caption = 'Multi selection'
-    TabOrder = 13
+    TabOrder = 12
     OnClick = buttonVListMultiSelectionClick
     IconFont.Charset = DEFAULT_CHARSET
     IconFont.Color = clWindowText
@@ -774,7 +770,7 @@ object formDemo: TformDemo
     Height = 21
     Style = csDropDownList
     ItemIndex = 0
-    TabOrder = 14
+    TabOrder = 13
     Text = '100%'
     OnSelect = comboChooseScaleRatioSelect
     Items.Strings = (
@@ -790,7 +786,7 @@ object formDemo: TformDemo
     Width = 130
     Height = 70
     Caption = 'Drag reorder'
-    TabOrder = 16
+    TabOrder = 15
     OnClick = buttonVListDragReorderClick
     IconFont.Charset = DEFAULT_CHARSET
     IconFont.Color = clWindowText
@@ -822,7 +818,7 @@ object formDemo: TformDemo
     Height = 70
     Caption = 'Add item'
     ParentColor = True
-    TabOrder = 17
+    TabOrder = 16
     OnClick = buttonVListAddItemClick
     IconFont.Charset = DEFAULT_CHARSET
     IconFont.Color = clWindowText
@@ -851,7 +847,8 @@ object formDemo: TformDemo
     Top = 380
     Width = 170
     Color = clWhite
-    TabOrder = 18
+    PopupMenu = popupEdit
+    TabOrder = 17
     TextHint = 'Enter something here'
     CustomBackColor.Enabled = False
     CustomBackColor.Color = clWhite
@@ -877,7 +874,7 @@ object formDemo: TformDemo
     Width = 130
     Height = 70
     Caption = 'Refresh effect'
-    TabOrder = 19
+    TabOrder = 18
     OnClick = buttonVListRefreshEffectClick
     IconFont.Charset = DEFAULT_CHARSET
     IconFont.Color = clWindowText
@@ -901,6 +898,40 @@ object formDemo: TformDemo
     FontIcon = #57673
     Detail = ''
   end
+  object buttonRandomProgress: TUButton
+    Left = 330
+    Top = 70
+    Width = 200
+    Height = 40
+    Caption = 'Random progress bar'
+    OnClick = buttonRandomProgressClick
+    CustomBackColor.Enabled = False
+    CustomBackColor.LightNone = 13421772
+    CustomBackColor.LightHover = 13421772
+    CustomBackColor.LightPress = 10066329
+    CustomBackColor.LightSelectedNone = 13421772
+    CustomBackColor.LightSelectedHover = 13421772
+    CustomBackColor.LightSelectedPress = 10066329
+    CustomBackColor.DarkNone = 3355443
+    CustomBackColor.DarkHover = 3355443
+    CustomBackColor.DarkPress = 6710886
+    CustomBackColor.DarkSelectedNone = 3355443
+    CustomBackColor.DarkSelectedHover = 3355443
+    CustomBackColor.DarkSelectedPress = 6710886
+    CustomBorderColor.Enabled = False
+    CustomBorderColor.LightNone = 13421772
+    CustomBorderColor.LightHover = 8026746
+    CustomBorderColor.LightPress = 10066329
+    CustomBorderColor.LightSelectedNone = 8026746
+    CustomBorderColor.LightSelectedHover = 8026746
+    CustomBorderColor.LightSelectedPress = 10066329
+    CustomBorderColor.DarkNone = 3355443
+    CustomBorderColor.DarkHover = 8750469
+    CustomBorderColor.DarkPress = 6710886
+    CustomBorderColor.DarkSelectedNone = 8750469
+    CustomBorderColor.DarkSelectedHover = 8750469
+    CustomBorderColor.DarkSelectedPress = 6710886
+  end
   object boxList: TUScrollBox
     Left = 630
     Top = 32
@@ -911,7 +942,7 @@ object formDemo: TformDemo
     Align = alRight
     Color = 15132390
     ParentColor = False
-    TabOrder = 15
+    TabOrder = 14
     AniSet.AniKind = akOut
     AniSet.AniFunctionKind = afkQuintic
     AniSet.DelayStartTime = 0
@@ -921,5 +952,31 @@ object formDemo: TformDemo
     CustomBackColor.Color = 15132390
     CustomBackColor.LightColor = 15132390
     CustomBackColor.DarkColor = 2039583
+  end
+  object popupEdit: TUPopupMenu
+    AniSet.AniKind = akOut
+    AniSet.AniFunctionKind = afkQuartic
+    AniSet.DelayStartTime = 0
+    AniSet.Duration = 120
+    AniSet.Step = 12
+    CustomBackColor.Enabled = True
+    CustomBackColor.Color = clRed
+    CustomBackColor.LightColor = clYellow
+    CustomBackColor.DarkColor = clBlue
+    OnItemClick = popupEditItemClick
+    Left = 550
+    Top = 430
+    object popupItemCut: TMenuItem
+      Caption = #57707'Cut|Ctrl+X'
+      Hint = 'Remove the selected content and put it on the clipboard'
+    end
+    object popupitemCopy: TMenuItem
+      Caption = #57711'Copy|Ctrl+C'
+      Hint = 'Copy the selected content to the clipboard'
+    end
+    object popupitemPaste: TMenuItem
+      Caption = #57709'Paste|Ctrl+V'
+      Hint = 'Insert the contents of the clipboard at the current location'
+    end
   end
 end

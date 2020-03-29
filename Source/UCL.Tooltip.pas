@@ -97,23 +97,30 @@ procedure TUCustomTooltip.Paint;
 var
   TextRect: TRect;
 begin
-  //  Paint background
-  Canvas.Brush.Style := bsSolid;
-  Canvas.Brush.Color := BackColor;
-  Canvas.FillRect(Rect(0, 0, Width, Height));
+  //  Do not inherited
 
-  //  Draw border
-  Canvas.Brush.Style := bsClear;
-  DrawBorder(Canvas, Rect(0, 0, Width, Height), BorderColor, BorderThickness);
+  Canvas.Lock;
+  try
+    //  Paint background
+    Canvas.Brush.Style := bsSolid;
+    Canvas.Brush.Color := BackColor;
+    Canvas.FillRect(Rect(0, 0, Width, Height));
 
-  //  Draw text
-  Canvas.Font.Assign(Font);
-  Canvas.Font.Color := GetTextColorFromBackground(BackColor);
+    //  Draw border
+    Canvas.Brush.Style := bsClear;
+    DrawBorder(Canvas, Rect(0, 0, Width, Height), BorderColor, BorderThickness);
 
-  TextRect := Rect(
-    HORZ_SPACE + BorderThickness, VERT_SPACE + BorderThickness,
-    Width - HORZ_SPACE - BorderThickness, Height - VERT_SPACE - BorderThickness);
-  DrawText(Canvas.Handle, Caption, -1, TextRect, DT_WORDBREAK or DT_LEFT or DT_VCENTER or DT_END_ELLIPSIS);
+    //  Draw text
+    Canvas.Font.Assign(Font);
+    Canvas.Font.Color := GetTextColorFromBackground(BackColor);
+
+    TextRect := Rect(
+      HORZ_SPACE + BorderThickness, VERT_SPACE + BorderThickness,
+      Width - HORZ_SPACE - BorderThickness, Height - VERT_SPACE - BorderThickness);
+    DrawText(Canvas.Handle, Caption, -1, TextRect, DT_WORDBREAK or DT_LEFT or DT_VCENTER or DT_END_ELLIPSIS);
+  finally
+    Canvas.Unlock;
+  end;
 end;
 
 procedure TUCustomTooltip.NCPaint(DC: HDC);

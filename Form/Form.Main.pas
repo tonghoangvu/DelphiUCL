@@ -8,7 +8,8 @@ uses
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, UCL.Panel, UCL.Utils,
   UCL.Graphics, UCL.CaptionBar, UCL.ProgressBar, UCL.Button, UCL.Slider,
   UCL.Text, UCL.Hyperlink, UCL.ListButton, UCL.QuickButton, UCL.DragReorder,
-  UCL.ScrollBox, UCL.Edit, UCL.CheckBox, UCL.RadioButton;
+  UCL.ScrollBox, UCL.Edit, UCL.CheckBox, UCL.RadioButton, Vcl.Menus,
+  UCL.PopupMenu;
 
 type
   TformDemo = class(TUForm)
@@ -16,7 +17,6 @@ type
     comboChooseTheme: TComboBox;
     buttonReload: TButton;
     captionbarMain: TUCaptionBar;
-    buttonRandomProgress: TButton;
     progressHorz: TUProgressBar;
     buttonFocus: TUButton;
     buttonToggle: TUButton;
@@ -54,6 +54,11 @@ type
     checkbox3States: TUCheckBox;
     radioA: TURadioButton;
     radioB: TURadioButton;
+    buttonRandomProgress: TUButton;
+    popupEdit: TUPopupMenu;
+    popupItemCut: TMenuItem;
+    popupitemCopy: TMenuItem;
+    popupitemPaste: TMenuItem;
     procedure FormCreate(Sender: TObject);
     procedure comboChooseThemeSelect(Sender: TObject);
     procedure buttonReloadClick(Sender: TObject);
@@ -65,6 +70,7 @@ type
     procedure qbuttonFullScreenClick(Sender: TObject);
     procedure buttonVListAddItemClick(Sender: TObject);
     procedure buttonVListRefreshEffectClick(Sender: TObject);
+    procedure popupEditItemClick(Sender: TObject; Index: Integer);
   private
     { Private declarations }
   public
@@ -92,7 +98,8 @@ var
 begin
   Item := TUListButton.Create(boxList);
   Item.Parent := boxList;
-  Item.Caption := 'List button ' + boxList.ControlCount.ToString;
+  Item.Caption := 'List button ' + (boxList.ControlCount - 1).ToString;
+  Item.FontIcon := UF_SEARCH;
   Item.Align := alTop;
   Item.SelectMode := smFocus;
 end;
@@ -182,7 +189,26 @@ begin
   panelTest.Hint :=
     'This is line 1' + sLineBreak +
     'This is line 2' + sLineBreak +
-    'This is a multi-line tooltip' + sLineBreak;
+    'This is a multi-line tooltip';
+end;
+
+procedure TformDemo.popupEditItemClick(Sender: TObject; Index: Integer);
+var
+  Edit: TCustomEdit;
+begin
+  Self.SetFocus;  //  Close popup
+  if popupEdit.PopupComponent is TCustomEdit then
+    begin
+      Edit := popupEdit.PopupComponent as TCustomEdit;
+      case Index of
+        0:  //  Cut
+          Edit.CutToClipboard;
+        1:  //  Copy
+          Edit.CopyToClipboard;
+        2:  //  Paste
+          Edit.PasteFromClipboard;
+      end;
+    end;
 end;
 
 procedure TformDemo.qbuttonFullScreenClick(Sender: TObject);

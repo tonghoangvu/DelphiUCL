@@ -189,17 +189,24 @@ end;
 
 procedure TUCaptionBar.Paint;
 begin
-  //  Paint background
-  Canvas.Brush.Color := BackColor;
-  Canvas.FillRect(Rect(0, 0, Width, Height));
+  //  Do not inherited
 
-  //  Draw text
-  if ShowCaption then
-    begin
-      Canvas.Font.Assign(Font);
-      Canvas.Font.Color := TextColor;
-      DrawTextRect(Canvas, Alignment, VerticalAlignment, Rect(0, 0, Width, Height), Caption, false);
-    end;
+  Canvas.Lock;
+  try
+    //  Paint background
+    Canvas.Brush.Color := BackColor;
+    Canvas.FillRect(Rect(0, 0, Width, Height));
+
+    //  Draw text
+    if ShowCaption then
+      begin
+        Canvas.Font.Assign(Font);
+        Canvas.Font.Color := TextColor;
+        DrawTextRect(Canvas, Alignment, VerticalAlignment, Rect(0, 0, Width, Height), Caption, false);
+      end;
+  finally
+    Canvas.Unlock;
+  end;
 end;
 
 //  MESSAGE

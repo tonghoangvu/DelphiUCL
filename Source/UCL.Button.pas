@@ -343,24 +343,29 @@ var
 begin
   inherited;
 
-  //  Paint background
-  Canvas.Brush.Handle := CreateSolidBrushWithAlpha(BackColor, 255);
-  Canvas.FillRect(Rect(0, 0, Width, Height));
+  Canvas.Lock;
+  try
+    //  Paint background
+    Canvas.Brush.Handle := CreateSolidBrushWithAlpha(BackColor, 255);
+    Canvas.FillRect(Rect(0, 0, Width, Height));
 
-  //  Draw border
-  DrawBorder(Canvas, Rect(0, 0, Width, Height), BorderColor, BorderThickness);
+    //  Draw border
+    DrawBorder(Canvas, Rect(0, 0, Width, Height), BorderColor, BorderThickness);
 
-  //  Paint image
-  if (Images <> nil) and (ImageIndex >= 0) then
-    begin
-      GetCenterPos(Images.Width, Images.Height, ImgRect, ImgX, ImgY);
-      Images.Draw(Canvas, ImgX, ImgY, ImageIndex, Enabled);
-    end;
+    //  Paint image
+    if (Images <> nil) and (ImageIndex >= 0) then
+      begin
+        GetCenterPos(Images.Width, Images.Height, ImgRect, ImgX, ImgY);
+        Images.Draw(Canvas, ImgX, ImgY, ImageIndex, Enabled);
+      end;
 
-  //  Paint text
-  Canvas.Font.Assign(Font);
-  Canvas.Font.Color := TextColor;
-  DrawTextRect(Canvas, Alignment, taVerticalCenter, TextRect, Caption, false);
+    //  Paint text
+    Canvas.Font.Assign(Font);
+    Canvas.Font.Color := TextColor;
+    DrawTextRect(Canvas, Alignment, taVerticalCenter, TextRect, Caption, false);
+  finally
+    Canvas.Unlock;
+  end;
 end;
 
 procedure TUButton.Resize;
