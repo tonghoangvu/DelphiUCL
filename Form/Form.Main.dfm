@@ -388,7 +388,7 @@ object formDemo: TformDemo
     Left = 0
     Top = 0
     Width = 870
-    Caption = '   Caption bar'
+    Caption = '   Demo UCL app'
     Color = 15921906
     TabOrder = 3
     CustomBackColor.Enabled = False
@@ -847,6 +847,7 @@ object formDemo: TformDemo
     Top = 380
     Width = 170
     Color = clWhite
+    PopupMenu = popupEdit
     TabOrder = 17
     TextHint = 'Enter something here'
     CustomBackColor.Enabled = False
@@ -897,27 +898,6 @@ object formDemo: TformDemo
     FontIcon = #57673
     Detail = ''
   end
-  object boxList: TUScrollBox
-    Left = 630
-    Top = 32
-    Width = 240
-    Height = 478
-    HorzScrollBar.Tracking = True
-    VertScrollBar.Tracking = True
-    Align = alRight
-    Color = 15132390
-    ParentColor = False
-    TabOrder = 14
-    AniSet.AniKind = akOut
-    AniSet.AniFunctionKind = afkQuintic
-    AniSet.DelayStartTime = 0
-    AniSet.Duration = 120
-    AniSet.Step = 11
-    CustomBackColor.Enabled = False
-    CustomBackColor.Color = 15132390
-    CustomBackColor.LightColor = 15132390
-    CustomBackColor.DarkColor = 2039583
-  end
   object buttonRandomProgress: TUButton
     Left = 330
     Top = 70
@@ -951,5 +931,52 @@ object formDemo: TformDemo
     CustomBorderColor.DarkSelectedNone = 8750469
     CustomBorderColor.DarkSelectedHover = 8750469
     CustomBorderColor.DarkSelectedPress = 6710886
+  end
+  object boxList: TUScrollBox
+    Left = 630
+    Top = 32
+    Width = 240
+    Height = 478
+    HorzScrollBar.Tracking = True
+    VertScrollBar.Tracking = True
+    Align = alRight
+    Color = 15132390
+    ParentColor = False
+    TabOrder = 14
+    AniSet.AniKind = akOut
+    AniSet.AniFunctionKind = afkQuintic
+    AniSet.DelayStartTime = 0
+    AniSet.Duration = 120
+    AniSet.Step = 11
+    CustomBackColor.Enabled = False
+    CustomBackColor.Color = 15132390
+    CustomBackColor.LightColor = 15132390
+    CustomBackColor.DarkColor = 2039583
+  end
+  object popupEdit: TUPopupMenu
+    AniSet.AniKind = akOut
+    AniSet.AniFunctionKind = afkQuartic
+    AniSet.DelayStartTime = 0
+    AniSet.Duration = 120
+    AniSet.Step = 12
+    CustomBackColor.Enabled = True
+    CustomBackColor.Color = clRed
+    CustomBackColor.LightColor = clYellow
+    CustomBackColor.DarkColor = clBlue
+    OnItemClick = popupEditItemClick
+    Left = 550
+    Top = 430
+    object popupItemCut: TMenuItem
+      Caption = #57707'Cut|Ctrl+X'
+      Hint = 'Remove the selected content and put it on the clipboard'
+    end
+    object popupitemCopy: TMenuItem
+      Caption = #57711'Copy|Ctrl+C'
+      Hint = 'Copy the selected content to the clipboard'
+    end
+    object popupitemPaste: TMenuItem
+      Caption = #57709'Paste|Ctrl+V'
+      Hint = 'Insert the contents of the clipboard at the current location'
+    end
   end
 end

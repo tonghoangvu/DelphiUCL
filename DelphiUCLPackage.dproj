@@ -178,6 +178,7 @@
         <DCCReference Include="Source\UCL.FontIcons.pas"/>
         <DCCReference Include="Source\UCL.CheckBox.pas"/>
         <DCCReference Include="Source\UCL.RadioButton.pas"/>
+        <DCCReference Include="Source\UCL.PopupMenu.pas"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
