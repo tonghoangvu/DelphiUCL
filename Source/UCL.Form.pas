@@ -71,6 +71,9 @@ type
       function IsContainer: Boolean;
       procedure UpdateTheme(const UpdateChildren: Boolean);
 
+      //  Custom methods
+      procedure ScaleForPPI(NewPPI: Integer); override;
+
     published
       property ThemeManager: TUThemeManager read FThemeManager write FThemeManager;
       property CustomBackColor: TUThemeColorSet read FCustomBackColor write FCustomBackColor;
@@ -220,10 +223,15 @@ end;
 
 procedure TUForm.DoDrawBorder;
 begin
-  Canvas.Brush.Handle := CreateSolidBrushWithAlpha(Color, 255);
-  Canvas.Pen.Color := BorderColor;
-  Canvas.MoveTo(0, 0);
-  Canvas.LineTo(Width, 0);  //  Top border
+  Canvas.Lock;
+  try
+    Canvas.Brush.Handle := CreateSolidBrushWithAlpha(Color, 255);
+    Canvas.Pen.Color := BorderColor;
+    Canvas.MoveTo(0, 0);
+    Canvas.LineTo(Width, 0);  //  Top border
+  finally
+    Canvas.Unlock;
+  end;
 end;
 
 //  SETTERS
@@ -382,6 +390,12 @@ begin
     end;
 end;
 
+procedure TUForm.ScaleForPPI(NewPPI: Integer);
+begin
+  PPI := NewPPI;
+  inherited;
+end;
+
 //  MESSAGES
 
 procedure TUForm.WM_Activate(var Msg: TWMActivate);
@@ -399,9 +413,8 @@ end;
 
 procedure TUForm.WM_DPIChanged(var Msg: TWMDpi);
 begin
-  PPI := Msg.XDpi;
   inherited;
-  ScaleForPPI(PPI);
+  ScaleForPPI(Msg.XDpi);
 end;
 
 procedure TUForm.WM_DWMColorizationColorChanged(var Msg: TMessage);
