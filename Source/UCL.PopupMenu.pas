@@ -199,6 +199,10 @@ begin
   Form := TUForm.CreateNew(Self);
   Form.OnDeactivate := PopupForm_OnDeactivate;
 
+  //  Theme manager
+  if (Owner is TUForm) and (Owner <> nil) then
+    Form.ThemeManager.Assign((Owner as TUForm).ThemeManager);
+
   Form.DoubleBuffered := true;
   Form.BorderStyle := bsToolWindow;
   Form.Color := BackColor;

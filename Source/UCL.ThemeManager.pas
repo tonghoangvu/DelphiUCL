@@ -37,6 +37,9 @@ type
       constructor Create;
       procedure UpdateTheme;
 
+      //  Custom methods
+      procedure Assign(Source: TPersistent); override;
+
     published
       property Theme: TUTheme read FTheme stored false;
       property AccentColor: TColor read FAccentColor stored false;
@@ -76,6 +79,21 @@ begin
     end;
 end;
 
+procedure TUThemeManager.SetAccentColorType(const Value: TUAccentColorType);
+begin
+  if Value <> FAccentColorType then
+    begin
+      FAccentColorType := Value;
+      if Value = 0 then
+        FAccentColor := GetAccentColor
+      else
+        FAccentColor := FAccentColorType;
+      Changed;
+    end;
+end;
+
+//  MAIN CLASS
+
 constructor TUThemeManager.Create;
 begin
   inherited;
@@ -89,17 +107,23 @@ begin
   FAccentColorType := 0;  //  Auto
 end;
 
-procedure TUThemeManager.SetAccentColorType(const Value: TUAccentColorType);
+//  CUSTOM METHODS
+
+procedure TUThemeManager.Assign(Source: TPersistent);
 begin
-  if Value <> FAccentColorType then
+  if Source is TUThemeManager then
     begin
-      FAccentColorType := Value;
-      if Value = 0 then
-        FAccentColor := GetAccentColor
-      else
-        FAccentColor := FAccentColorType;
+      FThemeType := (Source as TUThemeManager).ThemeType;
+      FAccentColorType := (Source as TUThemeManager).AccentColorType;
+
+      FTheme := (Source as TUThemeManager).Theme;
+      FAccentColor := (Source as TUThemeManager).AccentColor;
+      FColorOnBorder := (Source as TUThemeManager).ColorOnBorder;
+
       Changed;
-    end;
+    end
+  else
+    inherited;
 end;
 
 //  UTILS
