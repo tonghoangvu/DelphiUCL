@@ -3,13 +3,15 @@
 interface
 
 uses
-  UCL.Form, UCL.Classes, UCL.ThemeManager, UCL.IntAnimation,
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
-  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls, Vcl.ExtCtrls, UCL.Panel, UCL.Utils,
-  UCL.Graphics, UCL.CaptionBar, UCL.ProgressBar, UCL.Button, UCL.Slider,
-  UCL.Text, UCL.Hyperlink, UCL.ListButton, UCL.QuickButton, UCL.DragReorder,
-  UCL.ScrollBox, UCL.Edit, UCL.CheckBox, UCL.RadioButton, Vcl.Menus,
-  UCL.PopupMenu;
+  //  VCL
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ExtCtrls, Menus,
+
+  //  UCL
+  UCL.Classes, UCL.Graphics, UCL.Utils, UCL.ThemeManager, UCL.IntAnimation, UCL.DragReorder,
+  UCL.Form, UCL.CaptionBar, UCL.Panel, UCL.ProgressBar, UCL.Button, UCL.Slider, UCL.Text,
+  UCL.Hyperlink, UCL.ListButton, UCL.QuickButton, UCL.ScrollBox, UCL.Edit, UCL.PopupMenu,
+  UCL.CheckBox, UCL.RadioButton;
 
 type
   TformDemo = class(TUForm)

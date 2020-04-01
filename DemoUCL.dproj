@@ -100,8 +100,8 @@
         </DelphiCompile>
         <DCCReference Include="Form\Form.Main.pas">
             <Form>formDemo</Form>
-            <FormType>dfm</FormType>
         </DCCReference>
+        <None Include="DemoUCL.todo"/>
         <BuildConfiguration Include="Release">
             <Key>Cfg_2</Key>
             <CfgParent>Base</CfgParent>
@@ -128,6 +128,12 @@
                 </Excluded_Packages>
             </Delphi.Personality>
             <Deployment Version="3">
+                <DeployFile LocalName="DemoUCL.todo" Configuration="Debug" Class="ProjectFile">
+                    <Platform Name="Win32">
+                        <RemoteDir>.\</RemoteDir>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
                 <DeployFile LocalName="Win32\Debug\DemoUCL.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>DemoUCL.exe</RemoteName>

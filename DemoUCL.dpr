@@ -1,7 +1,7 @@
 program DemoUCL;
 
 uses
-  Vcl.Forms,
+  Forms,
   Form.Main in 'Form\Form.Main.pas' {formDemo};
 
 {$R *.res}
