@@ -3,7 +3,7 @@
 interface
 
 uses
-  Classes, Types, Messages, Controls, Forms, Graphics,
+  Classes, Windows, Types, Messages, Controls, Forms, Graphics,
   UCL.Classes, UCL.ThemeManager, UCL.Utils, UCL.Graphics, UCL.Colors;
 
 type
@@ -291,10 +291,11 @@ begin
             qbsMax:
               if not FullScreen then
                 begin
+                  ReleaseCapture;
                   if ParentForm.WindowState <> wsNormal then
-                    ParentForm.WindowState := wsNormal
+                    SendMessage(ParentForm.Handle,WM_SYSCOMMAND,SC_RESTORE,0)
                   else
-                    ParentForm.WindowState := wsMaximized;
+                    SendMessage(ParentForm.Handle,WM_SYSCOMMAND,SC_MAXIMIZE,0)
                 end;
           end;
         end;
