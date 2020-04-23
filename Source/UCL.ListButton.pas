@@ -288,7 +288,7 @@ procedure TUListButton.SetImages(const Value: TCustomImageList);
 begin
   if Value <> FImages then
     begin
-      FImages.Assign(Value);
+      FImages := Value;
       Repaint;
     end;
 end;
