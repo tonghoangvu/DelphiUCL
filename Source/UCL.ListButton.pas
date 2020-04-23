@@ -9,6 +9,8 @@ uses
 type
   TUSelectMode = (smNone, smFocus, smToggle);
 
+  TUListStyle = (lsRightDetail, lsBottomDetail, lsVertical);
+
   TUListButton = class(TPanel, IUControl)
     private
       var BackColor, TextColor, DetailColor: TColor;
@@ -18,7 +20,7 @@ type
       FCustomBackColor: TUStateColorSet;
       
       FButtonState: TUControlState;
-      FOrientation: TUOrientation;
+      FListStyle: TUListStyle;
 
       FImageKind: TUImageKind;
       FImages: TCustomImageList;
@@ -40,7 +42,8 @@ type
 
       //  Setters
       procedure SetButtonState(const Value: TUControlState);
-      procedure SetOrientation(const Value: TUOrientation);
+      procedure SetListStyle(const Value: TUListStyle);
+
       procedure SetImageKind(const Value: TUImageKind);
       procedure SetImages(const Value: TCustomImageList);
       procedure SetImageIndex(const Value: Integer);
@@ -90,9 +93,9 @@ type
     published
       property IconFont: TFont read FIconFont write FIconFont;
       property CustomBackColor: TUStateColorSet read FCustomBackColor write FCustomBackColor;
-    
+
       property ButtonState: TUControlState read FButtonState write SetButtonState default csNone;
-      property Orientation: TUOrientation read FOrientation write SetOrientation default oHorizontal;
+      property ListStyle: TUListStyle read FListStyle write SetListStyle default lsRightDetail;
 
       property ImageKind: TUImageKind read FImageKind write SetImageKind default ikFontIcon;
       property Images: TCustomImageList read FImages write SetImages;
@@ -195,23 +198,28 @@ end;
 
 procedure TUListButton.UpdateRects;
 begin
-  //  Image rect
-  if Orientation = oHorizontal then
-    ImgRect := Rect(0, 0, ImageSpace, Height)
-  else 
-    ImgRect := Rect(0, 0, Width, ImageSpace);
+  case ListStyle of
+    lsRightDetail:
+      begin
+        ImgRect := Rect(0, 0, ImageSpace, Height);
+        TextRect := Rect(ImageSpace, 0, Width - Spacing, Height);
+        DetailRect := Rect(ImageSpace, 0, Width - Spacing, Height)
+      end;
 
-  //  Text rect
-  if Orientation = oHorizontal then
-    TextRect := Rect(ImageSpace, 0, Width - Spacing, Height)
-  else
-    TextRect := Rect(0, ImageSpace, Width, Height - Spacing);
+    lsBottomDetail:
+      begin
+        ImgRect := Rect(0, 0, ImageSpace, Height);
+        TextRect := Rect(ImageSpace, 0, Width - Spacing, Height div 2);
+        DetailRect := Rect(ImageSpace, Height div 2, Width - Spacing, Height);
+      end;
 
-  //  Detail rect
-  if Orientation = oHorizontal then
-    DetailRect := Rect(ImageSpace, 0, Width - Spacing, Height)
-  else
-    DetailRect := Rect(0, ImageSpace, Width, Height - Spacing);
+    lsVertical:
+      begin
+        ImgRect := Rect(0, 0, Width, ImageSpace);
+        TextRect := Rect(0, ImageSpace, Width, Height - Spacing);
+        DetailRect := Rect(0, ImageSpace, Width, Height - Spacing);
+      end;
+  end;
 end;
 
 //  GETTERS
@@ -265,11 +273,11 @@ begin
     end;
 end;
 
-procedure TUListButton.SetOrientation(const Value: TUOrientation);
+procedure TUListButton.SetListStyle(const Value: TUListStyle);
 begin
-  if Value <> FOrientation then
+  if Value <> FListStyle then
     begin
-      FOrientation := Value;
+      FListStyle := Value;
       UpdateRects;
       Repaint;
     end;
@@ -371,7 +379,7 @@ begin
   FImageKind := ikFontIcon;
   FImageIndex := -1;
   FFontIcon := UF_BACK;
-  FOrientation := oHorizontal;
+  FListStyle := lsRightDetail;
   FImageSpace := 40;
   FSpacing := 10;
   FSelectMode := smNone;
@@ -440,17 +448,23 @@ begin
   //  Draw text
   Canvas.Font.Assign(Font);
   Canvas.Font.Color := TextColor;
-  if Orientation = oHorizontal then
-    DrawTextRect(Canvas, taLeftJustify, taVerticalCenter, TextRect, Caption, false)
-  else
-    DrawTextRect(Canvas, taCenter, taAlignTop, TextRect, Caption, false);
+  case ListStyle of
+    lsRightDetail, lsBottomDetail:
+      DrawTextRect(Canvas, taLeftJustify, taVerticalCenter, TextRect, Caption, false);
+    lsVertical:
+      DrawTextRect(Canvas, taCenter, taAlignTop, TextRect, Caption, false);
+  end;
 
   //  Detail
   Canvas.Font.Color := DetailColor;
-  if Orientation = oHorizontal then
-    DrawTextRect(Canvas, taRightJustify, taVerticalCenter, DetailRect, Detail, false)
-  else
-    DrawTextRect(Canvas, taCenter, taAlignBottom, DetailRect, Detail, false);
+  case ListStyle of
+    lsRightDetail:
+      DrawTextRect(Canvas, taRightJustify, taVerticalCenter, DetailRect, Detail, false);
+    lsBottomDetail:
+      DrawTextRect(Canvas, taLeftJustify, taAlignTop, DetailRect, Detail, false);
+    lsVertical:
+      DrawTextRect(Canvas, taCenter, taAlignBottom, DetailRect, Detail, false);
+  end;
 end;
 
 procedure TUListButton.Resize;

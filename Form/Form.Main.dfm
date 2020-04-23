@@ -759,6 +759,7 @@ object formDemo: TformDemo
     CustomBackColor.DarkSelectedHover = 103
     CustomBackColor.DarkSelectedPress = 127
     Orientation = oVertical
+    ListStyle = lsVertical
     FontIcon = #57692
     SelectMode = smToggle
     Detail = ''
@@ -807,6 +808,7 @@ object formDemo: TformDemo
     CustomBackColor.DarkSelectedHover = 103
     CustomBackColor.DarkSelectedPress = 127
     Orientation = oVertical
+    ListStyle = lsVertical
     FontIcon = #57604
     SelectMode = smToggle
     Detail = ''
@@ -839,6 +841,7 @@ object formDemo: TformDemo
     CustomBackColor.DarkSelectedHover = 103
     CustomBackColor.DarkSelectedPress = 127
     Orientation = oVertical
+    ListStyle = lsVertical
     FontIcon = #57609
     Detail = ''
   end
@@ -895,6 +898,7 @@ object formDemo: TformDemo
     CustomBackColor.DarkSelectedHover = 103
     CustomBackColor.DarkSelectedPress = 127
     Orientation = oVertical
+    ListStyle = lsVertical
     FontIcon = #57673
     Detail = ''
   end
