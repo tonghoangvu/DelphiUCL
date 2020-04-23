@@ -7,7 +7,9 @@ uses
   UCL.Classes, UCL.ThemeManager, UCL.Colors, UCL.Graphics, UCL.Utils;
 
 type
-  TUSelectMode = (smNone, smFocus, smToggle);
+  TUListStyle = (lsRightDetail, lsBottomDetail, lsVertical);
+
+  TUSelectMode = (smNone, smSelect, smToggle);
 
   TUListButton = class(TPanel, IUControl)
     private
@@ -18,7 +20,7 @@ type
       FCustomBackColor: TUStateColorSet;
       
       FButtonState: TUControlState;
-      FOrientation: TUOrientation;
+      FListStyle: TUListStyle;
 
       FImageKind: TUImageKind;
       FImages: TCustomImageList;
@@ -28,11 +30,11 @@ type
       FImageSpace: Integer;
       FSpacing: Integer;
 
-      FSelectMode: TUSelectMode;
-      FSelected: Boolean;
-
       FDetail: string;
       FTransparent: Boolean;
+
+      FSelectMode: TUSelectMode;
+      FSelected: Boolean;
 
       //  Internal
       procedure UpdateColors;
@@ -40,7 +42,8 @@ type
 
       //  Setters
       procedure SetButtonState(const Value: TUControlState);
-      procedure SetOrientation(const Value: TUOrientation);
+      procedure SetListStyle(const Value: TUListStyle);
+
       procedure SetImageKind(const Value: TUImageKind);
       procedure SetImages(const Value: TCustomImageList);
       procedure SetImageIndex(const Value: Integer);
@@ -49,11 +52,11 @@ type
       procedure SetImageSpace(const Value: Integer);
       procedure SetSpacing(const Value: Integer);
 
-      procedure SetSelectMode(const Value: TUSelectMode);
-      procedure SetSelected(const Value: Boolean);
-
       procedure SetDetail(const Value: string);
       procedure SetTransparent(const Value: Boolean);
+
+      procedure SetSelectMode(const Value: TUSelectMode);
+      procedure SetSelected(const Value: Boolean);
 
       //  Getters
       function GetSelected: Boolean;
@@ -62,8 +65,6 @@ type
       procedure CustomBackColor_OnChange(Sender: TObject);
       
       //  Messages
-      procedure WM_SetFocus(var Msg: TWMSetFocus); message WM_SETFOCUS;
-      procedure WM_KillFocus(var Msg: TWMKillFocus); message WM_KILLFOCUS;
       procedure WM_LButtonDown(var Msg: TWMLButtonDown); message WM_LBUTTONDOWN;
       procedure WM_LButtonUp(var Msg: TWMLButtonUp); message WM_LBUTTONUP;
 
@@ -90,9 +91,9 @@ type
     published
       property IconFont: TFont read FIconFont write FIconFont;
       property CustomBackColor: TUStateColorSet read FCustomBackColor write FCustomBackColor;
-    
+
       property ButtonState: TUControlState read FButtonState write SetButtonState default csNone;
-      property Orientation: TUOrientation read FOrientation write SetOrientation default oHorizontal;
+      property ListStyle: TUListStyle read FListStyle write SetListStyle default lsRightDetail;
 
       property ImageKind: TUImageKind read FImageKind write SetImageKind default ikFontIcon;
       property Images: TCustomImageList read FImages write SetImages;
@@ -102,11 +103,11 @@ type
       property ImageSpace: Integer read FImageSpace write SetImageSpace default 40;
       property Spacing: Integer read FSpacing write SetSpacing default 10;
       
-      property SelectMode: TUSelectMode read FSelectMode write SetSelectMode default smNone;
-      property Selected: Boolean read GetSelected write SetSelected default false;
-
       property Detail: string read FDetail write SetDetail nodefault;
       property Transparent: Boolean read FTransparent write SetTransparent default false;
+
+      property SelectMode: TUSelectMode read FSelectMode write SetSelectMode default smNone;
+      property Selected: Boolean read GetSelected write SetSelected default false;
 
       //  Modify default props
       property BevelOuter default bvNone;
@@ -195,65 +196,31 @@ end;
 
 procedure TUListButton.UpdateRects;
 begin
-  //  Image rect
-  if Orientation = oHorizontal then
-    ImgRect := Rect(0, 0, ImageSpace, Height)
-  else 
-    ImgRect := Rect(0, 0, Width, ImageSpace);
+  case ListStyle of
+    lsRightDetail:
+      begin
+        ImgRect := Rect(0, 0, ImageSpace, Height);
+        TextRect := Rect(ImageSpace, 0, Width - Spacing, Height);
+        DetailRect := Rect(ImageSpace, 0, Width - Spacing, Height)
+      end;
 
-  //  Text rect
-  if Orientation = oHorizontal then
-    TextRect := Rect(ImageSpace, 0, Width - Spacing, Height)
-  else
-    TextRect := Rect(0, ImageSpace, Width, Height - Spacing);
+    lsBottomDetail:
+      begin
+        ImgRect := Rect(0, 0, ImageSpace, Height);
+        TextRect := Rect(ImageSpace, 0, Width - Spacing, Height div 2);
+        DetailRect := Rect(ImageSpace, Height div 2, Width - Spacing, Height);
+      end;
 
-  //  Detail rect
-  if Orientation = oHorizontal then
-    DetailRect := Rect(ImageSpace, 0, Width - Spacing, Height)
-  else
-    DetailRect := Rect(0, ImageSpace, Width, Height - Spacing);
-end;
-
-//  GETTERS
-
-function TUListButton.GetSelected: Boolean;
-begin
-  if not Enabled then
-    Result := false
-  else
-    case SelectMode of
-      smNone:
-        Result := false;
-      smFocus:
-        Result := Focused;
-      smToggle:
-        Result := FSelected;
-      else
-        Result := false;
-    end;
+    lsVertical:
+      begin
+        ImgRect := Rect(0, 0, Width, ImageSpace);
+        TextRect := Rect(0, ImageSpace, Width, Height - Spacing);
+        DetailRect := Rect(0, ImageSpace, Width, Height - Spacing);
+      end;
+  end;
 end;
 
 //  SETTERS
-
-procedure TUListButton.SetSelected(const Value: Boolean);
-begin
-  if Value <> FSelected then
-    begin
-      FSelected := Value;
-      UpdateColors;
-      Repaint;
-    end;
-end;
-
-procedure TUListButton.SetSelectMode(const Value: TUSelectMode);
-begin
-  if Value <> FSelectMode then
-    begin
-      FSelectMode := Value;
-      UpdateColors;
-      Repaint;
-    end;
-end;
 
 procedure TUListButton.SetButtonState(const Value: TUControlState);
 begin
@@ -265,11 +232,11 @@ begin
     end;
 end;
 
-procedure TUListButton.SetOrientation(const Value: TUOrientation);
+procedure TUListButton.SetListStyle(const Value: TUListStyle);
 begin
-  if Value <> FOrientation then
+  if Value <> FListStyle then
     begin
-      FOrientation := Value;
+      FListStyle := Value;
       UpdateRects;
       Repaint;
     end;
@@ -351,6 +318,55 @@ begin
     end;
 end;
 
+procedure TUListButton.SetSelectMode(const Value: TUSelectMode);
+begin
+  if Value <> FSelectMode then
+    begin
+      FSelectMode := Value;
+      UpdateColors;
+      Repaint;
+    end;
+end;
+
+procedure TUListButton.SetSelected(const Value: Boolean);
+var
+  i: Integer;
+  Item: TUListButton;
+begin
+  if Value <> FSelected then
+    begin
+      FSelected := Value;
+
+      if Value and (FSelectMode = smSelect) then
+        begin
+          for i := 0 to Parent.ControlCount - 1 do
+            if Parent.Controls[i] is TUListButton then
+              begin
+                Item := Parent.Controls[i] as TUListButton;
+                if Item <> Self then
+                  Item.Selected := false;
+              end;
+        end;
+
+      UpdateColors;
+      Repaint;
+    end;
+end;
+
+//  GETTERS
+
+function TUListButton.GetSelected: Boolean;
+begin
+  case SelectMode of
+    smNone:
+      Result := false;
+    smSelect:
+      Result := FSelected;
+    smToggle:
+      Result := FSelected;
+  end;
+end;
+
 //  CHILD EVENTS
 
 procedure TUListButton.CustomBackColor_OnChange(Sender: TObject);
@@ -371,13 +387,14 @@ begin
   FImageKind := ikFontIcon;
   FImageIndex := -1;
   FFontIcon := UF_BACK;
-  FOrientation := oHorizontal;
+  FListStyle := lsRightDetail;
   FImageSpace := 40;
   FSpacing := 10;
-  FSelectMode := smNone;
-  FSelected := false;
   FDetail := 'Detail';
   FTransparent := false;
+
+  FSelectMode := smNone;
+  FSelected := false;
 
   FIconFont := TFont.Create;
   IconFont.Name := 'Segoe MDL2 Assets';
@@ -440,17 +457,23 @@ begin
   //  Draw text
   Canvas.Font.Assign(Font);
   Canvas.Font.Color := TextColor;
-  if Orientation = oHorizontal then
-    DrawTextRect(Canvas, taLeftJustify, taVerticalCenter, TextRect, Caption, false)
-  else
-    DrawTextRect(Canvas, taCenter, taAlignTop, TextRect, Caption, false);
+  case ListStyle of
+    lsRightDetail, lsBottomDetail:
+      DrawTextRect(Canvas, taLeftJustify, taVerticalCenter, TextRect, Caption, false);
+    lsVertical:
+      DrawTextRect(Canvas, taCenter, taAlignTop, TextRect, Caption, false);
+  end;
 
   //  Detail
   Canvas.Font.Color := DetailColor;
-  if Orientation = oHorizontal then
-    DrawTextRect(Canvas, taRightJustify, taVerticalCenter, DetailRect, Detail, false)
-  else
-    DrawTextRect(Canvas, taCenter, taAlignBottom, DetailRect, Detail, false);
+  case ListStyle of
+    lsRightDetail:
+      DrawTextRect(Canvas, taRightJustify, taVerticalCenter, DetailRect, Detail, false);
+    lsBottomDetail:
+      DrawTextRect(Canvas, taLeftJustify, taAlignTop, DetailRect, Detail, false);
+    lsVertical:
+      DrawTextRect(Canvas, taCenter, taAlignBottom, DetailRect, Detail, false);
+  end;
 end;
 
 procedure TUListButton.Resize;
@@ -477,26 +500,6 @@ end;
 
 //  MESSAGES
 
-procedure TUListButton.WM_SetFocus(var Msg: TWMSetFocus);
-begin
-  if not Enabled then exit;
-  if SelectMode = smFocus then
-    begin
-      UpdateColors;
-      Repaint;
-    end;
-end;
-
-procedure TUListButton.WM_KillFocus(var Msg: TWMKillFocus);
-begin
-  if not Enabled then exit;
-  if SelectMode = smFocus then
-    begin
-      UpdateColors;
-      Repaint;
-    end;
-end;
-
 procedure TUListButton.WM_LButtonDown(var Msg: TWMLButtonDown);
 begin
   if not Enabled then exit;
@@ -515,15 +518,16 @@ begin
     begin
       //  Select actions
       case SelectMode of
-        smNone: ;
-        smFocus:
-          SetFocus;
+        smNone:
+          Selected := false;
+        smSelect:
+          Selected := true;
         smToggle:
           Selected := not Selected;
       end;
-    end;
-
-  ButtonState := csHover;   //  True, SetFocus does not call UpdateColors
+    end
+  else
+    ButtonState := csHover;
   inherited;
 end;
 

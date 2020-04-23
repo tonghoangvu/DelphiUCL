@@ -758,10 +758,10 @@ object formDemo: TformDemo
     CustomBackColor.DarkSelectedNone = 89
     CustomBackColor.DarkSelectedHover = 103
     CustomBackColor.DarkSelectedPress = 127
-    Orientation = oVertical
+    ListStyle = lsVertical
     FontIcon = #57692
-    SelectMode = smToggle
     Detail = ''
+    SelectMode = smToggle
   end
   object comboChooseScaleRatio: TComboBox
     Left = 30
@@ -806,10 +806,10 @@ object formDemo: TformDemo
     CustomBackColor.DarkSelectedNone = 89
     CustomBackColor.DarkSelectedHover = 103
     CustomBackColor.DarkSelectedPress = 127
-    Orientation = oVertical
+    ListStyle = lsVertical
     FontIcon = #57604
-    SelectMode = smToggle
     Detail = ''
+    SelectMode = smToggle
   end
   object buttonVListAddItem: TUListButton
     Left = 470
@@ -838,7 +838,7 @@ object formDemo: TformDemo
     CustomBackColor.DarkSelectedNone = 89
     CustomBackColor.DarkSelectedHover = 103
     CustomBackColor.DarkSelectedPress = 127
-    Orientation = oVertical
+    ListStyle = lsVertical
     FontIcon = #57609
     Detail = ''
   end
@@ -894,7 +894,7 @@ object formDemo: TformDemo
     CustomBackColor.DarkSelectedNone = 89
     CustomBackColor.DarkSelectedHover = 103
     CustomBackColor.DarkSelectedPress = 127
-    Orientation = oVertical
+    ListStyle = lsVertical
     FontIcon = #57673
     Detail = ''
   end
