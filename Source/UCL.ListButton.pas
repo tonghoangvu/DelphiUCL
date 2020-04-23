@@ -169,20 +169,20 @@ begin
     begin
       IsSelected := Selected;
 
+      //  Selected
+      if IsSelected then
+        BackColor := ColorChangeLightness(AccentColor, _BackColor.GetColor(TM, ButtonState, IsSelected))
+
       //  Transparent
-      if Transparent and (ButtonState = csNone) then
+      else if Transparent and (ButtonState = csNone) then
         begin
           ParentColor := true;
           BackColor := Color;
         end
 
       //  Not selected
-      else if not IsSelected then
-        BackColor := _BackColor.GetColor(TM, ButtonState, IsSelected)
-
-      //  Selected
       else
-        BackColor := ColorChangeLightness(AccentColor, _BackColor.GetColor(TM, ButtonState, IsSelected));
+        BackColor := _BackColor.GetColor(TM, ButtonState, IsSelected);
 
       //  Update text color from background
       TextColor := GetTextColorFromBackground(BackColor);
