@@ -223,15 +223,10 @@ end;
 
 procedure TUForm.DoDrawBorder;
 begin
-  Canvas.Lock;
-  try
-    Canvas.Brush.Handle := CreateSolidBrushWithAlpha(Color, 255);
-    Canvas.Pen.Color := BorderColor;
-    Canvas.MoveTo(0, 0);
-    Canvas.LineTo(Width, 0);  //  Top border
-  finally
-    Canvas.Unlock;
-  end;
+  Canvas.Brush.Handle := CreateSolidBrushWithAlpha(Color, 255);
+  Canvas.Pen.Color := BorderColor;
+  Canvas.MoveTo(0, 0);
+  Canvas.LineTo(Width, 0);  //  Top border
 end;
 
 //  SETTERS

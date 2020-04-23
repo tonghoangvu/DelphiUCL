@@ -212,48 +212,43 @@ procedure TUCheckBox.Paint;
 begin
   inherited;
 
-  Canvas.Lock;
-  try
-    //  Paint background
-    if not Transparent then
+  //  Paint background
+  if not Transparent then
+    begin
+      Canvas.Brush.Style := bsSolid;
+      Canvas.Brush.Handle := CreateSolidBrushWithAlpha(Color, 255);
+      Canvas.FillRect(Rect(0, 0, Width, Height));
+    end;
+
+  //  Draw text
+  Canvas.Brush.Style := bsClear;
+  Canvas.Font.Assign(Font);
+  Canvas.Font.Color := TextColor;
+  DrawTextRect(Canvas, taLeftJustify, taVerticalCenter, TextRect, Caption, Transparent);
+
+  //  Draw icon
+  Canvas.Font.Assign(IconFont);
+  case State of
+    cbsChecked:
       begin
-        Canvas.Brush.Style := bsSolid;
-        Canvas.Brush.Handle := CreateSolidBrushWithAlpha(Color, 255);
-        Canvas.FillRect(Rect(0, 0, Width, Height));
+        Canvas.Font.Color := AccentColor;
+        DrawTextRect(Canvas, taCenter, taVerticalCenter, IconRect, UF_CHECKBOX_CHECKED, Transparent);
       end;
 
-    //  Draw text
-    Canvas.Brush.Style := bsClear;
-    Canvas.Font.Assign(Font);
-    Canvas.Font.Color := TextColor;
-    DrawTextRect(Canvas, taLeftJustify, taVerticalCenter, TextRect, Caption, Transparent);
+    cbsUnchecked:
+      begin
+        Canvas.Font.Color := TextColor;
+        DrawTextRect(Canvas, taCenter, taVerticalCenter, IconRect, UF_CHECKBOX_OUTLINE, Transparent);
+      end;
 
-    //  Draw icon
-    Canvas.Font.Assign(IconFont);
-    case State of
-      cbsChecked:
-        begin
-          Canvas.Font.Color := AccentColor;
-          DrawTextRect(Canvas, taCenter, taVerticalCenter, IconRect, UF_CHECKBOX_CHECKED, Transparent);
-        end;
+    cbsGrayed:
+      begin
+        Canvas.Font.Color := AccentColor;
+        DrawTextRect(Canvas, taCenter, taVerticalCenter, IconRect, UF_CHECKBOX_OUTLINE, Transparent);
 
-      cbsUnchecked:
-        begin
-          Canvas.Font.Color := TextColor;
-          DrawTextRect(Canvas, taCenter, taVerticalCenter, IconRect, UF_CHECKBOX_OUTLINE, Transparent);
-        end;
-
-      cbsGrayed:
-        begin
-          Canvas.Font.Color := AccentColor;
-          DrawTextRect(Canvas, taCenter, taVerticalCenter, IconRect, UF_CHECKBOX_OUTLINE, Transparent);
-
-          Canvas.Font.Color := TextColor;
-          DrawTextRect(Canvas, taCenter, taVerticalCenter, IconRect, UF_CHECKBOX_SMALL, Transparent);
-        end;
-    end;
-  finally
-    Canvas.Unlock;
+        Canvas.Font.Color := TextColor;
+        DrawTextRect(Canvas, taCenter, taVerticalCenter, IconRect, UF_CHECKBOX_SMALL, Transparent);
+      end;
   end;
 end;
 

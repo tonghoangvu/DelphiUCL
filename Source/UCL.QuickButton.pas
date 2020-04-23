@@ -231,24 +231,19 @@ procedure TUQuickButton.Paint;
 begin
   inherited;
 
-  Canvas.Lock;
-  try
-    //  Paint background
-    if ButtonState <> csNone then
-      begin
-        Canvas.Brush.Style := bsSolid;
-        Canvas.Brush.Handle := CreateSolidBrushWithAlpha(BackColor, 255);
-        Canvas.FillRect(Rect(0, 0, Width, Height));
-      end;
+  //  Paint background
+  if ButtonState <> csNone then
+    begin
+      Canvas.Brush.Style := bsSolid;
+      Canvas.Brush.Handle := CreateSolidBrushWithAlpha(BackColor, 255);
+      Canvas.FillRect(Rect(0, 0, Width, Height));
+    end;
 
-    //  Draw text
-    Canvas.Brush.Style := bsClear;
-    Canvas.Font.Assign(Font);
-    Canvas.Font.Color := TextColor;
-    DrawTextRect(Canvas, taCenter, taVerticalCenter, Rect(0, 0, Width, Height), Caption, true);
-  finally
-    Canvas.Unlock;
-  end;
+  //  Draw text
+  Canvas.Brush.Style := bsClear;
+  Canvas.Font.Assign(Font);
+  Canvas.Font.Color := TextColor;
+  DrawTextRect(Canvas, taCenter, taVerticalCenter, Rect(0, 0, Width, Height), Caption, true);
 end;
 
 //  MESSAGES

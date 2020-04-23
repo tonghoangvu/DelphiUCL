@@ -415,47 +415,42 @@ var
 begin
   //  Do not inherited
 
-  Canvas.Lock;
-  try
-    //  Paint background
-    Canvas.Brush.Style := bsSolid;
-    Canvas.Brush.Handle := CreateSolidBrushWithAlpha(BackColor, 255);
-    Canvas.FillRect(Rect(0, 0, Width, Height));
-    Canvas.Brush.Style := bsClear;
+  //  Paint background
+  Canvas.Brush.Style := bsSolid;
+  Canvas.Brush.Handle := CreateSolidBrushWithAlpha(BackColor, 255);
+  Canvas.FillRect(Rect(0, 0, Width, Height));
+  Canvas.Brush.Style := bsClear;
 
-    //  Draw image
-    if ImageKind = ikFontIcon then
-      begin
-        //  Set up icon font
-        Canvas.Font.Assign(IconFont);
-        Canvas.Font.Color := TextColor;
+  //  Draw image
+  if ImageKind = ikFontIcon then
+    begin
+      //  Set up icon font
+      Canvas.Font.Assign(IconFont);
+      Canvas.Font.Color := TextColor;
 
-        //  Draw font icon
-        DrawTextRect(Canvas, taCenter, taVerticalCenter, ImgRect, FontIcon, false);
-      end
-    else if (Images <> nil) and (ImageIndex >= 0) then
-      begin
-        GetCenterPos(Images.Width, Images.Height, ImgRect, ImgX, ImgY);
-        Images.Draw(Canvas, ImgX, ImgY, ImageIndex, Enabled);
-      end;
+      //  Draw font icon
+      DrawTextRect(Canvas, taCenter, taVerticalCenter, ImgRect, FontIcon, false);
+    end
+  else if (Images <> nil) and (ImageIndex >= 0) then
+    begin
+      GetCenterPos(Images.Width, Images.Height, ImgRect, ImgX, ImgY);
+      Images.Draw(Canvas, ImgX, ImgY, ImageIndex, Enabled);
+    end;
 
-    //  Draw text
-    Canvas.Font.Assign(Font);
-    Canvas.Font.Color := TextColor;
-    if Orientation = oHorizontal then
-      DrawTextRect(Canvas, taLeftJustify, taVerticalCenter, TextRect, Caption, false)
-    else
-      DrawTextRect(Canvas, taCenter, taAlignTop, TextRect, Caption, false);
-    
-    //  Detail
-    Canvas.Font.Color := DetailColor;
-    if Orientation = oHorizontal then
-      DrawTextRect(Canvas, taRightJustify, taVerticalCenter, DetailRect, Detail, false)
-    else
-      DrawTextRect(Canvas, taCenter, taAlignBottom, DetailRect, Detail, false);
-  finally
-    Canvas.Unlock;
-  end;
+  //  Draw text
+  Canvas.Font.Assign(Font);
+  Canvas.Font.Color := TextColor;
+  if Orientation = oHorizontal then
+    DrawTextRect(Canvas, taLeftJustify, taVerticalCenter, TextRect, Caption, false)
+  else
+    DrawTextRect(Canvas, taCenter, taAlignTop, TextRect, Caption, false);
+
+  //  Detail
+  Canvas.Font.Color := DetailColor;
+  if Orientation = oHorizontal then
+    DrawTextRect(Canvas, taRightJustify, taVerticalCenter, DetailRect, Detail, false)
+  else
+    DrawTextRect(Canvas, taCenter, taAlignBottom, DetailRect, Detail, false);
 end;
 
 procedure TUListButton.Resize;
