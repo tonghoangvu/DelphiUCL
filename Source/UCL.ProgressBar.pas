@@ -185,18 +185,13 @@ procedure TUProgressBar.Paint;
 begin
   inherited;
 
-  Canvas.Lock;
-  try
-    //  Paint background
-    Canvas.Brush.Handle := CreateSolidBrushWithAlpha(BackColor, 255);
-    Canvas.FillRect(BackRect);
+  //  Paint background
+  Canvas.Brush.Handle := CreateSolidBrushWithAlpha(BackColor, 255);
+  Canvas.FillRect(BackRect);
 
-    //  Paint Fillround
-    Canvas.Brush.Handle := CreateSolidBrushWithAlpha(FillColor, 255);
-    Canvas.FillRect(FillRect);
-  finally
-    Canvas.Unlock;
-  end;
+  //  Paint Fillround
+  Canvas.Brush.Handle := CreateSolidBrushWithAlpha(FillColor, 255);
+  Canvas.FillRect(FillRect);
 end;
 
 procedure TUProgressBar.Resize;

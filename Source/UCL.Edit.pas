@@ -230,12 +230,10 @@ begin
     Canvas:= TCanvas.Create;
     try
       Canvas.Handle := DC;
-      Canvas.Lock;
       Canvas.Brush.Style := bsClear;
 
       DrawBorder(Canvas, Rect(0, 0, Width, Height), BorderColor, BorderThickness);
     finally
-      Canvas.Unlock;
       Canvas.free;
     end;
   finally

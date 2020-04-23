@@ -198,40 +198,35 @@ procedure TURadioButton.Paint;
 begin
   inherited;
 
-  Canvas.Lock;
-  try
-    //  Paint background
-    if not Transparent then
-      begin
-        Canvas.Brush.Style := bsSolid;
-        Canvas.Brush.Handle := CreateSolidBrushWithAlpha(Color, 255);
-        Canvas.FillRect(Rect(0, 0, Width, Height));
-      end;
+  //  Paint background
+  if not Transparent then
+    begin
+      Canvas.Brush.Style := bsSolid;
+      Canvas.Brush.Handle := CreateSolidBrushWithAlpha(Color, 255);
+      Canvas.FillRect(Rect(0, 0, Width, Height));
+    end;
 
-    //  Draw text
-    Canvas.Brush.Style := bsClear;
-    Canvas.Font.Assign(Font);
-    Canvas.Font.Color := TextColor;
-    DrawTextRect(Canvas, taLeftJustify, taVerticalCenter, TextRect, Caption, Transparent);
+  //  Draw text
+  Canvas.Brush.Style := bsClear;
+  Canvas.Font.Assign(Font);
+  Canvas.Font.Color := TextColor;
+  DrawTextRect(Canvas, taLeftJustify, taVerticalCenter, TextRect, Caption, Transparent);
 
-    //  Draw icon
-    Canvas.Font.Assign(IconFont);
-    if not IsChecked then
-      begin
-        Canvas.Font.Color := TextColor;
-        DrawTextRect(Canvas, taCenter, taVerticalCenter, IconRect, UF_RADIO_OUTLINE, Transparent);
-      end
-    else
-      begin
-        Canvas.Font.Color := AccentColor;
-        DrawTextRect(Canvas, taCenter, taVerticalCenter, IconRect, UF_RADIO_OUTLINE, Transparent);
+  //  Draw icon
+  Canvas.Font.Assign(IconFont);
+  if not IsChecked then
+    begin
+      Canvas.Font.Color := TextColor;
+      DrawTextRect(Canvas, taCenter, taVerticalCenter, IconRect, UF_RADIO_OUTLINE, Transparent);
+    end
+  else
+    begin
+      Canvas.Font.Color := AccentColor;
+      DrawTextRect(Canvas, taCenter, taVerticalCenter, IconRect, UF_RADIO_OUTLINE, Transparent);
 
-        Canvas.Font.Color := TextColor;
-        DrawTextRect(Canvas, taCenter, taVerticalCenter, IconRect, UF_RADIO_SMALL, Transparent);
-      end;
-  finally
-    Canvas.Unlock;
-  end;
+      Canvas.Font.Color := TextColor;
+      DrawTextRect(Canvas, taCenter, taVerticalCenter, IconRect, UF_RADIO_SMALL, Transparent);
+    end;
 end;
 
 procedure TURadioButton.ChangeScale(M, D: Integer{$IF CompilerVersion > 29}; isDpiChange: Boolean{$ENDIF});
