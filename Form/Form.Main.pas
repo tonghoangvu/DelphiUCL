@@ -103,7 +103,7 @@ begin
   Item.Caption := 'List button ' + (boxList.ControlCount - 1).ToString;
   Item.FontIcon := UF_SEARCH;
   Item.Align := alTop;
-  Item.SelectMode := smFocus;
+  Item.SelectMode := smSelect;
 end;
 
 procedure TformDemo.buttonVListDragReorderClick(Sender: TObject);
@@ -128,7 +128,7 @@ begin
   if buttonVListMultiSelection.Selected then
     Value := smToggle
   else
-    Value := smFocus;
+    Value := smSelect;
 
   for i := 0 to boxList.ControlCount - 1 do
     if boxList.Controls[i] is TUListButton then
