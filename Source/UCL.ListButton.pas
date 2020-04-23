@@ -435,7 +435,7 @@ begin
       end
     else if (Images <> nil) and (ImageIndex >= 0) then
       begin
-        GetCenterPos(ImgRect.Width, ImgRect.Height, ImgRect, ImgX, ImgY);
+        GetCenterPos(Images.Width, Images.Height, ImgRect, ImgX, ImgY);
         Images.Draw(Canvas, ImgX, ImgY, ImageIndex, Enabled);
       end;
 
