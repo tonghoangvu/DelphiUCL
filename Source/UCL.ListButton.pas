@@ -525,9 +525,8 @@ begin
         smToggle:
           Selected := not Selected;
       end;
-    end
-  else
-    ButtonState := csHover;
+    end;
+  ButtonState := csHover;
   inherited;
 end;
 
