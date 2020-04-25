@@ -157,7 +157,12 @@ begin
   //  Disabled
   if not Enabled then
     begin
-      if IsDark then
+      if Transparent and (ButtonState = csNone) then
+        begin
+          ParentColor := true;
+          BackColor := Color;
+        end
+      else if IsDark then
         BackColor := $333333
       else
         BackColor := $CCCCCC;

@@ -63,6 +63,7 @@ type
       procedure SetOldSBVisible(IsVisible: Boolean);
       procedure SetMiniSBVisible(IsVisible: Boolean);
       procedure UpdateMiniSB;
+      procedure ClearBox;
 
     published
       property AniSet: TIntAniSet read FAniSet write FAniSet;
@@ -219,6 +220,18 @@ begin
     (MiniSB as TControl).SetBounds(Width - MINI_SB_MARGIN - MINI_SB_THICKNESS, ThumbPos, MINI_SB_THICKNESS, ThumbSize)
   else
     (MiniSB as TControl).SetBounds(ThumbPos, Height - MINI_SB_MARGIN - MINI_SB_THICKNESS, ThumbSize, MINI_SB_THICKNESS);
+end;
+
+procedure TUScrollBox.ClearBox;
+var
+  i: Integer;
+begin
+  i := 0;
+  while ControlCount > i do
+    if Controls[i] = MiniSB then
+      inc(i)
+    else
+      Controls[i].Free;
 end;
 
 //  MESSAGES
