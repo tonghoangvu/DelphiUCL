@@ -113,6 +113,7 @@ type
       property BevelOuter default bvNone;
       property ParentBackground default false;
       property TabStop default true;
+      property FullRepaint default false;
   end;
 
 implementation
@@ -413,6 +414,7 @@ begin
   BevelOuter := bvNone;
   ParentBackground := false;
   TabStop := true;
+  FullRepaint := false;
 end;
 
 destructor TUListButton.Destroy;
