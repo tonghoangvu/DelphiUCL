@@ -2,8 +2,8 @@ object formDemo: TformDemo
   Left = 0
   Top = 0
   Caption = 'Demo UCL'
-  ClientHeight = 510
-  ClientWidth = 870
+  ClientHeight = 600
+  ClientWidth = 950
   Color = clWhite
   DoubleBuffered = True
   Font.Charset = DEFAULT_CHARSET
@@ -387,7 +387,7 @@ object formDemo: TformDemo
   object captionbarMain: TUCaptionBar
     Left = 0
     Top = 0
-    Width = 870
+    Width = 950
     Caption = '   Demo UCL app'
     Color = 15921906
     TabOrder = 3
@@ -396,7 +396,7 @@ object formDemo: TformDemo
     CustomBackColor.LightColor = 15921906
     CustomBackColor.DarkColor = 2829099
     object qbuttonQuit: TUQuickButton
-      Left = 825
+      Left = 905
       Top = 0
       Hint = 'Close'
       Align = alRight
@@ -417,7 +417,7 @@ object formDemo: TformDemo
       ExplicitLeft = 150
     end
     object qbuttonFullScreen: TUQuickButton
-      Left = 645
+      Left = 725
       Top = 0
       Hint = 'Full screen'
       Align = alRight
@@ -438,7 +438,7 @@ object formDemo: TformDemo
       ExplicitLeft = 150
     end
     object qbuttonMin: TUQuickButton
-      Left = 735
+      Left = 815
       Top = 0
       Hint = 'Minimize'
       Align = alRight
@@ -459,7 +459,7 @@ object formDemo: TformDemo
       ExplicitLeft = 150
     end
     object qbuttonMax: TUQuickButton
-      Left = 780
+      Left = 860
       Top = 0
       Hint = 'Maximize'
       Align = alRight
@@ -480,7 +480,7 @@ object formDemo: TformDemo
       ExplicitLeft = 150
     end
     object qbuttonHighlight: TUQuickButton
-      Left = 690
+      Left = 770
       Top = 0
       Hint = 'Back'
       Align = alRight
@@ -933,10 +933,10 @@ object formDemo: TformDemo
     CustomBorderColor.DarkSelectedPress = 6710886
   end
   object boxList: TUScrollBox
-    Left = 630
+    Left = 710
     Top = 32
     Width = 240
-    Height = 478
+    Height = 568
     HorzScrollBar.Tracking = True
     VertScrollBar.Tracking = True
     Align = alRight
@@ -952,6 +952,21 @@ object formDemo: TformDemo
     CustomBackColor.Color = 15132390
     CustomBackColor.LightColor = 15132390
     CustomBackColor.DarkColor = 2039583
+    object hoverpanelItemAction: TUHoverPanel
+      Left = 30
+      Top = 10
+      Width = 70
+      Height = 41
+      Font.Charset = DEFAULT_CHARSET
+      Font.Color = clWhite
+      Font.Height = -16
+      Font.Name = 'Segoe MDL2 Assets'
+      Font.Style = []
+      ParentFont = False
+      Visible = False
+      Icons = #57604#57607
+      IconClick = hoverpanelItemActionIconClick
+    end
   end
   object popupEdit: TUPopupMenu
     AniSet.AniKind = akOut
