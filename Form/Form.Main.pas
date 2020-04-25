@@ -11,7 +11,7 @@ uses
   UCL.Classes, UCL.Graphics, UCL.Utils, UCL.ThemeManager, UCL.IntAnimation, UCL.DragReorder,
   UCL.Form, UCL.CaptionBar, UCL.Panel, UCL.ProgressBar, UCL.Button, UCL.Slider, UCL.Text,
   UCL.Hyperlink, UCL.ListButton, UCL.QuickButton, UCL.ScrollBox, UCL.Edit, UCL.PopupMenu,
-  UCL.CheckBox, UCL.RadioButton;
+  UCL.CheckBox, UCL.RadioButton, UCL.HoverPanel;
 
 type
   TformDemo = class(TUForm)
@@ -61,6 +61,7 @@ type
     popupItemCut: TMenuItem;
     popupitemCopy: TMenuItem;
     popupitemPaste: TMenuItem;
+    hoverpanelItemAction: TUHoverPanel;
     procedure FormCreate(Sender: TObject);
     procedure comboChooseThemeSelect(Sender: TObject);
     procedure buttonReloadClick(Sender: TObject);
@@ -73,6 +74,8 @@ type
     procedure buttonVListAddItemClick(Sender: TObject);
     procedure buttonVListRefreshEffectClick(Sender: TObject);
     procedure popupEditItemClick(Sender: TObject; Index: Integer);
+    procedure Item_Click(Sender: TObject);
+    procedure hoverpanelItemActionIconClick(Sender: TObject; Index: Integer);
   private
     { Private declarations }
   public
@@ -103,7 +106,11 @@ begin
   Item.Caption := 'List button ' + (boxList.ControlCount - 1).ToString;
   Item.FontIcon := UF_SEARCH;
   Item.Align := alTop;
+  Item.ListStyle := lsBottomDetail;
+  Item.Height := 55;
   Item.SelectMode := smSelect;
+  Item.FullRepaint := true;
+  Item.OnClick := Item_Click;
 end;
 
 procedure TformDemo.buttonVListDragReorderClick(Sender: TObject);
@@ -192,6 +199,23 @@ begin
     'This is line 1' + sLineBreak +
     'This is line 2' + sLineBreak +
     'This is a multi-line tooltip';
+end;
+
+procedure TformDemo.hoverpanelItemActionIconClick(Sender: TObject;
+  Index: Integer);
+begin
+  case Index of
+    0:
+      ShowMessage('Edit button clicked');
+    1:
+      ShowMessage('Remove button clicked');
+  end;
+end;
+
+procedure TformDemo.Item_Click(Sender: TObject);
+begin
+  if Sender is TWinControl then
+    hoverpanelItemAction.ClipTo(Sender as TWinControl);
 end;
 
 procedure TformDemo.popupEditItemClick(Sender: TObject; Index: Integer);

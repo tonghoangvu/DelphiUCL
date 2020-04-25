@@ -25,6 +25,7 @@ uses
   , UCL.CheckBox
   , UCL.RadioButton
   , UCL.PopupMenu
+  , UCL.HoverPanel
   ;
 
 procedure Register;
@@ -43,7 +44,8 @@ begin
     TUEdit,
     TUCheckBox,
     TURadioButton,
-    TUPopupMenu
+    TUPopupMenu,
+    TUHoverPanel
   ]);
 end;
 
