@@ -102,15 +102,14 @@ var
   Item: TUListButton;
 begin
   Item := TUListButton.Create(boxList);
-  Item.Parent := boxList;
   Item.Caption := 'List button ' + (boxList.ControlCount - 1).ToString;
   Item.FontIcon := UF_SEARCH;
   Item.Align := alTop;
   Item.ListStyle := lsBottomDetail;
   Item.Height := 55;
   Item.SelectMode := smSelect;
-  Item.FullRepaint := true;
   Item.OnClick := Item_Click;
+  Item.Parent := boxList;
 end;
 
 procedure TformDemo.buttonVListDragReorderClick(Sender: TObject);
