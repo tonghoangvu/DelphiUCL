@@ -96,7 +96,7 @@ procedure TUSlider.UpdateTheme(const UpdateChildren: Boolean);
 begin
   UpdateColors;
   UpdateRects;
-  Repaint;
+  Invalidate;
 end;
 
 //  INTERNAL
@@ -185,7 +185,7 @@ begin
     begin
       FControlState := Value;
       UpdateColors;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -203,7 +203,7 @@ begin
       CurHeight := TempSize;
 
       UpdateRects;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -213,7 +213,7 @@ begin
     begin
       FMin := Value;
       UpdateRects;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -223,7 +223,7 @@ begin
     begin
       FMax := Value;
       UpdateRects;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -235,7 +235,7 @@ begin
       if Assigned(FOnChange) then
         FOnChange(Self);
       UpdateRects;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -244,13 +244,13 @@ end;
 procedure TUSlider.CustomBackColor_OnChange(Sender: TObject);
 begin
   UpdateColors;
-  Repaint;
+  Invalidate;
 end;
 
 procedure TUSlider.CustomCursorColor_OnChange(Sender: TObject);
 begin
   UpdateColors;
-  Repaint;
+  Invalidate;
 end;
 
 //  MAIN CLASS
@@ -379,7 +379,7 @@ begin
       Value := TempValue;
     end
   else
-    Repaint;
+    Invalidate;
 
   inherited;
 end;

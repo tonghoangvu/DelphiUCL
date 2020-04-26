@@ -78,7 +78,7 @@ procedure TUCheckBox.UpdateTheme(const UpdateChildren: Boolean);
 begin
   UpdateColors;
   UpdateRects;
-  Repaint;
+  Invalidate;
 
   //  Do not update children
 end;
@@ -122,7 +122,7 @@ begin
       if (not Value) and (FState = cbsGrayed) then
         begin
           FState := cbsUnchecked;
-          Repaint;
+          Invalidate;
         end;
     end;
 end;
@@ -135,7 +135,7 @@ begin
         FState := cbsUnchecked
       else
         FState := Value;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -144,7 +144,7 @@ begin
   if Value <> FTransparent then
     begin
       FTransparent := Value;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -154,7 +154,7 @@ begin
     begin
       FCustomAccentColor := Value;
       UpdateColors;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -164,7 +164,7 @@ begin
     begin
       FTextSpacing := Value;
       UpdateRects;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -285,7 +285,7 @@ end;
 procedure TUCheckBox.CM_EnabledChanged(var Msg: TMessage);
 begin
   UpdateColors;
-  Repaint;
+  Invalidate;
   inherited;
 end;
 

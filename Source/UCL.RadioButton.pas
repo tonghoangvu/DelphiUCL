@@ -76,7 +76,7 @@ procedure TURadioButton.UpdateTheme(const UpdateChildren: Boolean);
 begin
   UpdateColors;
   UpdateRects;
-  Repaint;
+  Invalidate;
 
   //  Do not update children
 end;
@@ -130,7 +130,7 @@ begin
           then
             (Parent.Controls[i] as TURadioButton).IsChecked := false;
 
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -139,7 +139,7 @@ begin
   if Value <> FTransparent then
     begin
       FTransparent := Value;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -149,7 +149,7 @@ begin
     begin
       FCustomAccentColor := Value;
       UpdateColors;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -159,7 +159,7 @@ begin
     begin
       FTextSpacing := Value;
       UpdateRects;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -250,7 +250,7 @@ end;
 procedure TURadioButton.CM_EnabledChanged(var Msg: TMessage);
 begin
   UpdateColors;
-  Repaint;
+  Invalidate;
   inherited;
 end;
 

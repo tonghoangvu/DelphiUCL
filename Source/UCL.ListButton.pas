@@ -134,7 +134,7 @@ procedure TUListButton.UpdateTheme(const UpdateChildren: Boolean);
 begin
   UpdateColors;
   UpdateRects;
-  Repaint;
+  Invalidate;
 
   //  Do not update children
 end;
@@ -234,7 +234,7 @@ begin
     begin
       FButtonState := Value;
       UpdateColors;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -244,7 +244,7 @@ begin
     begin
       FListStyle := Value;
       UpdateRects;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -253,7 +253,7 @@ begin
   if Value <> FImageKind then
     begin
       FImageKind := Value;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -262,7 +262,7 @@ begin
   if Value <> FImages then
     begin
       FImages := Value;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -271,7 +271,7 @@ begin
   if Value <> FImageIndex then
     begin
       FImageIndex := Value;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -280,7 +280,7 @@ begin
   if Value <> FFontIcon then
     begin
       FFontIcon := Value;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -290,7 +290,7 @@ begin
     begin
       FImageSpace := Value;
       UpdateRects;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -300,7 +300,7 @@ begin
     begin
       FSpacing := Value;
       UpdateRects;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -310,7 +310,7 @@ begin
     begin
       FDetail := Value;
       UpdateRects;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -320,7 +320,7 @@ begin
     begin
       FTransparent := Value;
       UpdateColors;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -330,7 +330,7 @@ begin
     begin
       FSelectMode := Value;
       UpdateColors;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -355,7 +355,7 @@ begin
         end;
 
       UpdateColors;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -378,7 +378,7 @@ end;
 procedure TUListButton.CustomBackColor_OnChange(Sender: TObject);
 begin
   UpdateColors;
-  Repaint;
+  Invalidate;
 end;
 
 //  MAIN CLASS
@@ -554,14 +554,14 @@ end;
 procedure TUListButton.CM_EnabledChanged(var Msg: TMessage);
 begin
   UpdateColors;
-  Repaint;
+  Invalidate;
   inherited;
 end;
 
 procedure TUListButton.CM_TextChanged(var Msg: TMessage);
 begin
   UpdateRects;
-  Repaint;
+  Invalidate;
   inherited;  
 end;
 
