@@ -35,6 +35,7 @@ type
 
     protected
       procedure Paint; override;
+      procedure Resize; override;
       procedure ChangeScale(M, D: Integer{$IF CompilerVersion > 29}; isDpiChange: Boolean{$ENDIF}); override;
 
     public
@@ -227,6 +228,12 @@ begin
       Canvas.Font.Color := TextColor;
       DrawTextRect(Canvas, taCenter, taVerticalCenter, IconRect, UF_RADIO_SMALL, Transparent);
     end;
+end;
+
+procedure TURadioButton.Resize;
+begin
+  inherited;
+  UpdateRects;
 end;
 
 procedure TURadioButton.ChangeScale(M, D: Integer{$IF CompilerVersion > 29}; isDpiChange: Boolean{$ENDIF});

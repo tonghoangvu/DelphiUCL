@@ -38,6 +38,7 @@ type
 
     protected
       procedure Paint; override;
+      procedure Resize; override;
       procedure ChangeScale(M, D: Integer{$IF CompilerVersion > 29}; isDpiChange: Boolean{$ENDIF}); override;
 
     public
@@ -250,6 +251,12 @@ begin
         DrawTextRect(Canvas, taCenter, taVerticalCenter, IconRect, UF_CHECKBOX_SMALL, Transparent);
       end;
   end;
+end;
+
+procedure TUCheckBox.Resize;
+begin
+  inherited;
+  UpdateRects;
 end;
 
 //  MESSAGES
