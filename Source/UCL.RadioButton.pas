@@ -19,6 +19,8 @@ type
       FTextSpacing: Integer;
       FGroup: string;
 
+      FOnChange: TNotifyEvent;
+
       //  Internal
       procedure UpdateColors;
       procedure UpdateRects;
@@ -53,6 +55,8 @@ type
       property CustomAccentColor: TColor read FCustomAccentColor write SetCustomAccentColor default $D77800;
       property TextSpacing: Integer read FTextSpacing write SetTextSpacing default 6;
       property Group: string read FGroup write FGroup nodefault;
+
+      property OnChange: TNotifyEvent read FOnChange write FOnChange;
 
       //  Modify default props
       property Caption;
@@ -120,6 +124,8 @@ begin
   if Value <> FIsChecked then
     begin
       FIsChecked := Value;
+      if Assigned(FOnChange) then
+        FOnChange(Self);
 
       //  Uncheck all items with the same group
       if Value then

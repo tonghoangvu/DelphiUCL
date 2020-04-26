@@ -21,6 +21,8 @@ type
       FCustomAccentColor: TColor;
       FTextSpacing: Integer;
 
+      FOnChange: TNotifyEvent;
+
       //  Internal
       procedure UpdateColors;
       procedure UpdateRects;
@@ -56,6 +58,8 @@ type
       property Transparent: Boolean read FTransparent write SetTransparent default true;
       property CustomAccentColor: TColor read FCustomAccentColor write SetCustomAccentColor default $D77800;
       property TextSpacing: Integer read FTextSpacing write SetTextSpacing default 6;
+
+      property OnChange: TNotifyEvent read FOnChange write FOnChange;
 
       //  Modify default props
       property Caption;
@@ -136,6 +140,8 @@ begin
         FState := cbsUnchecked
       else
         FState := Value;
+      if Assigned(FOnChange) then
+        FOnChange(Self);
       Invalidate;
     end;
 end;
