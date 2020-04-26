@@ -107,7 +107,7 @@ procedure TUButton.UpdateTheme(const UpdateChildren: Boolean);
 begin
   UpdateColors;
   UpdateRects;
-  Repaint;
+  Invalidate;
 
   //  Do not update children
 end;
@@ -197,7 +197,7 @@ begin
     begin
       FButtonState := Value;
       UpdateColors;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -207,7 +207,7 @@ begin
     begin
       FAlignment := Value;
       UpdateRects;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -217,7 +217,7 @@ begin
     begin
       FImages := Value;
       UpdateRects;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -227,7 +227,7 @@ begin
     begin
       FImageIndex := Value;
       UpdateRects;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -237,7 +237,7 @@ begin
     begin
       FAllowFocus := Value;
       UpdateColors;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -247,7 +247,7 @@ begin
     begin
       FHighlight := Value;
       UpdateColors;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -257,7 +257,7 @@ begin
     begin
       FIsToggleButton := Value;
       UpdateColors;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -267,7 +267,7 @@ begin
     begin
       FIsToggled := Value;
       UpdateColors;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -277,7 +277,7 @@ begin
     begin
       FTransparent := Value;
       UpdateColors;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -286,13 +286,13 @@ end;
 procedure TUButton.CustomBackColor_OnChange(Sender: TObject);
 begin
   UpdateColors;
-  Repaint;
+  Invalidate;
 end;
 
 procedure TUButton.CustomBorderColor_OnChange(Sender: TObject);
 begin
   UpdateColors;
-  Repaint;
+  Invalidate;
 end;
 
 //  MAIN CLASS
@@ -392,7 +392,7 @@ begin
     begin
       SetFocus;
       UpdateColors;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -403,7 +403,7 @@ begin
     begin
       //
       UpdateColors;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -452,7 +452,7 @@ procedure TUButton.CM_EnabledChanged(var Msg: TMessage);
 begin
   inherited;
   UpdateColors;
-  Repaint;
+  Invalidate;
 end;
 
 procedure TUButton.CM_DialogKey(var Msg: TCMDialogKey);
@@ -469,7 +469,7 @@ end;
 procedure TUButton.CM_TextChanged(var Msg: TMessage);
 begin
   inherited;
-  Repaint;
+  Invalidate;
 end;
 
 end.

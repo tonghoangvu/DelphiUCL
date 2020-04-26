@@ -78,7 +78,7 @@ procedure TUProgressBar.UpdateTheme(const UpdateChildren: Boolean);
 begin
   UpdateColors;
   UpdateRects;
-  Repaint;
+  Invalidate;
 
   //  Do not update children
 end;
@@ -126,7 +126,7 @@ begin
         if Assigned(FOnChange) then
           FOnChange(Self);
         UpdateRects;
-        Repaint;
+        Invalidate;
       end;
 end;
 
@@ -136,7 +136,7 @@ begin
     begin
       FOrientation := Value;
       UpdateRects;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -145,7 +145,7 @@ end;
 procedure TUProgressBar.CustomBackColor_OnChange(Sender: TObject);
 begin
   UpdateColors;
-  Repaint;
+  Invalidate;
 end;
 
 //  MAIN CLASS

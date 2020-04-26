@@ -19,6 +19,8 @@ type
       FTextSpacing: Integer;
       FGroup: string;
 
+      FOnChange: TNotifyEvent;
+
       //  Internal
       procedure UpdateColors;
       procedure UpdateRects;
@@ -35,6 +37,7 @@ type
 
     protected
       procedure Paint; override;
+      procedure Resize; override;
       procedure ChangeScale(M, D: Integer{$IF CompilerVersion > 29}; isDpiChange: Boolean{$ENDIF}); override;
 
     public
@@ -52,6 +55,8 @@ type
       property CustomAccentColor: TColor read FCustomAccentColor write SetCustomAccentColor default $D77800;
       property TextSpacing: Integer read FTextSpacing write SetTextSpacing default 6;
       property Group: string read FGroup write FGroup nodefault;
+
+      property OnChange: TNotifyEvent read FOnChange write FOnChange;
 
       //  Modify default props
       property Caption;
@@ -76,7 +81,7 @@ procedure TURadioButton.UpdateTheme(const UpdateChildren: Boolean);
 begin
   UpdateColors;
   UpdateRects;
-  Repaint;
+  Invalidate;
 
   //  Do not update children
 end;
@@ -119,6 +124,8 @@ begin
   if Value <> FIsChecked then
     begin
       FIsChecked := Value;
+      if Assigned(FOnChange) then
+        FOnChange(Self);
 
       //  Uncheck all items with the same group
       if Value then
@@ -130,7 +137,7 @@ begin
           then
             (Parent.Controls[i] as TURadioButton).IsChecked := false;
 
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -139,7 +146,7 @@ begin
   if Value <> FTransparent then
     begin
       FTransparent := Value;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -149,7 +156,7 @@ begin
     begin
       FCustomAccentColor := Value;
       UpdateColors;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -159,7 +166,7 @@ begin
     begin
       FTextSpacing := Value;
       UpdateRects;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -229,6 +236,12 @@ begin
     end;
 end;
 
+procedure TURadioButton.Resize;
+begin
+  inherited;
+  UpdateRects;
+end;
+
 procedure TURadioButton.ChangeScale(M, D: Integer{$IF CompilerVersion > 29}; isDpiChange: Boolean{$ENDIF});
 begin
   inherited;
@@ -250,7 +263,7 @@ end;
 procedure TURadioButton.CM_EnabledChanged(var Msg: TMessage);
 begin
   UpdateColors;
-  Repaint;
+  Invalidate;
   inherited;
 end;
 

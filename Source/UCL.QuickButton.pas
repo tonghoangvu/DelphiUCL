@@ -78,7 +78,7 @@ end;
 procedure TUQuickButton.UpdateTheme(const UpdateChildren: Boolean);
 begin
   UpdateColors;
-  Repaint;
+  Invalidate;
 
   //  Do not update children
 end;
@@ -152,7 +152,7 @@ begin
     begin
       FButtonState := Value;
       UpdateColors;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -181,7 +181,7 @@ begin
     begin
       FCustomAccentColor := Value;
       UpdateColors;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -190,7 +190,7 @@ end;
 procedure TUQuickButton.CustomBackColor_OnChange(Sender: TObject);
 begin
   UpdateColors;
-  Repaint;
+  Invalidate;
 end;
 
 //  MAIN CLASS
@@ -317,7 +317,7 @@ end;
 procedure TUQuickButton.CM_TextChanged(var Msg: TMessage);
 begin
   inherited;
-  Repaint;
+  Invalidate;
 end;
 
 end.

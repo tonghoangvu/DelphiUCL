@@ -21,6 +21,8 @@ type
       FCustomAccentColor: TColor;
       FTextSpacing: Integer;
 
+      FOnChange: TNotifyEvent;
+
       //  Internal
       procedure UpdateColors;
       procedure UpdateRects;
@@ -38,6 +40,7 @@ type
 
     protected
       procedure Paint; override;
+      procedure Resize; override;
       procedure ChangeScale(M, D: Integer{$IF CompilerVersion > 29}; isDpiChange: Boolean{$ENDIF}); override;
 
     public
@@ -55,6 +58,8 @@ type
       property Transparent: Boolean read FTransparent write SetTransparent default true;
       property CustomAccentColor: TColor read FCustomAccentColor write SetCustomAccentColor default $D77800;
       property TextSpacing: Integer read FTextSpacing write SetTextSpacing default 6;
+
+      property OnChange: TNotifyEvent read FOnChange write FOnChange;
 
       //  Modify default props
       property Caption;
@@ -78,7 +83,7 @@ procedure TUCheckBox.UpdateTheme(const UpdateChildren: Boolean);
 begin
   UpdateColors;
   UpdateRects;
-  Repaint;
+  Invalidate;
 
   //  Do not update children
 end;
@@ -122,7 +127,7 @@ begin
       if (not Value) and (FState = cbsGrayed) then
         begin
           FState := cbsUnchecked;
-          Repaint;
+          Invalidate;
         end;
     end;
 end;
@@ -135,7 +140,9 @@ begin
         FState := cbsUnchecked
       else
         FState := Value;
-      Repaint;
+      if Assigned(FOnChange) then
+        FOnChange(Self);
+      Invalidate;
     end;
 end;
 
@@ -144,7 +151,7 @@ begin
   if Value <> FTransparent then
     begin
       FTransparent := Value;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -154,7 +161,7 @@ begin
     begin
       FCustomAccentColor := Value;
       UpdateColors;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -164,7 +171,7 @@ begin
     begin
       FTextSpacing := Value;
       UpdateRects;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -252,6 +259,12 @@ begin
   end;
 end;
 
+procedure TUCheckBox.Resize;
+begin
+  inherited;
+  UpdateRects;
+end;
+
 //  MESSAGES
 
 procedure TUCheckBox.WM_LButtonUp(var Msg: TWMLButtonUp);
@@ -285,7 +298,7 @@ end;
 procedure TUCheckBox.CM_EnabledChanged(var Msg: TMessage);
 begin
   UpdateColors;
-  Repaint;
+  Invalidate;
   inherited;
 end;
 

@@ -947,11 +947,13 @@ object formDemo: TformDemo
     AniSet.AniFunctionKind = afkQuintic
     AniSet.DelayStartTime = 0
     AniSet.Duration = 120
-    AniSet.Step = 11
+    AniSet.Step = 12
     CustomBackColor.Enabled = False
     CustomBackColor.Color = 15132390
     CustomBackColor.LightColor = 15132390
     CustomBackColor.DarkColor = 2039583
+    LengthPerStep = 3
+    MaxScrollCount = 5
     object hoverpanelItemAction: TUHoverPanel
       Left = 30
       Top = 10

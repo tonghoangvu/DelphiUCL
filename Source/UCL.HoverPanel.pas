@@ -69,7 +69,7 @@ begin
     begin
       FIcons := Value;
       if Visible then
-        Repaint;
+        Invalidate;
     end;
 end;
 
@@ -79,7 +79,7 @@ begin
     begin
       FIconWidth := Value;
       if Visible then
-        Repaint;
+        Invalidate;
     end;
 end;
 
@@ -154,7 +154,7 @@ procedure TUHoverPanel.WM_LButtonDown(var Msg: TWMLButtonDown);
 begin
   inherited;
   IsDown := true;
-  Repaint;
+  Invalidate;
 end;
 
 procedure TUHoverPanel.WM_LButtonUp(var Msg: TWMLButtonUp);
@@ -170,7 +170,7 @@ begin
         FIconClick(Self, IconIndex);
     end;
   IsDown := false;
-  Repaint;
+  Invalidate;
 end;
 
 procedure TUHoverPanel.WM_MouseMove(var Msg: TWMMouseMove);
@@ -180,7 +180,7 @@ begin
   if IconIndex <> LastIconIndex then
     begin
       LastIconIndex := IconIndex;
-      Repaint;
+      Invalidate;
     end;
 end;
 
@@ -191,7 +191,7 @@ begin
   if IconIndex <> LastIconIndex then
     begin
       LastIconIndex := IconIndex;
-      Repaint;
+      Invalidate;
     end;
 end;
 

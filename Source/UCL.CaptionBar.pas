@@ -80,7 +80,7 @@ var
   i: Integer;
 begin
   UpdateColors;
-  Repaint;
+  Invalidate;
 
   //  Update children
   if IsContainer and UpdateChildren then
