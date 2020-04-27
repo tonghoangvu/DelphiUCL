@@ -12,9 +12,13 @@ type
       var BackColor, TextColor: TColor;
 
       FCustomBackColor: TUThemeColorSet;
+      FTransparent: Boolean;
 
       //  Internal
       procedure UpdateColors;
+
+      //  Setters
+      procedure SetTransparent(const Value: Boolean);
 
       //  Child events
       procedure CustomBackColor_OnChange(Sender: TObject);
@@ -32,6 +36,7 @@ type
 
     published
       property CustomBackColor: TUThemeColorSet read FCustomBackColor write FCustomBackColor;
+      property Transparent: Boolean read FTransparent write SetTransparent default false;
 
       //  Modify props
       property BevelOuter default bvNone;
@@ -88,6 +93,18 @@ begin
   Color := BackColor;
 end;
 
+//  SETTERS
+
+procedure TUPanel.SetTransparent(const Value: Boolean);
+begin
+  if Value <> FTransparent then
+    begin
+      FTransparent := Value;
+      ParentBackground := Value;
+      Invalidate;
+    end;
+end;
+
 //  CHILD EVENTS
 
 procedure TUPanel.CustomBackColor_OnChange(Sender: TObject);
@@ -107,6 +124,7 @@ begin
   FCustomBackColor := TUThemeColorSet.Create;
   FCustomBackColor.OnChange := CustomBackColor_OnChange;
   FCustomBackColor.Assign(PANEL_BACK);
+  FTransparent := false;
 
   //  Modify props
   BevelOuter := bvNone;
@@ -129,14 +147,19 @@ begin
   //  Do not inherited
 
   //  Paint background
-  Canvas.Brush.Color := BackColor;
-  Canvas.FillRect(Rect(0, 0, Width, Height));
+  if not Transparent then
+    begin
+      Canvas.Brush.Style := bsSolid;
+      Canvas.Brush.Color := BackColor;
+      Canvas.FillRect(Rect(0, 0, Width, Height));
+    end;
 
   //  Paint text
   if ShowCaption then
     begin
       Canvas.Font.Assign(Font);
       Canvas.Font.Color := TextColor;
+      Canvas.Brush.Style := bsClear;
       DrawTextRect(Canvas, Alignment, VerticalAlignment, Rect(0, 0, Width, Height), Caption, false);
     end;
 end;
