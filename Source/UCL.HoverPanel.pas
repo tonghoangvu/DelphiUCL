@@ -3,7 +3,7 @@
 interface
 
 uses
-  Classes, SysUtils, Types, Graphics, Controls, Messages,
+  Classes, SysUtils, Types, Graphics, Controls, Messages, Windows,
   UCL.Classes, UCL.ThemeManager, UCL.Graphics, UCL.Utils;
 
 type
@@ -32,6 +32,7 @@ type
 
     protected
       procedure Paint; override;
+      procedure ChangeScale(M, D: Integer{$IF CompilerVersion > 29}; isDpiChange: Boolean{$ENDIF}); override;
 
     public
       constructor Create(aOwner: TComponent); override;
@@ -130,6 +131,12 @@ begin
         IconRect := Rect(i * IconWidth, 0, (i + 1) * IconWidth, Height);
       DrawTextRect(Canvas, taCenter, taVerticalCenter, IconRect, Icons[i + 1], false);
     end;
+end;
+
+procedure TUHoverPanel.ChangeScale(M, D: Integer{$IF CompilerVersion > 29}; isDpiChange: Boolean{$ENDIF});
+begin
+  inherited;
+  IconWidth := MulDiv(IconWidth, M, D);
 end;
 
 //  UTILS
