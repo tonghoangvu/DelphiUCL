@@ -370,6 +370,8 @@ begin
       Result := FSelected;
     smToggle:
       Result := FSelected;
+    else
+      Result := false;
   end;
 end;
 

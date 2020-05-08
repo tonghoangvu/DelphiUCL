@@ -61,8 +61,8 @@ contains
   UCL.CheckBox in 'Source\UCL.CheckBox.pas',
   UCL.RadioButton in 'Source\UCL.RadioButton.pas',
   UCL.PopupMenu in 'Source\UCL.PopupMenu.pas',
-  UCL.HoverPanel in 'Source\UCL.HoverPanel.pas',
-  UCL.DragReorder in 'Source\UCL.DragReorder.pas';
+  UCL.DragReorder in 'Source\UCL.DragReorder.pas',
+  UCL.HoverPanel in 'Source\UCL.HoverPanel.pas';
 
 end.
 

@@ -17,7 +17,6 @@ type
       FIconFont: TFont;
       FAllowGrayed: Boolean;
       FState: TUCheckBoxState;
-      FIsChecked: Boolean;
       FTransparent: Boolean;
       FCustomAccentColor: TColor;
       FTextSpacing: Integer;
