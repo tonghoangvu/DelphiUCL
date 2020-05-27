@@ -354,8 +354,11 @@ begin
 
   //  Space for top border
   if CanDrawBorder then
-    Padding.Top := 1
-  else
+    begin
+      if Padding.Top = 0 then
+        Padding.Top := 1;
+    end
+  else if (Padding.Top = 1) and (WindowState = wsMaximized) then
     Padding.Top := 0;
 
   CurrentScreen := Screen.MonitorFromWindow(Handle);

@@ -11,6 +11,8 @@ uses
 type
   TIndexNotifyEvent = procedure (Sender: TObject; Index: Integer) of object;
 
+  TUPopupPoint = (ppTopLeft, ppTopRight, ppBottomLeft, ppBottomRight);
+
   TUPopupMenu = class(TPopupMenu, IUControl)
     private
       var BackColor: TColor;
@@ -177,6 +179,8 @@ var
   TotalItemsHeight: Integer;
   Spacing: Integer;
   ItemW: Integer;
+
+  PopupPoint: TUPopupPoint;
 begin
   //  Update theme
   UpdateTheme(false);
@@ -211,11 +215,39 @@ begin
   Form.ClientWidth := ItemW;
   Form.ClientHeight := 0;
 
+  //  Find popup point
+  TotalItemsHeight := ItemCount * Round(ItemHeight * DPI / 96);
+
+  if X + Form.Width > Screen.WorkAreaWidth then
+    //  Left
+    begin
+      if Y + TotalItemsHeight + 2 * Spacing > Screen.WorkAreaHeight then
+        PopupPoint := ppTopLeft
+      else
+        PopupPoint := ppBottomLeft;
+    end
+  else
+    //  Right
+    begin
+      if Y + TotalItemsHeight + 2 * Spacing > Screen.WorkAreaHeight then
+        PopupPoint := ppTopRight
+      else
+        PopupPoint := ppBottomRight;
+    end;
+
+  //  Modify form padding
+  if (PopupPoint = ppBottomLeft) or (PopupPoint = ppBottomRight) then
+    Form.Padding.Bottom := Spacing
+  else
+    Form.Padding.Top := Spacing;
+
   //  Build items
-  TotalItemsHeight := 0;
   for i := 0 to ItemCount - 1 do
     begin
-      MenuItem := Self.Items[i];
+      if (PopupPoint = ppBottomLeft) or (PopupPoint = ppBottomRight) then
+        MenuItem := Self.Items[i]
+      else
+        MenuItem := Self.Items[ItemCount - 1 - i];
 
       UItem := TUListButton.Create(Form);
       UItem.Tag := i;
@@ -234,7 +266,10 @@ begin
       UItem.Detail := Detail;
       UItem.ImageKind := Self.ImageKind;
 
-      UItem.Align := alBottom;
+      if (PopupPoint = ppBottomLeft) or (PopupPoint = ppBottomRight) then
+        UItem.Align := alBottom
+      else
+        UItem.Align := alTop;
       UItem.Width := ItemWidth;
       UItem.Height := ItemHeight;
       UItem.ShowHint := true;
@@ -243,21 +278,43 @@ begin
       //  Scale item
       UItem.ScaleForPPI(DPI);
       UItem.Font.Height := MulDiv(UItem.Font.Height, DPI, 96);  //  Scaling for text font
-
-      //  Increase total items height
-      Inc(TotalItemsHeight, UItem.Height);
     end;
 
-  //  Set popup position (after show)
-  Form.Left := X;
-  Form.Top := Y;
+  case PopupPoint of
+    ppTopLeft:
+      begin
+        Form.Left := X - Form.Width;
+        Form.Top := Y - TotalItemsHeight - 2 * Spacing;
+      end;
+    ppTopRight:
+      begin
+        Form.Left := X;
+        Form.Top := Y - TotalItemsHeight - 2 * Spacing;
+      end;
+    ppBottomLeft:
+      begin
+        Form.Left := X - Form.Width;
+        Form.Top := Y;
+      end;
+    ppBottomRight:
+      begin
+        Form.Left := X;
+        Form.Top := Y;
+      end;
+  end;
   Form.Visible := true;
 
   //  Animation
   Ani := TIntAni.Create(0, TotalItemsHeight + 2 * Spacing,
     procedure (Value: Integer)
     begin
-      Form.ClientHeight := Value;
+      if (PopupPoint = ppBottomLeft) or (PopupPoint = ppBottomRight) then
+        Form.ClientHeight := Value
+      else
+        begin
+          Form.ClientHeight := Value;
+          Form.Top := Y - Form.ClientHeight;
+        end;
     end, nil);
   Ani.AniSet.Assign(AniSet);
   Ani.Start;

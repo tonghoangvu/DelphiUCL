@@ -9,12 +9,26 @@ uses
 type
   TUPanel = class(TPanel, IUControl)
     private
-      var BackColor, TextColor: TColor;
+      var AccentColor, BackColor, TextColor: TColor;
 
+      FBarMargin: Integer;
+      FBarPosition: TUDirection;
+      FBarThickness: Integer;
+      FBarVisible: Boolean;
+      FCustomAccentColor: TColor;
       FCustomBackColor: TUThemeColorSet;
+      FTransparent: Boolean;
 
       //  Internal
       procedure UpdateColors;
+
+      //  Setters
+      procedure SetBarMargin(const Value: Integer);
+      procedure SetBarPosition(const Value: TUDirection);
+      procedure SetBarThickness(const Value: Integer);
+      procedure SetBarVisible(const Value: Boolean);
+      procedure SetCustomAccentColor(const Value: TColor);
+      procedure SetTransparent(const Value: Boolean);
 
       //  Child events
       procedure CustomBackColor_OnChange(Sender: TObject);
@@ -31,7 +45,13 @@ type
       procedure UpdateTheme(const UpdateChildren: Boolean);
 
     published
+      property BarMargin: Integer read FBarMargin write SetBarMargin default 10;
+      property BarPosition: TUDirection read FBarPosition write SetBarPosition default dLeft;
+      property BarThickness: Integer read FBarThickness write SetBarThickness default 5;
+      property BarVisible: Boolean read FBarVisible write SetBarVisible default false;
+      property CustomAccentColor: TColor read FCustomAccentColor write SetCustomAccentColor default $D77800;
       property CustomBackColor: TUThemeColorSet read FCustomBackColor write FCustomBackColor;
+      property Transparent: Boolean read FTransparent write SetTransparent default false;
 
       //  Modify props
       property BevelOuter default bvNone;
@@ -77,6 +97,9 @@ begin
   //  Preparing
   TM := SelectThemeManager(Self);
 
+  //  Update accent color
+  AccentColor := SelectAccentColor(TM, CustomAccentColor);
+
   //  Update back color
   _BackColor := SelectColorSet(TM, CustomBackColor, PANEL_BACK);
   BackColor := _BackColor.GetColor(TM);
@@ -86,6 +109,63 @@ begin
 
   //  Update Color for container (let children using ParentColor)
   Color := BackColor;
+end;
+
+//  SETTERS
+
+procedure TUPanel.SetBarMargin(const Value: Integer);
+begin
+  if Value <> FBarMargin then
+    begin
+      FBarMargin := Value;
+      Invalidate;
+    end;
+end;
+
+procedure TUPanel.SetBarPosition(const Value: TUDirection);
+begin
+  if Value <> FBarPosition then
+    begin
+      FBarPosition := Value;
+      Invalidate;
+    end;
+end;
+
+procedure TUPanel.SetBarThickness(const Value: Integer);
+begin
+  if Value <> FBarThickness then
+    begin
+      FBarThickness := Value;
+      Invalidate;
+    end;
+end;
+
+procedure TUPanel.SetBarVisible(const Value: Boolean);
+begin
+  if Value <> FBarVisible then
+    begin
+      FBarVisible := Value;
+      Invalidate;
+    end;
+end;
+
+procedure TUPanel.SetCustomAccentColor(const Value: TColor);
+begin
+  if Value <> FCustomAccentColor then
+    begin
+      FCustomAccentColor := Value;
+      Invalidate;
+    end;
+end;
+
+procedure TUPanel.SetTransparent(const Value: Boolean);
+begin
+  if Value <> FTransparent then
+    begin
+      FTransparent := Value;
+      ParentBackground := Value;
+      Invalidate;
+    end;
 end;
 
 //  CHILD EVENTS
@@ -101,12 +181,21 @@ end;
 constructor TUPanel.Create(aOwner: TComponent);
 begin
   inherited;
+  AccentColor := $D77800;
   BackColor := $E6E6E6;
   TextColor := GetTextColorFromBackground(BackColor);
+
+  FBarMargin := 10;
+  FBarPosition := dLeft;
+  FBarThickness := 5;
+  FBarVisible := false;
+
+  FCustomAccentColor := $D77800;
 
   FCustomBackColor := TUThemeColorSet.Create;
   FCustomBackColor.OnChange := CustomBackColor_OnChange;
   FCustomBackColor.Assign(PANEL_BACK);
+  FTransparent := false;
 
   //  Modify props
   BevelOuter := bvNone;
@@ -125,18 +214,42 @@ end;
 //  CUSTOM METHODS
 
 procedure TUPanel.Paint;
+var
+  BarRect: TRect;
 begin
   //  Do not inherited
 
   //  Paint background
-  Canvas.Brush.Color := BackColor;
-  Canvas.FillRect(Rect(0, 0, Width, Height));
+  if not Transparent then
+    begin
+      Canvas.Brush.Style := bsSolid;
+      Canvas.Brush.Color := BackColor;
+      Canvas.FillRect(Rect(0, 0, Width, Height));
+    end;
+
+  //  Paint bar
+  if BarVisible then
+    begin
+      Canvas.Brush.Color := AccentColor;
+      case BarPosition of
+        dLeft:
+          BarRect := Rect(0, BarMargin, BarThickness, Height - BarMargin);
+        dTop:
+          BarRect := Rect(BarMargin, 0, Width - BarMargin, BarThickness);
+        dRight:
+          BarRect := Rect(Width - BarThickness, BarMargin, Width, Height - BarMargin);
+        dBottom:
+          BarRect := Rect(BarMargin, Height - BarThickness, Width - BarMargin, Height);
+      end;
+      Canvas.FillRect(BarRect);
+    end;
 
   //  Paint text
   if ShowCaption then
     begin
       Canvas.Font.Assign(Font);
       Canvas.Font.Color := TextColor;
+      Canvas.Brush.Style := bsClear;
       DrawTextRect(Canvas, Alignment, VerticalAlignment, Rect(0, 0, Width, Height), Caption, false);
     end;
 end;

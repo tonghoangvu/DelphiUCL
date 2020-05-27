@@ -212,6 +212,8 @@ begin
   if Value <> FMin then
     begin
       FMin := Value;
+      if FValue < FMin then
+        FValue := FMin;
       UpdateRects;
       Invalidate;
     end;
@@ -222,6 +224,8 @@ begin
   if Value <> FMax then
     begin
       FMax := Value;
+      if FValue > FMax then
+        FValue := FMax;
       UpdateRects;
       Invalidate;
     end;
@@ -231,7 +235,13 @@ procedure TUSlider.SetValue(const Value: Integer);
 begin
   if Value <> FValue then
     begin
-      FValue := Value;
+      if Value < FMin then
+        FValue := FMin
+      else if Value > FMax then
+        FValue := FMax
+      else
+        FValue := Value;
+
       if Assigned(FOnChange) then
         FOnChange(Self);
       UpdateRects;

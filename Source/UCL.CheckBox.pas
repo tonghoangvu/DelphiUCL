@@ -33,6 +33,10 @@ type
       procedure SetTransparent(const Value: Boolean);
       procedure SetCustomAccentColor(const Value: TColor);
       procedure SetTextSpacing(const Value: Integer);
+      procedure SetIsChecked(const Value: Boolean);
+
+      //  Getters
+      function GetIsChecked: Boolean;
 
       //  Messages
       procedure WM_LButtonUp(var Msg: TWMLButtonUp); message WM_LBUTTONUP;
@@ -58,6 +62,7 @@ type
       property Transparent: Boolean read FTransparent write SetTransparent default true;
       property CustomAccentColor: TColor read FCustomAccentColor write SetCustomAccentColor default $D77800;
       property TextSpacing: Integer read FTextSpacing write SetTextSpacing default 6;
+      property IsChecked: Boolean read GetIsChecked write SetIsChecked default false;
 
       property OnChange: TNotifyEvent read FOnChange write FOnChange;
 
@@ -173,6 +178,21 @@ begin
       UpdateRects;
       Invalidate;
     end;
+end;
+
+procedure TUCheckBox.SetIsChecked(const Value: Boolean);
+begin
+  if Value then
+    State := cbsChecked
+  else
+    State := cbsUnchecked;
+end;
+
+//  GETTERS
+
+function TUCheckBox.GetIsChecked;
+begin
+  Result := State <> cbsUnchecked;
 end;
 
 //  MAIN CLASS
